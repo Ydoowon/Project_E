@@ -10,6 +10,8 @@ public class SPlayer : MonoBehaviour
 
     float hAxis;
     float vAxis;
+    bool Running;
+    Coroutine SpeedSet;
 
     public float Hp = 100.0f;  // player HP
 
@@ -57,28 +59,21 @@ public class SPlayer : MonoBehaviour
     }
 
 
-    public void Moving(Vector3 pos)
-    {
 
-        myAnim.SetBool("IsWalk", pos != Vector3.zero);
-        myPlayer.LookAt(myPlayer.transform.position + pos);
-
-        this.transform.Translate(pos * MoveSpeed * Time.deltaTime); // 이동  
-    }
 
     public void ChangeState(STATE s)
     {
         if (myState == s) return;
         myState = s;
-        
-        switch(myState)
+
+        switch (myState)
         {
             case STATE.CREATE:
                 myAnimEvent.StandUp += () => OnHide = false;  // 숨은 상태 해제되도록 하는 delegate 전달
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
-                
+
                 break;
             case STATE.DEATH:
                 break;
@@ -98,17 +93,30 @@ public class SPlayer : MonoBehaviour
                 {
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
+                    Running = Input.GetButton("Run");
                     Vector3 pos = new Vector3(hAxis, 0, vAxis).normalized;
                     Moving(pos);
                 }
 
-                if(Input.GetKeyDown(KeyCode.Space))
-                Hiding();
+                if (Input.GetKeyDown(KeyCode.Space))
+                    Hiding();
 
                 break;
             case STATE.DEATH:
                 break;
         }
+    }
+    public void Moving(Vector3 pos)
+    {
+
+        myAnim.SetBool("IsWalk", pos != Vector3.zero);
+        myAnim.SetBool("IsRun", Running);
+        myPlayer.LookAt(myPlayer.transform.position + pos);
+
+        if (SpeedSet == null)
+            MoveSpeed = myAnim.GetBool("IsRun") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+
+        this.transform.Translate(pos * MoveSpeed * Time.deltaTime); // 이동  
     }
 
     public void Hiding()
@@ -133,11 +141,27 @@ public class SPlayer : MonoBehaviour
         }
         yield return new WaitForSeconds(time);
         MoveSpeed = OriginMoveSpeed;
+        SpeedSet = null;
     }
 
     public void SetSpeed(float speed, float time)
     {
-        StartCoroutine(SpeedDown(speed, time));
+        SpeedSet = StartCoroutine(SpeedDown(speed, time));
+    }
+
+    public void Ondamage(float Damage)
+    {
+        Hp -= Damage;
+        if (Hp < 0.0f)
+        {
+            Hp = 0.0f;
+            myAnim.SetTrigger("Death");  // 쓰러지는 애니메이션 출력
+            ChangeState(STATE.DEATH);
+        }
+        else
+        {
+            myAnim.SetTrigger("Hit");  // 맞았을 때 애니메이션 출력
+        }
     }
 
 

@@ -11,12 +11,24 @@ public class SMonster : MonoBehaviour
     public SAIperception myPerception;
     NavMeshAgent myNav;
 
+    /*Animator _anim;
+
+    /Animator myAnim
+    {
+        get
+        {
+            if (_anim == null)
+                _anim = GetComponentInChildren<Animator>();
+            return _anim;
+        }
+    }*/
+
     public float MoveSpeed = 1.5f;
     public float RotSpeed = 360.0f;
 
     public enum STATE
     {
-        NONE, CREATE, MOVE, FOLLOW , DEATH
+        NONE, CREATE, IDLE, MOVE, FOLLOW, DEATH
     }
 
     // Start is called before the first frame update
@@ -43,7 +55,14 @@ public class SMonster : MonoBehaviour
                 myNav = this.GetComponent<NavMeshAgent>();
                 ChangeState(STATE.MOVE); // 생성후 Play STATE로 변경
                 break;
+            case STATE.IDLE:
+                //myAnim.SetBool("move_forward", false);
+                //myAnim.SetBool("idle_normal", true);
+                StartCoroutine(Wait(3.0f));
+                ChangeState(STATE.MOVE);
+                break;
             case STATE.MOVE:
+                //myAnim.SetBool("move_forward", true);
                 break;
             case STATE.FOLLOW:
                 break;
@@ -59,16 +78,16 @@ public class SMonster : MonoBehaviour
         {
             case STATE.CREATE:
                 break;
+            case STATE.IDLE:
+                if (myPerception.myEnemyList.Count > 0)
+                    FindTarget(myPerception.myEnemyList[0]);
+                break;
             case STATE.MOVE:
-
-
                 float Dist = Random.Range(5.0f, 7.0f);
-
                 if (myPerception.myEnemyList.Count > 0)
                     FindTarget(myPerception.myEnemyList[0]);
 
                 MoveAround(Dist);
-                
                 break;
             case STATE.FOLLOW:
                 if (myPerception.myEnemyList.Count == 0)
@@ -89,7 +108,7 @@ public class SMonster : MonoBehaviour
 
     public void MoveAround(float Dist)   // 주위를 랜덤으로 배회한다
     {
-        if (RotRoutine == null&& MoveRoutine == null )
+        if (RotRoutine == null && MoveRoutine == null)
             RotRoutine = StartCoroutine(Rotating());
 
         if (MoveRoutine != null) return;
@@ -97,7 +116,11 @@ public class SMonster : MonoBehaviour
     }
 
 
-
+    IEnumerator Wait(float t)
+    {
+        yield return new WaitForSeconds(t);
+        //myAnim.SetBool("idle_normal", false);
+    }
     IEnumerator Moving(float Dist)
     {
         // 회전 다할때까지 대기
@@ -105,7 +128,7 @@ public class SMonster : MonoBehaviour
         while (Dist > 0.0f)   //move상태일때 계속 와리가리 하면서 이동
         {
             if (myState == STATE.FOLLOW) break;
-            
+
             float delta = MoveSpeed * Time.deltaTime;
             if (delta > Dist)
                 delta = Dist;
@@ -114,9 +137,10 @@ public class SMonster : MonoBehaviour
             Dist -= delta;
             yield return null;
         }
+        ChangeState(STATE.IDLE);
         MoveRoutine = null;
-        
-         // 루틴이 끝나면 3초 대기
+
+        // 루틴이 끝나면 3초 대기
     }
     public void FindTarget(GameObject Target)   // 플레이어를 찾아 다닌다.
     {
@@ -124,7 +148,7 @@ public class SMonster : MonoBehaviour
 
         Vector3 pos = (Target.transform.position - this.transform.position).normalized;
 
-        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f/Mathf.PI; // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
+        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI; // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
         // 현재로선 30도 이내이면 발견하도록 만들어 두었음
         /*
         if (Vector3.Dot(this.transform.right,pos) < 0.0f)
@@ -134,7 +158,7 @@ public class SMonster : MonoBehaviour
         */
 
 
-        if(Angle<30.0f && !Target.GetComponent<SPlayer>().OnHide)  // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
+        if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
         {
             ChangeState(STATE.FOLLOW); // 상태를 FOLLOW 상태로 변경
         }
@@ -155,7 +179,7 @@ public class SMonster : MonoBehaviour
 
     IEnumerator Following()
     {
-        while(myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
+        while (myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
         {
             if (myPerception.myEnemyList.Count == 0) break;
 
@@ -166,7 +190,7 @@ public class SMonster : MonoBehaviour
 
         MoveRoutine = null;
     }
-    
+
     IEnumerator Rotating()
     {
 
@@ -181,12 +205,12 @@ public class SMonster : MonoBehaviour
 
             float delta = RotSpeed * Time.deltaTime;
 
-            if(RotAngle < delta)
+            if (RotAngle < delta)
             {
                 delta = RotAngle;
             }
 
-            this.transform.Rotate(Vector3.up, delta * Dir , Space.World);
+            this.transform.Rotate(Vector3.up, delta * Dir, Space.World);
             RotAngle -= delta;
 
             yield return null;
