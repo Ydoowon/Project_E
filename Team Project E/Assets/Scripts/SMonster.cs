@@ -11,9 +11,9 @@ public class SMonster : MonoBehaviour
     public SAIperception myPerception;
     NavMeshAgent myNav;
 
-    /*Animator _anim;
+    Animator _anim;
 
-    /Animator myAnim
+    Animator myAnim
     {
         get
         {
@@ -21,7 +21,7 @@ public class SMonster : MonoBehaviour
                 _anim = GetComponentInChildren<Animator>();
             return _anim;
         }
-    }*/
+    }
 
     public float MoveSpeed = 1.5f;
     public float RotSpeed = 360.0f;
@@ -53,18 +53,17 @@ public class SMonster : MonoBehaviour
         {
             case STATE.CREATE:
                 myNav = this.GetComponent<NavMeshAgent>();
-                ChangeState(STATE.MOVE); // 생성후 Play STATE로 변경
+                ChangeState(STATE.IDLE); // 생성후 Play STATE로 변경
                 break;
             case STATE.IDLE:
-                //myAnim.SetBool("move_forward", false);
-                //myAnim.SetBool("idle_normal", true);
+                myAnim.SetBool("IsWalk", false);
                 StartCoroutine(Wait(3.0f));
-                ChangeState(STATE.MOVE);
                 break;
             case STATE.MOVE:
-                //myAnim.SetBool("move_forward", true);
+                myAnim.SetBool("IsWalk", true);
                 break;
             case STATE.FOLLOW:
+                myAnim.SetBool("IsRun", true);
                 break;
             case STATE.DEATH:
                 break;
@@ -86,19 +85,29 @@ public class SMonster : MonoBehaviour
                 float Dist = Random.Range(5.0f, 7.0f);
                 if (myPerception.myEnemyList.Count > 0)
                     FindTarget(myPerception.myEnemyList[0]);
-
                 MoveAround(Dist);
                 break;
             case STATE.FOLLOW:
                 if (myPerception.myEnemyList.Count == 0)
                 {
                     myNav.isStopped = true;
+                    myAnim.SetBool("IsRun", false);
                     ChangeState(STATE.MOVE);
                 }
                 else
                 {
-                    myNav.isStopped = false;
-                    myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
+                    if ((transform.position - myPerception.myEnemyList[0].transform.position).magnitude <= myNav.stoppingDistance)
+                    {
+                        this.transform.LookAt(myPerception.myEnemyList[0].transform);
+                        myAnim.SetBool("IsAttack", true);
+                    }
+                    else
+                    {
+                        myAnim.SetBool("IsAttack", false);
+                        myNav.isStopped = false;
+                        myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
+                    }
+
                 }
                 break;
             case STATE.DEATH:
@@ -119,7 +128,12 @@ public class SMonster : MonoBehaviour
     IEnumerator Wait(float t)
     {
         yield return new WaitForSeconds(t);
-        //myAnim.SetBool("idle_normal", false);
+
+        if (myState == STATE.IDLE)
+        {
+            // Wait Coroutine이 실행되고 있는 동안 여전히 IDLE 상태라면 (=follow로 변경되지 않았다면)
+            ChangeState(STATE.MOVE);
+        }
     }
     IEnumerator Moving(float Dist)
     {
@@ -148,17 +162,12 @@ public class SMonster : MonoBehaviour
 
         Vector3 pos = (Target.transform.position - this.transform.position).normalized;
 
-        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI; // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
-        // 현재로선 30도 이내이면 발견하도록 만들어 두었음
-        /*
-        if (Vector3.Dot(this.transform.right,pos) < 0.0f)
-        {
-            FindAngle -= 360.0f;
-        }
-        */
+        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI; 
+        // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
 
 
-        if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
+        if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  
+            // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
         {
             ChangeState(STATE.FOLLOW); // 상태를 FOLLOW 상태로 변경
         }

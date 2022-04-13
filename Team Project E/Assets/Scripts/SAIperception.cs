@@ -7,6 +7,8 @@ public class SAIperception : MonoBehaviour
     public LayerMask myEnemyMask;
     public SMonster myMonster;
     public List<GameObject> myEnemyList = new List<GameObject>();
+
+    Coroutine FindRoutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class SAIperception : MonoBehaviour
     {
         if((myEnemyMask & (1 << other.gameObject.layer)) != 0 )
         {
+            if(FindRoutine != null) StopCoroutine(FindRoutine);
             myEnemyList.Add(other.gameObject); // 나중에 플레이어에게 심박수 시스템 작동시키기 위해 게임 오브젝트 취해뒀음
         }
     }
@@ -33,7 +36,13 @@ public class SAIperception : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        myEnemyList.Remove(other.gameObject); // 범위에서 빠져나가면 리스트에서 사라짐
+        FindRoutine = StartCoroutine(RemoveTarget(other));
+    }
+
+    IEnumerator RemoveTarget(Collider other)
+    {
+        yield return new WaitForSeconds(3.0f);
+        myEnemyList.Remove(other.gameObject);
     }
 
 }
