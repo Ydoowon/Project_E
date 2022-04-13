@@ -17,8 +17,11 @@ public class SPlayer : MonoBehaviour
     public float HidePoint = 100.0f; // player 숨을수 있는 시간
 
     public Transform myPlayer;
-    STATE myState = STATE.NONE;
+    public STATE myState = STATE.NONE;
     public bool OnHide = false;
+
+    public List<Item> Itemlist = new List<Item> ();  // 내 아이템 리스트
+
 
     Animator _Anim = null;
     Animator myAnim
@@ -59,9 +62,6 @@ public class SPlayer : MonoBehaviour
         StateProcess();
     }
 
-
-
-
     public void ChangeState(STATE s)
     {
         if (myState == s) return;
@@ -74,7 +74,6 @@ public class SPlayer : MonoBehaviour
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
-
                 break;
             case STATE.DEATH:
                 break;
@@ -101,8 +100,8 @@ public class SPlayer : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space) && HidePoint > 5.0f)
                     Hiding();
-
                 HideSystem();
+
                 break;
             case STATE.DEATH:
                 break;
@@ -175,7 +174,7 @@ public class SPlayer : MonoBehaviour
     public void Ondamage(float Damage)
     {
         Hp -= Damage;
-        if (Hp < 0.0f)
+        if (Hp <= 0.0f)
         {
             Hp = 0.0f;
             myAnim.SetTrigger("Death");  // 쓰러지는 애니메이션 출력
@@ -186,6 +185,7 @@ public class SPlayer : MonoBehaviour
             myAnim.SetTrigger("Hit");  // 맞았을 때 애니메이션 출력
         }
     }
+
 
 
 }

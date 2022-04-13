@@ -22,9 +22,22 @@ public class SMonster : MonoBehaviour
             return _anim;
         }
     }
+    SAnimEvent _animEvent;
+    SAnimEvent myAnimEvent
+    {
+        get
+        {
+            if (_animEvent == null)
+            {
+                _animEvent = this.GetComponentInChildren<SAnimEvent>();
+            }
+            return _animEvent;
+        }
+    }
 
     public float MoveSpeed = 1.5f;
     public float RotSpeed = 360.0f;
+    public float Damage = 5.0f;
 
     public enum STATE
     {
@@ -43,7 +56,13 @@ public class SMonster : MonoBehaviour
         StateProcess();
     }
 
-
+    public void Attack()
+    {
+        if(myPerception.myEnemyList[0] !=null)
+        {
+            myPerception.myEnemyList[0].GetComponent<SPlayer>().Ondamage(Damage);
+        }
+    }
     public void ChangeState(STATE s)
     {
         if (myState == s) return;
@@ -53,6 +72,7 @@ public class SMonster : MonoBehaviour
         {
             case STATE.CREATE:
                 myNav = this.GetComponent<NavMeshAgent>();
+                myAnimEvent.Attack += Attack;
                 ChangeState(STATE.IDLE); // 생성후 Play STATE로 변경
                 break;
             case STATE.IDLE:
@@ -99,7 +119,17 @@ public class SMonster : MonoBehaviour
                     if ((transform.position - myPerception.myEnemyList[0].transform.position).magnitude <= myNav.stoppingDistance)
                     {
                         this.transform.LookAt(myPerception.myEnemyList[0].transform);
-                        myAnim.SetBool("IsAttack", true);
+
+                        if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH) 
+                            //플레이어가 죽었을 때
+                        {
+                            myAnim.SetBool("IsAttack", false);
+                            myAnim.SetBool("IsRun", false);
+                            myPerception.myEnemyList.RemoveAt(0);
+                            ChangeState(myAnim.GetBool("IsWalk")? STATE.MOVE:STATE.IDLE);
+                        }
+                        else
+                            myAnim.SetBool("IsAttack", true);
                     }
                     else
                     {
@@ -184,7 +214,7 @@ public class SMonster : MonoBehaviour
         RotRoutine = StartCoroutine(Rotating());
 
     }
-    */
+    
 
     IEnumerator Following()
     {
@@ -198,7 +228,7 @@ public class SMonster : MonoBehaviour
         }
 
         MoveRoutine = null;
-    }
+    }*/
 
     IEnumerator Rotating()
     {
