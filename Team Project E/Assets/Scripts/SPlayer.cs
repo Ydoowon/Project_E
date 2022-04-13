@@ -14,6 +14,7 @@ public class SPlayer : MonoBehaviour
     Coroutine SpeedSet;
 
     public float Hp = 100.0f;  // player HP
+    public float HidePoint = 100.0f; // player 숨을수 있는 시간
 
     public Transform myPlayer;
     STATE myState = STATE.NONE;
@@ -98,9 +99,10 @@ public class SPlayer : MonoBehaviour
                     Moving(pos);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && HidePoint > 5.0f)
                     Hiding();
 
+                HideSystem();
                 break;
             case STATE.DEATH:
                 break;
@@ -131,6 +133,27 @@ public class SPlayer : MonoBehaviour
             myAnim.SetTrigger("StandUp");
         }
 
+    }
+
+    void HideSystem()
+    {
+        if (OnHide)
+        {
+            HidePoint -= Time.deltaTime * 5.0f;
+        }
+
+        if (HidePoint <= 0 && OnHide)  // Hidepoint가 0이고, 숨은 상태일 때
+        {
+            myAnim.SetTrigger("StandUp"); // 게이지 없으니 일어나게 만듬
+        }
+
+        if (!OnHide && HidePoint < 100.0f)
+        {
+            HidePoint += Time.deltaTime; // 숨은 상태가 아니라면 hidepoint 최대치까지 회복
+
+        }
+
+        HidePoint = Mathf.Clamp(HidePoint, 0.0f, 100.0f);
     }
 
     IEnumerator SpeedDown(float speed, float time)
