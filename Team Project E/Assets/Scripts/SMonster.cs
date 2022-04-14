@@ -38,6 +38,7 @@ public class SMonster : MonoBehaviour
     public float MoveSpeed = 1.5f;
     public float RotSpeed = 360.0f;
     public float Damage = 5.0f;
+    float AttackDelay = 0.0f;
 
     public enum STATE
     {
@@ -118,26 +119,38 @@ public class SMonster : MonoBehaviour
                 {
                     if ((transform.position - myPerception.myEnemyList[0].transform.position).magnitude <= myNav.stoppingDistance)
                     {
+                        myAnim.SetBool("AttPossible", true);
                         this.transform.LookAt(myPerception.myEnemyList[0].transform);
-
-                        if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH) 
-                            //플레이어가 죽었을 때
+                        //플레이어가 죽었을 때
+                        if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH)
                         {
-                            myAnim.SetBool("IsAttack", false);
+                            myAnim.SetBool("AttPossible", false);
                             myAnim.SetBool("IsRun", false);
+                            myNav.isStopped = true;
                             myPerception.myEnemyList.RemoveAt(0);
-                            ChangeState(myAnim.GetBool("IsWalk")? STATE.MOVE:STATE.IDLE);
+                            ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
                         }
                         else
-                            myAnim.SetBool("IsAttack", true);
+                        {
+                            if (AttackDelay > 0.0f)
+                            {
+                                AttackDelay -= Time.deltaTime;
+                            }
+                            else
+                            {
+                                AttackDelay = 2.0f;
+                                myNav.isStopped = true;
+                                myAnim.SetTrigger("Attack");
+                            }
+                        }
                     }
                     else
                     {
-                        myAnim.SetBool("IsAttack", false);
+                        myAnim.SetBool("AttPossible", false);
+                        AttackDelay = 0.0f;
                         myNav.isStopped = false;
                         myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
                     }
-
                 }
                 break;
             case STATE.DEATH:
@@ -204,32 +217,6 @@ public class SMonster : MonoBehaviour
 
     }
 
-    /*
-    public void FollowTarget()
-    {
-        if(MoveRoutine != null) StopCoroutine(MoveRoutine);
-        MoveRoutine = StartCoroutine(Following());
-
-        if(RotRoutine != null) StopCoroutine(RotRoutine);
-        RotRoutine = StartCoroutine(Rotating());
-
-    }
-    
-
-    IEnumerator Following()
-    {
-        while (myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
-        {
-            if (myPerception.myEnemyList.Count == 0) break;
-
-            float delta = MoveSpeed * Time.deltaTime;
-            this.transform.position += this.transform.forward * delta;
-            yield return null;
-        }
-
-        MoveRoutine = null;
-    }*/
-
     IEnumerator Rotating()
     {
 
@@ -257,3 +244,29 @@ public class SMonster : MonoBehaviour
         RotRoutine = null;
     }
 }
+
+/*
+public void FollowTarget()
+{
+    if(MoveRoutine != null) StopCoroutine(MoveRoutine);
+    MoveRoutine = StartCoroutine(Following());
+
+    if(RotRoutine != null) StopCoroutine(RotRoutine);
+    RotRoutine = StartCoroutine(Rotating());
+
+}
+
+
+IEnumerator Following()
+{
+    while (myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
+    {
+        if (myPerception.myEnemyList.Count == 0) break;
+
+        float delta = MoveSpeed * Time.deltaTime;
+        this.transform.position += this.transform.forward * delta;
+        yield return null;
+    }
+
+    MoveRoutine = null;
+}*/

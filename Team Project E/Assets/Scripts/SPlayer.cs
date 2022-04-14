@@ -15,12 +15,12 @@ public class SPlayer : MonoBehaviour
 
     public float Hp = 100.0f;  // player HP
     public float HidePoint = 100.0f; // player 숨을수 있는 시간
+    public bool OnHide = false;
+    public bool Down = false;
 
     public Transform myPlayer;
     public STATE myState = STATE.NONE;
-    public bool OnHide = false;
 
-    public List<Item> Itemlist = new List<Item> ();  // 내 아이템 리스트
 
 
     Animator _Anim = null;
@@ -70,7 +70,11 @@ public class SPlayer : MonoBehaviour
         switch (myState)
         {
             case STATE.CREATE:
-                myAnimEvent.StandUp += () => OnHide = false;  // 숨은 상태 해제되도록 하는 delegate 전달
+                myAnimEvent.StandUp += () =>
+                {
+                    Down = false;
+                    OnHide = false;
+                };// 숨은 상태 해제되도록 하는 delegate 전달
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
@@ -89,7 +93,7 @@ public class SPlayer : MonoBehaviour
                 break;
             case STATE.PLAY:
 
-                if (!OnHide)  // 숨은 상태가 아닐때만 이동 가능
+                if (!Down)  // 엎드린 상태가 아닐때만 이동 가능
                 {
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
@@ -100,8 +104,8 @@ public class SPlayer : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space) && HidePoint > 5.0f)
                     Hiding();
-                HideSystem();
 
+                HideSystem();
                 break;
             case STATE.DEATH:
                 break;
@@ -114,7 +118,7 @@ public class SPlayer : MonoBehaviour
         myAnim.SetBool("IsRun", Running);
         myPlayer.LookAt(myPlayer.transform.position + pos);
 
-        if (SpeedSet == null)
+        if (SpeedSet == null) // 함정에 걸리지 않은 상태에서만 작동
             MoveSpeed = myAnim.GetBool("IsRun") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
 
         this.transform.Translate(pos * MoveSpeed * Time.deltaTime); // 이동  
@@ -122,9 +126,10 @@ public class SPlayer : MonoBehaviour
 
     public void Hiding()
     {
-        if (OnHide == false)  // 숨지 않은 경우 숨는다
+        if (Down == false)  // 숨지 않은 경우 숨는다
         {
             myAnim.SetTrigger("Hiding");  // Hiding 애니메이션 실행
+            Down = true;
             OnHide = true;
         }
         else
@@ -136,22 +141,21 @@ public class SPlayer : MonoBehaviour
 
     void HideSystem()
     {
-        if (OnHide)
+        if (Down)
         {
             HidePoint -= Time.deltaTime * 5.0f;
         }
 
-        if (HidePoint <= 0 && OnHide)  // Hidepoint가 0이고, 숨은 상태일 때
+        if (HidePoint <= 0 && Down)  // Hidepoint가 0이고, 숨은 상태일 때
         {
             myAnim.SetTrigger("StandUp"); // 게이지 없으니 일어나게 만듬
         }
 
-        if (!OnHide && HidePoint < 100.0f)
+        if (!Down && HidePoint < 100.0f)
         {
             HidePoint += Time.deltaTime; // 숨은 상태가 아니라면 hidepoint 최대치까지 회복
 
         }
-
         HidePoint = Mathf.Clamp(HidePoint, 0.0f, 100.0f);
     }
 
@@ -183,9 +187,10 @@ public class SPlayer : MonoBehaviour
         else
         {
             myAnim.SetTrigger("Hit");  // 맞았을 때 애니메이션 출력
+            Down = false;
+            OnHide = false;
         }
     }
-
 
 
 }
