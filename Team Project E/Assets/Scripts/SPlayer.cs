@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class SPlayer : MonoBehaviour
 {
     public float MoveSpeed = 5.0f;
-    float OriginMoveSpeed = 5.0f;
+    float OriginMoveSpeed = 10.0f;
 
     float hAxis;
     float vAxis;

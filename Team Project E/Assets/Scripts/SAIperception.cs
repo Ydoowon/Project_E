@@ -25,7 +25,12 @@ public class SAIperception : MonoBehaviour
     {
         if((myEnemyMask & (1 << other.gameObject.layer)) != 0 )
         {
-            if(FindRoutine != null) StopCoroutine(FindRoutine);
+            if (FindRoutine != null)
+            {
+                StopCoroutine(FindRoutine);
+                if(myEnemyList.Count>0)
+                    myEnemyList.Clear();
+            }
 
             if(other.gameObject.GetComponent<SPlayer>().myState != SPlayer.STATE.DEATH)
             myEnemyList.Add(other.gameObject); // 나중에 플레이어에게 심박수 시스템 작동시키기 위해 게임 오브젝트 취해뒀음

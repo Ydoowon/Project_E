@@ -10,6 +10,7 @@ public class SMonster : MonoBehaviour
     Coroutine RotRoutine = null;
     public SAIperception myPerception;
     NavMeshAgent myNav;
+    public LayerMask CrashMask;
 
     Animator _anim;
 
@@ -205,14 +206,20 @@ public class SMonster : MonoBehaviour
 
         Vector3 pos = (Target.transform.position - this.transform.position).normalized;
 
-        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI; 
+        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI;
         // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
 
+       
 
+       
+        // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
         if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  
-            // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
         {
-            ChangeState(STATE.FOLLOW); // 상태를 FOLLOW 상태로 변경
+            
+            Ray ray = new Ray(this.transform.position, pos);  // 자신에서 플레이어로 향하는 Ray 생성
+            if (Physics.Raycast(ray, 10.0f, CrashMask)) return;  // 벽에 가로막혀 있다면 return
+            
+            ChangeState(STATE.FOLLOW); // 아니라면 상태를 FOLLOW 상태로 변경
         }
 
     }
