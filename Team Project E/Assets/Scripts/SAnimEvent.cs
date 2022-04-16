@@ -6,14 +6,9 @@ using UnityEngine.Events;
 public class SAnimEvent : MonoBehaviour
 {
     public event UnityAction StandUp = null;
-    public event UnityAction Attack = null;
     public void OnStandUp()
     {
-        StandUp?.Invoke();
+        StandUp.Invoke();
     }
-    public void OnAttack()
-    {
-        Attack?.Invoke();
-    }    
     
 }
