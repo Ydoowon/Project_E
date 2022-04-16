@@ -10,6 +10,7 @@ public class SMonster : MonoBehaviour
     Coroutine RotRoutine = null;
     public SAIperception myPerception;
     NavMeshAgent myNav;
+    public LayerMask CrashMask;
 
     Animator _anim;
 
@@ -22,9 +23,23 @@ public class SMonster : MonoBehaviour
             return _anim;
         }
     }
+    SAnimEvent _animEvent;
+    SAnimEvent myAnimEvent
+    {
+        get
+        {
+            if (_animEvent == null)
+            {
+                _animEvent = this.GetComponentInChildren<SAnimEvent>();
+            }
+            return _animEvent;
+        }
+    }
 
     public float MoveSpeed = 1.5f;
     public float RotSpeed = 360.0f;
+    public float Damage = 5.0f;
+    float AttackDelay = 0.0f;
 
     public enum STATE
     {
@@ -43,7 +58,13 @@ public class SMonster : MonoBehaviour
         StateProcess();
     }
 
-
+    public void Attack()
+    {
+        if(myPerception.myEnemyList[0] !=null)
+        {
+            myPerception.myEnemyList[0].GetComponent<SPlayer>().Ondamage(Damage);
+        }
+    }
     public void ChangeState(STATE s)
     {
         if (myState == s) return;
@@ -53,6 +74,7 @@ public class SMonster : MonoBehaviour
         {
             case STATE.CREATE:
                 myNav = this.GetComponent<NavMeshAgent>();
+                myAnimEvent.Attack += Attack;
                 ChangeState(STATE.IDLE); // 생성후 Play STATE로 변경
                 break;
             case STATE.IDLE:
@@ -98,16 +120,38 @@ public class SMonster : MonoBehaviour
                 {
                     if ((transform.position - myPerception.myEnemyList[0].transform.position).magnitude <= myNav.stoppingDistance)
                     {
+                        myAnim.SetBool("AttPossible", true);
                         this.transform.LookAt(myPerception.myEnemyList[0].transform);
-                        myAnim.SetBool("IsAttack", true);
+                        //플레이어가 죽었을 때
+                        if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH)
+                        {
+                            myAnim.SetBool("AttPossible", false);
+                            myAnim.SetBool("IsRun", false);
+                            myNav.isStopped = true;
+                            myPerception.myEnemyList.RemoveAt(0);
+                            ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
+                        }
+                        else
+                        {
+                            if (AttackDelay > 0.0f)
+                            {
+                                AttackDelay -= Time.deltaTime;
+                            }
+                            else
+                            {
+                                AttackDelay = 2.0f;
+                                myNav.isStopped = true;
+                                myAnim.SetTrigger("Attack");
+                            }
+                        }
                     }
                     else
                     {
-                        myAnim.SetBool("IsAttack", false);
+                        myAnim.SetBool("AttPossible", false);
+                        AttackDelay = 0.0f;
                         myNav.isStopped = false;
                         myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
                     }
-
                 }
                 break;
             case STATE.DEATH:
@@ -162,42 +206,22 @@ public class SMonster : MonoBehaviour
 
         Vector3 pos = (Target.transform.position - this.transform.position).normalized;
 
-        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI; 
+        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI;
         // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
 
+       
 
+       
+        // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
         if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  
-            // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
         {
-            ChangeState(STATE.FOLLOW); // 상태를 FOLLOW 상태로 변경
+            
+            Ray ray = new Ray(this.transform.position, pos);  // 자신에서 플레이어로 향하는 Ray 생성
+            if (Physics.Raycast(ray, 10.0f, CrashMask)) return;  // 벽에 가로막혀 있다면 return
+            
+            ChangeState(STATE.FOLLOW); // 아니라면 상태를 FOLLOW 상태로 변경
         }
 
-    }
-
-    /*
-    public void FollowTarget()
-    {
-        if(MoveRoutine != null) StopCoroutine(MoveRoutine);
-        MoveRoutine = StartCoroutine(Following());
-
-        if(RotRoutine != null) StopCoroutine(RotRoutine);
-        RotRoutine = StartCoroutine(Rotating());
-
-    }
-    */
-
-    IEnumerator Following()
-    {
-        while (myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
-        {
-            if (myPerception.myEnemyList.Count == 0) break;
-
-            float delta = MoveSpeed * Time.deltaTime;
-            this.transform.position += this.transform.forward * delta;
-            yield return null;
-        }
-
-        MoveRoutine = null;
     }
 
     IEnumerator Rotating()
@@ -227,3 +251,29 @@ public class SMonster : MonoBehaviour
         RotRoutine = null;
     }
 }
+
+/*
+public void FollowTarget()
+{
+    if(MoveRoutine != null) StopCoroutine(MoveRoutine);
+    MoveRoutine = StartCoroutine(Following());
+
+    if(RotRoutine != null) StopCoroutine(RotRoutine);
+    RotRoutine = StartCoroutine(Rotating());
+
+}
+
+
+IEnumerator Following()
+{
+    while (myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
+    {
+        if (myPerception.myEnemyList.Count == 0) break;
+
+        float delta = MoveSpeed * Time.deltaTime;
+        this.transform.position += this.transform.forward * delta;
+        yield return null;
+    }
+
+    MoveRoutine = null;
+}*/
