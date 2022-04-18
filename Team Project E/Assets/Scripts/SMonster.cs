@@ -12,6 +12,20 @@ public class SMonster : MonoBehaviour
     NavMeshAgent myNav;
     public LayerMask CrashMask;
 
+    [SerializeField]
+    float MoveSpeed = 3.0f;
+    [SerializeField]
+    float RunSpeed = 6.0f;
+
+    public float RotSpeed = 360.0f;
+    public float Damage = 5.0f;
+    float AttackDelay = 0.0f;
+    float MissingTime = 5.0f;
+    
+    public List<Transform> DestList = new List<Transform>();
+    //순찰중 이동할 위치에 대한 리스트
+    int ListCnt = 0;
+
     Animator _anim;
 
     Animator myAnim
@@ -36,10 +50,6 @@ public class SMonster : MonoBehaviour
         }
     }
 
-    public float MoveSpeed = 1.5f;
-    public float RotSpeed = 360.0f;
-    public float Damage = 5.0f;
-    float AttackDelay = 0.0f;
 
     public enum STATE
     {
@@ -79,12 +89,19 @@ public class SMonster : MonoBehaviour
                 break;
             case STATE.IDLE:
                 myAnim.SetBool("IsWalk", false);
+                myAnim.SetBool("IsRun", false);
+                myNav.ResetPath();
                 StartCoroutine(Wait(3.0f));
                 break;
             case STATE.MOVE:
+                myNav.speed = MoveSpeed;
+                myNav.stoppingDistance = 1.0f;
                 myAnim.SetBool("IsWalk", true);
+                myAnim.SetBool("IsRun", false);
                 break;
             case STATE.FOLLOW:
+                myNav.speed = RunSpeed;
+                myNav.stoppingDistance = 5.0f;
                 myAnim.SetBool("IsRun", true);
                 break;
             case STATE.DEATH:
@@ -104,61 +121,91 @@ public class SMonster : MonoBehaviour
                     FindTarget(myPerception.myEnemyList[0]);
                 break;
             case STATE.MOVE:
-                float Dist = Random.Range(5.0f, 7.0f);
                 if (myPerception.myEnemyList.Count > 0)
                     FindTarget(myPerception.myEnemyList[0]);
-                MoveAround(Dist);
+                
+                MoveToDestination();
                 break;
             case STATE.FOLLOW:
                 if (myPerception.myEnemyList.Count == 0)
                 {
-                    myNav.isStopped = true;
-                    myAnim.SetBool("IsRun", false);
-                    ChangeState(STATE.MOVE);
+                    //myNav.isStopped = true;
+                    ChangeState(STATE.IDLE);
                 }
-                else
+                else 
                 {
-                    if ((transform.position - myPerception.myEnemyList[0].transform.position).magnitude <= myNav.stoppingDistance)
-                    {
-                        myAnim.SetBool("AttPossible", true);
-                        this.transform.LookAt(myPerception.myEnemyList[0].transform);
-                        //플레이어가 죽었을 때
-                        if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH)
-                        {
-                            myAnim.SetBool("AttPossible", false);
-                            myAnim.SetBool("IsRun", false);
-                            myNav.isStopped = true;
-                            myPerception.myEnemyList.RemoveAt(0);
-                            ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
-                        }
-                        else
-                        {
-                            if (AttackDelay > 0.0f)
-                            {
-                                AttackDelay -= Time.deltaTime;
-                            }
-                            else
-                            {
-                                AttackDelay = 2.0f;
-                                myNav.isStopped = true;
-                                myAnim.SetTrigger("Attack");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        myAnim.SetBool("AttPossible", false);
-                        AttackDelay = 0.0f;
-                        myNav.isStopped = false;
-                        myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
-                    }
+                    //플레이어 공격 & 추적
+                    FindTarget(myPerception.myEnemyList[0]);
+                    AttackRoutine();
                 }
                 break;
+                /*
+                float Dist = Random.Range(4.0f, 5.0f);
+                MoveAround(Dist);
+                */
             case STATE.DEATH:
                 break;
         }
     }
+    public void AttackRoutine()
+    {
+        if ((transform.position - myPerception.myEnemyList[0].transform.position).magnitude <= myNav.stoppingDistance)
+        {
+            myAnim.SetBool("AttPossible", true);
+            this.transform.LookAt(myPerception.myEnemyList[0].transform);
+            //플레이어가 죽었을 때
+            if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH)
+            {
+                myAnim.SetBool("AttPossible", false);
+                //myNav.isStopped = true;
+                myPerception.myEnemyList.RemoveAt(0);
+                ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
+            }
+            else
+            {
+                if (AttackDelay > 0.0f)
+                {
+                    AttackDelay -= Time.deltaTime;
+                }
+                else
+                {
+                    AttackDelay = 2.0f;
+                    //myNav.isStopped = true;
+                    myAnim.SetTrigger("Attack");
+                }
+            }
+        }
+        else
+        {
+            myAnim.SetBool("AttPossible", false);
+            AttackDelay = 0.0f;
+            //myNav.isStopped = false;
+            myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
+        }
+    }
 
+
+
+    void MoveToDestination() // 목적한 자리로 이동하는 함수
+    {
+        if (DestList.Count == 0) return;
+
+        myNav.SetDestination(DestList[ListCnt].position);
+        float Dist = (DestList[ListCnt].position - this.transform.position).magnitude;
+        if(Dist <= myNav.stoppingDistance) // 목적지에 도착했을 경우
+        {
+            if (ListCnt < DestList.Count - 1)
+            {
+                ListCnt++;  // 다음 목적지로 
+            }
+            else if(ListCnt >= DestList.Count - 1)
+            {
+                ListCnt = 0; // 첫 목적지로 초기화
+            }
+            ChangeState(STATE.IDLE);
+        }
+    }
+   
     public void MoveAround(float Dist)   // 주위를 랜덤으로 배회한다
     {
         if (RotRoutine == null && MoveRoutine == null)
@@ -181,7 +228,6 @@ public class SMonster : MonoBehaviour
     }
     IEnumerator Moving(float Dist)
     {
-        // 회전 다할때까지 대기
 
         while (Dist > 0.0f)   //move상태일때 계속 와리가리 하면서 이동
         {
@@ -195,35 +241,15 @@ public class SMonster : MonoBehaviour
             Dist -= delta;
             yield return null;
         }
-        ChangeState(STATE.IDLE);
+        yield return StartCoroutine(Wait(3.0f));
+
+        myNav.isStopped = false;
+        ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE);
+
         MoveRoutine = null;
 
         // 루틴이 끝나면 3초 대기
     }
-    public void FindTarget(GameObject Target)   // 플레이어를 찾아 다닌다.
-    {
-        if (Target == null) return;
-
-        Vector3 pos = (Target.transform.position - this.transform.position).normalized;
-
-        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI;
-        // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
-
-       
-
-       
-        // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
-        if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  
-        {
-            
-            Ray ray = new Ray(this.transform.position, pos);  // 자신에서 플레이어로 향하는 Ray 생성
-            if (Physics.Raycast(ray, 10.0f, CrashMask)) return;  // 벽에 가로막혀 있다면 return
-            
-            ChangeState(STATE.FOLLOW); // 아니라면 상태를 FOLLOW 상태로 변경
-        }
-
-    }
-
     IEnumerator Rotating()
     {
 
@@ -250,6 +276,48 @@ public class SMonster : MonoBehaviour
         }
         RotRoutine = null;
     }
+    public void FindTarget(GameObject Target)   // 플레이어를 찾아 다닌다.
+    {
+        if (Target == null) return;
+
+        Vector3 pos = (Target.transform.position - this.transform.position).normalized;
+        float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI;
+        // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
+
+        // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
+        if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  
+        {
+            
+            Ray ray = new Ray(this.transform.position + new Vector3(0,2,0), pos);  // 자신에서 플레이어로 향하는 Ray 생성
+            if (Physics.Raycast(ray, out RaycastHit hit, 20.0f, CrashMask))
+            {
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    MissingTime = 5.0f;
+                    myNav.isStopped = false;
+                    ChangeState(STATE.FOLLOW);
+                }
+            }
+        }
+        else
+        {
+            Missing();
+        }
+    }
+    public void Missing()
+    {
+        if (myState != STATE.FOLLOW) return;
+
+        MissingTime -= Time.deltaTime;
+        if (MissingTime <= 0.0f)
+        {
+            //myNav.isStopped = true;
+            ChangeState(STATE.IDLE);
+            MissingTime = 5.0f;
+        }
+    }
+
+   
 }
 
 /*

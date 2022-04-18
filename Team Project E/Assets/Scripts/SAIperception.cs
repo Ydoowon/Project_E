@@ -49,6 +49,7 @@ public class SAIperception : MonoBehaviour
     IEnumerator RemoveTarget(Collider other)
     {
         yield return new WaitForSeconds(3.0f);
+        if(myEnemyList.Count>0)
         myEnemyList.Remove(other.gameObject);
     }
 

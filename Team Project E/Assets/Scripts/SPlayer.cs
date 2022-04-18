@@ -16,13 +16,14 @@ public class SPlayer : MonoBehaviour
     public float Hp = 100.0f;  // player HP
     public float HidePoint = 100.0f; // player 숨을수 있는 시간
     public bool OnHide = false;
-    public bool Down = false;
+    bool Down = false;
 
     public Transform myPlayer;
     public STATE myState = STATE.NONE;
+    public LOCATION myLocation = LOCATION.TOWN;
 
-
-
+    public Transform mySpringArm;
+    Rigidbody rigid;
     Animator _Anim = null;
     Animator myAnim
     {
@@ -49,7 +50,10 @@ public class SPlayer : MonoBehaviour
     {
         NONE, CREATE, PLAY, DEATH
     }
-
+    public enum LOCATION
+    {
+        TOWN, DUNGEON
+    }
 
     void Start()
     {
@@ -60,7 +64,9 @@ public class SPlayer : MonoBehaviour
     void Update()
     {
         StateProcess();
+
     }
+
 
     public void ChangeState(STATE s)
     {
@@ -98,8 +104,11 @@ public class SPlayer : MonoBehaviour
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
                     Running = Input.GetButton("Run");
+                  
                     Vector3 pos = new Vector3(hAxis, 0, vAxis).normalized;
-                    Moving(pos);
+                    Vector3 CompVec = Quaternion.AngleAxis(mySpringArm.rotation.eulerAngles.y, Vector3.up) * pos;
+
+                    Moving(CompVec);
                 }
 
                 if (Input.GetKeyDown(KeyCode.Space) && HidePoint > 5.0f)
@@ -115,11 +124,22 @@ public class SPlayer : MonoBehaviour
     {
 
         myAnim.SetBool("IsWalk", pos != Vector3.zero);
-        myAnim.SetBool("IsRun", Running);
+        switch(myLocation)
+        {
+            case LOCATION.TOWN:
+            myAnim.SetBool("IsRun_T", Running);
+                break;
+            case LOCATION.DUNGEON:
+            myAnim.SetBool("IsRun", Running);
+                break;
+        }
+        
         myPlayer.LookAt(myPlayer.transform.position + pos);
 
         if (SpeedSet == null) // 함정에 걸리지 않은 상태에서만 작동
-            MoveSpeed = myAnim.GetBool("IsRun") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+        {
+            MoveSpeed = myAnim.GetBool("IsRun") || myAnim.GetBool("IsRun_T") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+        }
 
         this.transform.Translate(pos * MoveSpeed * Time.deltaTime); // 이동  
     }
