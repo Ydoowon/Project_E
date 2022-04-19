@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class M_shop : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class M_shop : MonoBehaviour
         GameObject obj = Instantiate(Resources.Load("UI/M_Buymany"), this.transform) as GameObject;
         obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
         this.GetComponentInChildren<M_Buymany>().layout += () => layout.SetActive(false);
-        layout.SetActive(true);
+        layout.SetActive(true);       
     }
     public void Close()
     {

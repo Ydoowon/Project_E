@@ -10,11 +10,13 @@ public class M_bt : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         mytext.color = Color.black;
         mytext.GetComponent<RectTransform>().anchoredPosition += new Vector2(0.0f, -5.0f);
+
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         mytext.color = Color.white;
         mytext.GetComponent<RectTransform>().anchoredPosition += new Vector2(0.0f, 5.0f);
     }
+    
 
 }
