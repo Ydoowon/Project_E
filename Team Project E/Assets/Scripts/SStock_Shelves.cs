@@ -37,7 +37,7 @@ public class SStock_Shelves : MonoBehaviour
         if (Item == null || DisplayItem) return;
 
         myItem = Instantiate(Item, this.transform);
-        myItem.transform.localPosition = new Vector3(0, 2, 0);
+        myItem.transform.localPosition = new Vector3(0,1.5f,1.5f);
         myItem.transform.rotation = Quaternion.identity;
         myItem.GetComponent<SMap>().SetPrice(Random.Range(500, 1000));
         price = myItem.GetComponent<SMap>().GetPrice();
