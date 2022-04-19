@@ -36,14 +36,6 @@ public class SSpringArm : MonoBehaviour
         TargetZoomDist -= Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
         TargetZoomDist = Mathf.Clamp(TargetZoomDist, 2.0f, 5.0f);
         ZoomDist = Mathf.Lerp(ZoomDist, TargetZoomDist, Time.deltaTime* ZoomSpeed);
-        
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(this.transform.position + " mySpringarm 포지션 ");
-            Debug.Log(this.transform.localPosition + " mySpringarm 로컬포지션 ");
-            Debug.Log(myCam.position + " myCam 포지션 ");
-            Debug.Log(myCam.localPosition + " myCam 로컬포지션 ");
-        }
 
         Ray ray = new Ray(this.transform.position, -this.transform.forward);
         if(Physics.Raycast(ray, out RaycastHit hit, ZoomDist+CollisionOffSet, CrashMask ))

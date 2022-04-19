@@ -23,7 +23,9 @@ public class SPlayer : MonoBehaviour
     public LOCATION myLocation = LOCATION.TOWN;
 
     public Transform mySpringArm;
-    Rigidbody rigid;
+    public LayerMask InterMask;
+    SStock_Shelves myStock;
+    public GameObject MyMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
     Animator _Anim = null;
     Animator myAnim
     {
@@ -212,5 +214,28 @@ public class SPlayer : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((InterMask & 1 << other.gameObject.layer) != 0)
+        {
+            myStock = other.GetComponent<SStock_Shelves>();
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(myStock != null)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                myStock.GetComponent<SStock_Shelves>().Displaying(MyMap);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        myStock = null;
+    }
 
 }
