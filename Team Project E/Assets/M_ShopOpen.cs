@@ -24,10 +24,12 @@ public class M_ShopOpen : MonoBehaviour
         HOW.SetActive(true);
         How.text = "<#ff0000ff>E</color> <#000000ff>키를 눌러 상점열기";
         Shoping.Invoke();
+
     }
     private void OnTriggerExit(Collider other)
     {
         HOW.SetActive(false);
+        Shoping.Invoke();
 
     }
 }

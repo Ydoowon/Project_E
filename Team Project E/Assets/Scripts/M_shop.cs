@@ -7,6 +7,11 @@ public class M_shop : MonoBehaviour
 {
 
     public GameObject layout;
+    public event UnityAction shopOpen;
+    private void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,5 +28,6 @@ public class M_shop : MonoBehaviour
     public void Close()
     {
         Destroy(this.gameObject);
+        shopOpen.Invoke();
     }
 }
