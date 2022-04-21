@@ -16,12 +16,20 @@ public class SPlayer : MonoBehaviour
     public float Hp = 100.0f;  // player HP
     public float HidePoint = 100.0f; // player 숨을수 있는 시간
     public bool OnHide = false;
-    public bool Down = false;
+    bool Down = false;
 
     public Transform myPlayer;
     public STATE myState = STATE.NONE;
+    public LOCATION myLocation = LOCATION.TOWN;
 
+    public Transform mySpringArm;
+    public LayerMask InterMask;
+    public LayerMask DungeonMask;
+    SStock_Shelves myStock;
+    public GameObject MyMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
 
+    public TextAsset MyMapdata;
+    public SMapData MapDatabase;
 
     Animator _Anim = null;
     Animator myAnim
@@ -49,7 +57,10 @@ public class SPlayer : MonoBehaviour
     {
         NONE, CREATE, PLAY, DEATH
     }
-
+    public enum LOCATION
+    {
+        TOWN, DUNGEON
+    }
 
     void Start()
     {
@@ -60,7 +71,9 @@ public class SPlayer : MonoBehaviour
     void Update()
     {
         StateProcess();
+
     }
+
 
     public void ChangeState(STATE s)
     {
@@ -75,6 +88,8 @@ public class SPlayer : MonoBehaviour
                     Down = false;
                     OnHide = false;
                 };// 숨은 상태 해제되도록 하는 delegate 전달
+                //임시로 받은 맵 테스트
+                MyMap.GetComponent<SMap>().MapData = new Map(0,3,4);
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
@@ -98,14 +113,27 @@ public class SPlayer : MonoBehaviour
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
                     Running = Input.GetButton("Run");
+                  
                     Vector3 pos = new Vector3(hAxis, 0, vAxis).normalized;
-                    Moving(pos);
+                    Vector3 CompVec = Quaternion.AngleAxis(mySpringArm.rotation.eulerAngles.y, Vector3.up) * pos;
+
+                    Moving(CompVec);
                 }
 
                 if (Input.GetKeyDown(KeyCode.Space) && HidePoint > 5.0f)
                     Hiding();
 
                 HideSystem();
+                //임시 맵 가격 확인
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                   if(MyMap.GetComponent<SMap>().MapData.IsSetting == false)
+                   {
+                        MyMap.GetComponent<SMap>().MapData.IsSetting = true;
+                        MyMap.GetComponent<SMap>().MapData.SetPrice(MapDatabase.CompareMap(0, MyMap.GetComponent<SMap>().MapData));
+                        Debug.Log(MyMap.GetComponent<SMap>().MapData.GetPrice());
+                   }
+                }
                 break;
             case STATE.DEATH:
                 break;
@@ -115,11 +143,22 @@ public class SPlayer : MonoBehaviour
     {
 
         myAnim.SetBool("IsWalk", pos != Vector3.zero);
-        myAnim.SetBool("IsRun", Running);
+        switch(myLocation)
+        {
+            case LOCATION.TOWN:
+            myAnim.SetBool("IsRun_T", Running);
+                break;
+            case LOCATION.DUNGEON:
+            myAnim.SetBool("IsRun", Running);
+                break;
+        }
+        
         myPlayer.LookAt(myPlayer.transform.position + pos);
 
         if (SpeedSet == null) // 함정에 걸리지 않은 상태에서만 작동
-            MoveSpeed = myAnim.GetBool("IsRun") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+        {
+            MoveSpeed = myAnim.GetBool("IsRun") || myAnim.GetBool("IsRun_T") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+        }
 
         this.transform.Translate(pos * MoveSpeed * Time.deltaTime); // 이동  
     }
@@ -192,5 +231,34 @@ public class SPlayer : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((InterMask & 1 << other.gameObject.layer) != 0)
+        {
+            myStock = other.GetComponent<SStock_Shelves>();
+        }
+        if ((DungeonMask & 1<< other.gameObject.layer) != 0)
+        {
+            //other.gameObject.GetComponent<>
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if(myStock != null)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                myStock.GetComponent<SStock_Shelves>().Displaying(MyMap);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        myStock = null;
+    }
+
+    
 
 }
