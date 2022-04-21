@@ -15,6 +15,8 @@ public class SRoom
         Monster = _Monster;
         Trap = _Trap;
     }
+    public SRoom() { }
+
     [SerializeField]
     bool Entup = false;  
     public bool EntUp

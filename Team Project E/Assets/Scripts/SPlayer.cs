@@ -26,7 +26,7 @@ public class SPlayer : MonoBehaviour
     public LayerMask InterMask;
     public LayerMask DungeonMask;
     SStock_Shelves myStock;
-    public GameObject MyMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
+    public Map myMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
 
     public TextAsset MyMapdata;
     public SMapData MapDatabase;
@@ -89,7 +89,7 @@ public class SPlayer : MonoBehaviour
                     OnHide = false;
                 };// 숨은 상태 해제되도록 하는 delegate 전달
                 //임시로 받은 맵 테스트
-                MyMap.GetComponent<SMap>().MapData = new Map(0,3,4);
+                myMap = new Map(0,3,4);
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
@@ -127,12 +127,19 @@ public class SPlayer : MonoBehaviour
                 //임시 맵 가격 확인
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    Debug.Log(myMap.myRooms[0].EntLeft);
+                    Debug.Log(myMap.myRooms[0].EntUp);
+                    Debug.Log(myMap.myRooms[0].EntRight);
+                    Debug.Log(myMap.myRooms[0].EntDown);
+                    
+                    /*
                    if(MyMap.GetComponent<SMap>().MapData.IsSetting == false)
                    {
                         MyMap.GetComponent<SMap>().MapData.IsSetting = true;
                         MyMap.GetComponent<SMap>().MapData.SetPrice(MapDatabase.CompareMap(0, MyMap.GetComponent<SMap>().MapData));
                         Debug.Log(MyMap.GetComponent<SMap>().MapData.GetPrice());
                    }
+                    */
                 }
                 break;
             case STATE.DEATH:
@@ -240,16 +247,19 @@ public class SPlayer : MonoBehaviour
         }
         if ((DungeonMask & 1<< other.gameObject.layer) != 0)
         {
-            //other.gameObject.GetComponent<>
+            //other.gameObject.GetComponent<Dungeon>().Col;
+            //other.gameObject.GetComponent<Dungeon>().Row;
         }
     }
     private void OnTriggerStay(Collider other)
     {
         if(myStock != null)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.E) && !other.gameObject.GetComponent<SStock_Shelves>().DisplayItem)
             {
-                myStock.GetComponent<SStock_Shelves>().Displaying(MyMap);
+                GameObject obj = Instantiate(Resources.Load("Map_Scroll")) as GameObject;
+                obj.GetComponent<SMap>().MapData = myMap;
+                myStock.GetComponent<SStock_Shelves>().Displaying(obj);
             }
         }
     }
@@ -259,6 +269,9 @@ public class SPlayer : MonoBehaviour
         myStock = null;
     }
 
-    
+    public void SetMapData(int button_num, int data)
+    {
+        myMap.SetRoomsDoor(button_num, data);
+    }
 
 }

@@ -8,7 +8,7 @@ public class SStock_Shelves : MonoBehaviour
     public int price;
     [SerializeField]
     bool InUse = false;
-    bool DisplayItem = false;
+    public bool DisplayItem = false;
     // Start is called before the first frame update
     void Start()
     {

@@ -10,15 +10,17 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
     public Image myImage = null;
     public Button myButton = null;
     public int ImageNum = 0;
+    public int ButtonNum = 0;
     bool Map_Up = false;
     bool Map_Down = false;
     bool Map_Left = false;
     bool Map_Right = false;
-
+    public SPlayer myPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -29,60 +31,68 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
 
     public void MapChange()
     {
-        if (myButton.interactable && Input.GetKeyDown(KeyCode.Alpha1))
+        if (myButton.interactable && Input.GetKeyDown(KeyCode.DownArrow))
         {
             Map_Down = !Map_Down;
             if (Map_Down == true)
             {
                 ImageNum = ImageNum + 1;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
             }
             else
             {
                 ImageNum = ImageNum - 1;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
             }
         }
-        if (myButton.interactable && Input.GetKeyDown(KeyCode.Alpha2))
+        if (myButton.interactable && Input.GetKeyDown(KeyCode.UpArrow))
         {
             Map_Up = !Map_Up;
             if (Map_Up == true)
             {
                 ImageNum = ImageNum + 2;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
             }
 
             else
             {
                 ImageNum = ImageNum - 2;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
             }
         }
-        if (myButton.interactable && Input.GetKeyDown(KeyCode.Alpha3))
+        if (myButton.interactable && Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Map_Left = !Map_Left;
             if (Map_Left == true)
             {
                 ImageNum = ImageNum + 4;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
 
             }
 
             else
             {
                 ImageNum = ImageNum - 4;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
 
             }
 
             //myImage.sprite = Resources.Load<Sprite>("Image/MapData/R") as Sprite;
         }
-        if (myButton.interactable && Input.GetKeyDown(KeyCode.Alpha4))
+        if (myButton.interactable && Input.GetKeyDown(KeyCode.RightArrow))
         {
             Map_Right = !Map_Right;
             if (Map_Right == true)
             {
                 ImageNum = ImageNum + 8;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
 
             }
 
             else
             {
                 ImageNum = ImageNum - 8;
+                myPlayer.SetMapData(ButtonNum, ImageNum);
 
             }
 
