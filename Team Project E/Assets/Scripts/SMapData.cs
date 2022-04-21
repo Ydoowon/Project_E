@@ -21,6 +21,14 @@ public class Map
         }
     }
 
+    public Map(int _Mapnum, int _RoomRow, int _RoomCol)
+    {
+        myRooms = new List<SRoom>(_RoomRow * _RoomCol);
+        Mapnum = _Mapnum;
+        Roomcol = _RoomCol;
+        RoomRow = _RoomRow;
+    }
+
     public List<SRoom> myRooms = new List<SRoom>();
     int Mapnum;
     int RoomRow;
@@ -54,6 +62,8 @@ public class Map
 
     public void SetRoomsDoor(int _Roomnum, int ImageSetNum)
     {
+        if (_Roomnum > myRooms.Count) return;
+
         myRooms[_Roomnum].EntDown = ImageSetNum % 2 == 1 ? true : false;
         ImageSetNum = (ImageSetNum >> 1);
         myRooms[_Roomnum].EntUp = ImageSetNum % 2 == 1 ? true : false;

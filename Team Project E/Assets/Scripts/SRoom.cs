@@ -16,28 +16,28 @@ public class SRoom
         Trap = _Trap;
     }
     [SerializeField]
-    bool Entup;  
+    bool Entup = false;  
     public bool EntUp
     {
         get { return Entup; }
         set { Entup = value; }
     }
     [SerializeField]
-    bool Entright;
+    bool Entright = false;
     public bool EntRight
     {
         get { return Entright; }
         set { Entright = value; }
     }
     [SerializeField]
-    bool Entdown;  
+    bool Entdown = false;  
     public bool EntDown
     {
         get { return Entdown; }
         set { Entdown = value; }
     }
     [SerializeField]
-    bool Entleft;  
+    bool Entleft = false;  
     public bool EntLeft
     {
         get { return Entleft; }
@@ -45,21 +45,21 @@ public class SRoom
     }
 
     [SerializeField]
-    bool Item;
+    bool Item = false;
     public bool IsItem
     {
         get { return Item; }
         set { Item = value; }
     }
     [SerializeField]
-    bool Monster;
+    bool Monster = false;
     public bool IsMonster
     {
         get { return Monster; }
         set { Monster = value; }
     }
     [SerializeField]
-    bool Trap;
+    bool Trap = false;
     public bool IsTrap
     {
         get { return Trap; }

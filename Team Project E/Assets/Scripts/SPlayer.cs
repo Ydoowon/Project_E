@@ -24,6 +24,7 @@ public class SPlayer : MonoBehaviour
 
     public Transform mySpringArm;
     public LayerMask InterMask;
+    public LayerMask DungeonMask;
     SStock_Shelves myStock;
     public GameObject MyMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
 
@@ -88,8 +89,7 @@ public class SPlayer : MonoBehaviour
                     OnHide = false;
                 };// 숨은 상태 해제되도록 하는 delegate 전달
                 //임시로 받은 맵 테스트
-                string[] line = MyMapdata.text.Substring(0, MyMapdata.text.Length).Split('\n');
-                MyMap.GetComponent<SMap>().MapData = new Map(0,3,4,line);
+                MyMap.GetComponent<SMap>().MapData = new Map(0,3,4);
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
@@ -238,6 +238,10 @@ public class SPlayer : MonoBehaviour
         {
             myStock = other.GetComponent<SStock_Shelves>();
         }
+        if ((DungeonMask & 1<< other.gameObject.layer) != 0)
+        {
+            //other.gameObject.GetComponent<>
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -254,5 +258,7 @@ public class SPlayer : MonoBehaviour
     {
         myStock = null;
     }
+
+    
 
 }
