@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1834484176863956323}
   - component: {fileID: 1834484176863956322}
   - component: {fileID: 1834484176863956333}
+  - component: {fileID: 7375066427852798531}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -102,6 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   myani: {fileID: 1834484176863956333}
+  CloseWaiting: 10
 --- !u!54 &1834484176863956322
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,6 +139,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!208 &7375066427852798531
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834484176863956335}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5, y: 1, z: 13.000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 1
 --- !u!1 &1834484176974666346
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013296790728, guid: 03b0ed4871f8e8d46aab17cd9b867655, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012274991244, guid: 03b0ed4871f8e8d46aab17cd9b867655, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -488,6 +510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate 4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013296790728, guid: 03b0ed4871f8e8d46aab17cd9b867655, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012274991244, guid: 03b0ed4871f8e8d46aab17cd9b867655, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -549,6 +575,10 @@ PrefabInstance:
     - target: {fileID: 1000012145340340, guid: b35c5f5fde763024f994cd863da1ad14, type: 3}
       propertyPath: m_Name
       value: Gate 4 Hallway x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012145340340, guid: b35c5f5fde763024f994cd863da1ad14, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013536166568, guid: b35c5f5fde763024f994cd863da1ad14, type: 3}
       propertyPath: m_RootOrder
