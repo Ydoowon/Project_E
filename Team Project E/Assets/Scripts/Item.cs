@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
+[CreateAssetMenu(fileName = "New Map", menuName = "New Item/Map")]
 public class Item : ScriptableObject
 {
-    public string ItemName;  //이름
-    public Type ItemType;
+    public string MapName;  //이름
+    public string ToolTip;
 
-    public Sprite ItemImage;
-    public GameObject ItemPrefab;
+    public Sprite MapImage;
 
-    public enum Type
-    {
-        Equipment, Consume, Stamp, Map
-    }
 
 }
