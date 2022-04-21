@@ -26,6 +26,10 @@ public class SPlayer : MonoBehaviour
     public LayerMask InterMask;
     SStock_Shelves myStock;
     public GameObject MyMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
+
+    public TextAsset MyMapdata;
+    public SMapData MapDatabase;
+
     Animator _Anim = null;
     Animator myAnim
     {
@@ -83,6 +87,9 @@ public class SPlayer : MonoBehaviour
                     Down = false;
                     OnHide = false;
                 };// 숨은 상태 해제되도록 하는 delegate 전달
+                //임시로 받은 맵 테스트
+                string[] line = MyMapdata.text.Substring(0, MyMapdata.text.Length).Split('\n');
+                MyMap.GetComponent<SMap>().MapData = new Map(0,3,4,line);
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
@@ -117,6 +124,16 @@ public class SPlayer : MonoBehaviour
                     Hiding();
 
                 HideSystem();
+                //임시 맵 가격 확인
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                   if(MyMap.GetComponent<SMap>().MapData.IsSetting == false)
+                   {
+                        MyMap.GetComponent<SMap>().MapData.IsSetting = true;
+                        MyMap.GetComponent<SMap>().MapData.SetPrice(MapDatabase.CompareMap(0, MyMap.GetComponent<SMap>().MapData));
+                        Debug.Log(MyMap.GetComponent<SMap>().MapData.GetPrice());
+                   }
+                }
                 break;
             case STATE.DEATH:
                 break;
