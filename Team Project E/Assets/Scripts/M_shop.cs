@@ -8,6 +8,7 @@ public class M_shop : MonoBehaviour
 
     public GameObject layout;
     public event UnityAction shopOpen;
+    public event UnityAction Open;
     private void Start()
     {
         
@@ -27,7 +28,8 @@ public class M_shop : MonoBehaviour
     }
     public void Close()
     {
-        Destroy(this.gameObject);
         shopOpen.Invoke();
+        Open.Invoke();
+        Destroy(this.gameObject);
     }
 }
