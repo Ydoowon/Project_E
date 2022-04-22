@@ -8,6 +8,7 @@ public class UIManager_L : MonoBehaviour
 {
     public GameObject myInven;
     public GameObject myMap;
+    RoomButton_L[] myButtons;
 
 
     Color CurColor;
@@ -20,7 +21,11 @@ public class UIManager_L : MonoBehaviour
 
         myInven.SetActive(ActiveInven);
         myMap.SetActive(ActiveMap);
-
+        myButtons = myMap.GetComponentsInChildren<RoomButton_L>();
+        foreach (RoomButton_L button in myButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
 
     }
     // Update is called once per frame
@@ -47,19 +52,14 @@ public class UIManager_L : MonoBehaviour
             myMap.SetActive(ActiveMap);
         }
     }
-    /*
-    void Pause()
+    
+
+    public void SetMyButton(int Row, int Col)
     {
-        if (ActiveInven)
-        {
-            Time.timeScale = 0;
-            myLight.GetComponent<Light>().color = Color.black;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            myLight.GetComponent<Light>().color = CurColor;
-        }
+        if(myButtons != null)
+        myButtons[(Row - 1) * 4 + Col - 1].gameObject.SetActive(true);
+
     }
-    */
+
+
 }

@@ -25,6 +25,7 @@ public class SPlayer : MonoBehaviour
     public Transform mySpringArm;
     public LayerMask InterMask;
     public LayerMask DungeonMask;
+    public UIManager_L myUIManager;
     SStock_Shelves myStock;
     public Map myMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
 
@@ -247,8 +248,10 @@ public class SPlayer : MonoBehaviour
         }
         if ((DungeonMask & 1<< other.gameObject.layer) != 0)
         {
-            //other.gameObject.GetComponent<Dungeon>().Col;
-            //other.gameObject.GetComponent<Dungeon>().Row;
+            int Col = other.gameObject.GetComponent<Dungeon>().Col;
+            int Row = other.gameObject.GetComponent<Dungeon>().Row;
+            myUIManager.SetMyButton(Row, Col);
+
         }
     }
     private void OnTriggerStay(Collider other)
