@@ -22,13 +22,13 @@ public class M_BuyChek : MonoBehaviour
     }
     public void Buy()
     {
-        Layout.Invoke();
-        Parent.Invoke();
+        Layout?.Invoke();
+        Parent?.Invoke();
 
     }
     public void Cencel()
     {
-        Layout.Invoke();
+        Layout?.Invoke();
         Parent.Invoke();
     }
 }

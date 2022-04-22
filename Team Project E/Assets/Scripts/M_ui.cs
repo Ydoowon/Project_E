@@ -31,7 +31,7 @@ public class M_ui : MonoBehaviour
         {
             if (Shopshow)
             {
-                Open.Invoke();
+                Open?.Invoke();
                 GameObject obj = Instantiate(Resources.Load("UI/M_Shop"), this.transform) as GameObject;
                 obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
                 this.GetComponentInChildren<M_shop>().shopOpen += () => Shopshow = true;
@@ -40,7 +40,8 @@ public class M_ui : MonoBehaviour
             }
             else
             {
-                this.GetComponentInChildren<M_shop>().Close();
+                Shopshow = true;
+                this.GetComponentInChildren<M_shop>()?.Close();
             }
         }
 
@@ -49,16 +50,11 @@ public class M_ui : MonoBehaviour
         {       
                 if (Menushow && can)
                 {
-                    if (Shopshow)
-                    {
-                        this.GetComponentInChildren<M_popup>().Open();
-                    }
+                    if (Shopshow) this.GetComponentInChildren<M_popup>().Open();
 
                 }
-                else
-                {
-                    this.GetComponentInChildren<M_menu>().OnClose();
-                }
+                else this.GetComponentInChildren<M_menu>().OnClose();
+                
         }
     }
 }

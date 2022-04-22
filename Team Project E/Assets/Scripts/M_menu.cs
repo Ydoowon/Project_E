@@ -20,8 +20,8 @@ public class M_menu : MonoBehaviour
     }
     public void OnClose()
     {
-        layouts.Invoke();
-        shows.Invoke();
+        layouts?.Invoke();
+        shows?.Invoke();
         Destroy(this.gameObject);
         Time.timeScale = 1;
     }

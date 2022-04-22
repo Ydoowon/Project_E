@@ -21,15 +21,15 @@ public class M_shop : MonoBehaviour
     }
     public void BuyManyOpen()
     {
-        GameObject obj = Instantiate(Resources.Load("UI/M_Buymany"), this.transform) as GameObject;
+        GameObject obj = Instantiate(Resources.Load("UI/M_Buymany"), this.transform.parent) as GameObject;
         obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
-        this.GetComponentInChildren<M_Buymany>().layout += () => layout.SetActive(false);
+        obj.GetComponent<M_Buymany>().layout += () => layout.SetActive(false);
         layout.SetActive(true);       
     }
     public void Close()
     {
-        shopOpen.Invoke();
-        Open.Invoke();
+        shopOpen?.Invoke();
+        Open?.Invoke();
         Destroy(this.gameObject);
     }
 }
