@@ -22,7 +22,7 @@ public class M_popup : MonoBehaviour
     public void Open()
     {
         Time.timeScale = 0;
-        showing.Invoke();
+        showing?.Invoke();
         layout.SetActive(true);
         GameObject obj = Instantiate(Resources.Load("UI/M_Menu"), this.transform) as GameObject;
         obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
