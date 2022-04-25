@@ -3,35 +3,106 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class PlayerStatus
+{
+    [SerializeField]
+    int _level = 1;
+    public int PlayerLevel
+    {
+        get { return _level; }
+        set { _level = value; }
+    }
+    [SerializeField]
+    float _Exp = 0;
+    public float Exp
+    {
+        
+        get { return _Exp; }      
+        set 
+        {
+            _Exp += value;
+            // 요구 경험치는 플레이어 레벨^2 * 10 >> 레벨이 2면 경험치 요구량 40 (임시)
+            while (_Exp >= PlayerLevel * PlayerLevel * 10)                         
+            {
+                _Exp -= PlayerLevel * PlayerLevel * 10;
+                PlayerLevel++;
+            }
+        }
+    }
+    [SerializeField]
+    float _HP = 100.0f;
+    public float HP
+    {
+        get { return _HP; }
+        set { _HP = value; }
+    }
+    [SerializeField]
+    float _hidepoint = 100.0f;
+    public float Hidepoint
+    {
+        get { return _hidepoint; }
+        set { _hidepoint = value; }
+    }
+    [SerializeField]
+    int _gold = 0;
+    public int Gold
+    {
+        get { return _gold;}
+        set { _gold = value; }
+    }
+
+    public enum LOCATION
+    {
+        TOWN, DUNGEON
+    }
+    public LOCATION myLocation = LOCATION.TOWN;
+
+    float _MoveSpeed = 5.0f;
+    public float MoveSpeed
+    {
+        get { return _MoveSpeed; }
+        set { _MoveSpeed = value; }
+    }
+    float _OriginMoveSpeed = 10.0f;
+    public float OriginMoveSpeed
+    {
+        get { return _OriginMoveSpeed; }
+        set { OriginMoveSpeed = value; }
+    }
+    float _UnlockingSpeed = 10.0f;
+    public float UnlockingSpeed
+    {
+        get { return _UnlockingSpeed; }
+        set { _UnlockingSpeed = value; }
+    }
+
+}
+
 public class SPlayer : MonoBehaviour
 {
-    public float MoveSpeed = 5.0f;
-    float OriginMoveSpeed = 10.0f;
-
     float hAxis;
     float vAxis;
     bool Running;
     Coroutine SpeedSet;
 
-    public float Hp = 100.0f;  // player HP
-    public float HidePoint = 100.0f; // player 숨을수 있는 시간
+    public PlayerStatus MyStatus;
     public bool OnHide = false;
     bool Down = false;
 
     public Transform myPlayer;
     public STATE myState = STATE.NONE;
-    public LOCATION myLocation = LOCATION.TOWN;
 
     public Transform mySpringArm;
     public LayerMask InterMask;
     public LayerMask DungeonMask;
     public UIManager_L myUIManager;
     SStock_Shelves myStock;
-    public Map myMap;  // 인벤토릳 대신 임시로 넣어놓는 아이템
-
-    public TextAsset MyMapdata;
+    [SerializeField]
+    Open myDoor;
+    public Map myMap;  // 인벤토리 대신 임시로 넣어놓는 아이템
     public SMapData MapDatabase;
-
+    public GameObject[] MyItem;
     Animator _Anim = null;
     Animator myAnim
     {
@@ -57,10 +128,6 @@ public class SPlayer : MonoBehaviour
     public enum STATE
     {
         NONE, CREATE, PLAY, DEATH
-    }
-    public enum LOCATION
-    {
-        TOWN, DUNGEON
     }
 
     void Start()
@@ -121,27 +188,27 @@ public class SPlayer : MonoBehaviour
                     Moving(CompVec);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space) && HidePoint > 5.0f)
+                if (Input.GetKeyDown(KeyCode.Space) && MyStatus.Hidepoint > 5.0f)
                     Hiding();
 
                 HideSystem();
-                //임시 맵 가격 확인
-                if (Input.GetKeyDown(KeyCode.F))
+
+                if(myDoor != null)
+                    Unlocking();
+
+                if(Input.GetKeyDown(KeyCode.H))
                 {
-                    Debug.Log(myMap.myRooms[0].EntLeft);
-                    Debug.Log(myMap.myRooms[0].EntUp);
-                    Debug.Log(myMap.myRooms[0].EntRight);
-                    Debug.Log(myMap.myRooms[0].EntDown);
-                    
-                    /*
-                   if(MyMap.GetComponent<SMap>().MapData.IsSetting == false)
-                   {
-                        MyMap.GetComponent<SMap>().MapData.IsSetting = true;
-                        MyMap.GetComponent<SMap>().MapData.SetPrice(MapDatabase.CompareMap(0, MyMap.GetComponent<SMap>().MapData));
-                        Debug.Log(MyMap.GetComponent<SMap>().MapData.GetPrice());
-                   }
-                    */
+                    myUIManager.AddItem(MyItem[0].GetComponent<SItem>());
                 }
+                if(Input.GetKeyDown(KeyCode.J))
+                {
+                    DrawMap();
+                }
+                if(Input.GetKeyDown(KeyCode.K))
+                {
+                    myUIManager.myItemSlot[0].RemoveItem(1);
+                }
+               
                 break;
             case STATE.DEATH:
                 break;
@@ -149,14 +216,14 @@ public class SPlayer : MonoBehaviour
     }
     public void Moving(Vector3 pos)
     {
-
+        
         myAnim.SetBool("IsWalk", pos != Vector3.zero);
-        switch(myLocation)
+        switch(MyStatus.myLocation)
         {
-            case LOCATION.TOWN:
+            case PlayerStatus.LOCATION.TOWN:
             myAnim.SetBool("IsRun_T", Running);
                 break;
-            case LOCATION.DUNGEON:
+            case PlayerStatus.LOCATION.DUNGEON:
             myAnim.SetBool("IsRun", Running);
                 break;
         }
@@ -165,10 +232,10 @@ public class SPlayer : MonoBehaviour
 
         if (SpeedSet == null) // 함정에 걸리지 않은 상태에서만 작동
         {
-            MoveSpeed = myAnim.GetBool("IsRun") || myAnim.GetBool("IsRun_T") ? OriginMoveSpeed : OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+            MyStatus.MoveSpeed = myAnim.GetBool("IsRun") || myAnim.GetBool("IsRun_T") ? MyStatus.OriginMoveSpeed : MyStatus.OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
         }
 
-        this.transform.Translate(pos * MoveSpeed * Time.deltaTime); // 이동  
+        this.transform.Translate(pos * MyStatus.MoveSpeed * Time.deltaTime); // 이동  
     }
 
     public void Hiding()
@@ -190,30 +257,30 @@ public class SPlayer : MonoBehaviour
     {
         if (Down)
         {
-            HidePoint -= Time.deltaTime * 5.0f;
+            MyStatus.Hidepoint -= Time.deltaTime * 5.0f;
         }
 
-        if (HidePoint <= 0 && Down)  // Hidepoint가 0이고, 숨은 상태일 때
+        if (MyStatus.Hidepoint <= 0 && Down)  // Hidepoint가 0이고, 숨은 상태일 때
         {
             myAnim.SetTrigger("StandUp"); // 게이지 없으니 일어나게 만듬
         }
 
-        if (!Down && HidePoint < 100.0f)
+        if (!Down && MyStatus.Hidepoint < 100.0f)
         {
-            HidePoint += Time.deltaTime; // 숨은 상태가 아니라면 hidepoint 최대치까지 회복
+            MyStatus.Hidepoint += Time.deltaTime; // 숨은 상태가 아니라면 hidepoint 최대치까지 회복
 
         }
-        HidePoint = Mathf.Clamp(HidePoint, 0.0f, 100.0f);
+        MyStatus.Hidepoint = Mathf.Clamp(MyStatus.Hidepoint, 0.0f, 100.0f);
     }
 
     IEnumerator SpeedDown(float speed, float time)
     {
-        if (MoveSpeed > speed)  // 가장 강력한 디버프를 받을 수 있도록 하기 위한 조건
+        if (MyStatus.MoveSpeed > speed)  // 가장 강력한 디버프를 받을 수 있도록 하기 위한 조건
         {
-            MoveSpeed = speed;
+            MyStatus.MoveSpeed = speed;
         }
         yield return new WaitForSeconds(time);
-        MoveSpeed = OriginMoveSpeed;
+        MyStatus.MoveSpeed = MyStatus.OriginMoveSpeed;
         SpeedSet = null;
     }
 
@@ -224,10 +291,10 @@ public class SPlayer : MonoBehaviour
 
     public void Ondamage(float Damage)
     {
-        Hp -= Damage;
-        if (Hp <= 0.0f)
+        MyStatus.HP -= Damage;
+        if (MyStatus.HP <= 0.0f)
         {
-            Hp = 0.0f;
+            MyStatus.HP = 0.0f;
             myAnim.SetTrigger("Death");  // 쓰러지는 애니메이션 출력
             ChangeState(STATE.DEATH);
         }
@@ -251,8 +318,12 @@ public class SPlayer : MonoBehaviour
             int Col = other.gameObject.GetComponent<Dungeon>().Col;
             int Row = other.gameObject.GetComponent<Dungeon>().Row;
             myUIManager.SetMyButton(Row, Col);
-
         }
+        if(other.gameObject.layer == LayerMask.NameToLayer("Door") && !other.gameObject.GetComponent<Open>().DoorOpen)
+        {
+            myDoor = other.gameObject.GetComponent<Open>();
+        }
+        
     }
     private void OnTriggerStay(Collider other)
     {
@@ -260,16 +331,18 @@ public class SPlayer : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E) && !other.gameObject.GetComponent<SStock_Shelves>().DisplayItem)
             {
-                GameObject obj = Instantiate(Resources.Load("Map_Scroll")) as GameObject;
-                obj.GetComponent<SMap>().MapData = myMap;
-                myStock.GetComponent<SStock_Shelves>().Displaying(obj);
+                //DisplayingMyMap(other.transform);
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        myStock = null;
+        if(myStock != null)
+            myStock = null;
+
+        if (myDoor != null)
+            myDoor = null;
     }
 
     public void SetMapData(int button_num, int data)
@@ -277,4 +350,47 @@ public class SPlayer : MonoBehaviour
         myMap.SetRoomsDoor(button_num, data);
     }
 
+    public void DrawMap()
+    {
+        //myUIManager.AddItem();
+        myUIManager.AddItem(MyItem[2].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMap.Mapnum, myMap));
+    }
+    public void Unlocking()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!myAnim.GetBool("IsRun") && !myAnim.GetBool("IsWalk"))
+            {
+                myAnim.SetBool("Unlocking", true);
+            }
+        }
+        if(Input.GetKey(KeyCode.E) && !myAnim.GetBool("IsWalk"))
+        {
+            myDoor.DoorUnlock(MyStatus.UnlockingSpeed);
+            if (myDoor.DoorOpen)
+            {
+                myAnim.SetBool("Unlocking", false);
+                myDoor = null;
+            }
+
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            myAnim.SetBool("Unlocking", false);
+        }
+    }
+    public Open getMydoor()
+    {
+        return myDoor;
+    }
+    public void HealingHP(float value)
+    {
+        MyStatus.HP += value;
+        if (MyStatus.HP > 100.0f) MyStatus.HP = 100.0f;
+    }
+    public void HealingHidePoint(float value)
+    {
+        MyStatus.Hidepoint += value;
+        if (MyStatus.Hidepoint > 100.0f) MyStatus.Hidepoint = 100.0f;
+    }
 }

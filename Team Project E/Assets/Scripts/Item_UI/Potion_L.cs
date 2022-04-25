@@ -21,7 +21,7 @@ public class Potion_L : MonoBehaviour , IPointerUpHandler
 
     void OnMouseDoubleClick()
     {
-        float HP = myPlayer.GetComponent<SPlayer>().Hp;
+        float HP = myPlayer.GetComponent<SPlayer>().MyStatus.HP;
         if (HP == 100) return;
         else
         {

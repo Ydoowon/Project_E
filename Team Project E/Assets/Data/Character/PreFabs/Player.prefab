@@ -46,14 +46,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c35cd567bc4f884b976bddd8d5a1c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  Hp: 100
-  HidePoint: 100
+  MyStatus:
+    _level: 1
+    _Exp: 0
+    _HP: 100
+    _hidepoint: 100
+    _gold: 0
+    myLocation: 0
   OnHide: 0
   myPlayer: {fileID: 5252274130763302613}
   myState: 0
-  myLocation: 0
   mySpringArm: {fileID: 0}
+  InterMask:
+    serializedVersion: 2
+    m_Bits: 512
+  DungeonMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  myUIManager: {fileID: 0}
+  myDoor: {fileID: 0}
+  myMap:
+    myRooms: []
+    Mapnum: 0
+  MapDatabase: {fileID: 0}
+  MyItem:
+  - {fileID: 2938883107697417689, guid: 9b661c9e1feaa9f41bc8733e6da02dfb, type: 3}
+  - {fileID: 4577038386886444369, guid: c0aefd2552e1bee4f8bd28abcd769031, type: 3}
+  - {fileID: 5156838890994186592, guid: f3f301413c121644cb5eef1deb18ba9e, type: 3}
 --- !u!143 &344376354
 CharacterController:
   m_ObjectHideFlags: 0

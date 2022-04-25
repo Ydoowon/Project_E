@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +15,7 @@ public class PlayerstatManagement_L : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,22 +27,22 @@ public class PlayerstatManagement_L : MonoBehaviour
 
     public void HPtext()
     {
-        float TextHP = myPlayer.GetComponent<SPlayer>().Hp;
-        playerHP.text = TextHP + " / " +"100";
-        HPSlider.value = TextHP / 100;  
-            
+        float TextHP = myPlayer.GetComponent<SPlayer>().MyStatus.HP;
+        playerHP.text = TextHP + " / " + "100";
+        HPSlider.value = TextHP / 100;
+
     }
 
     public void Hidetext()
     {
-        float TextHide = myPlayer.GetComponent<SPlayer>().HidePoint;
-        playerHide.text = TextHide + " / " + "100";
+        float TextHide = myPlayer.GetComponent<SPlayer>().MyStatus.Hidepoint;
+        playerHide.text = (int)TextHide + " / " + "100";
         HideSlider.value = TextHide / 100;
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
     }
 }

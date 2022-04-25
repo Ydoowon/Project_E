@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
-    public Item item;
+    //public Item item;
     public LayerMask mask;
     // Start is called before the first frame update
     void Start()

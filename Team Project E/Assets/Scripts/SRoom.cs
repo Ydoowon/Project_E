@@ -17,6 +17,8 @@ public class SRoom
     }
     public SRoom() { }
 
+    public bool Checking = false;
+
     [SerializeField]
     bool Entup = false;  
     public bool EntUp

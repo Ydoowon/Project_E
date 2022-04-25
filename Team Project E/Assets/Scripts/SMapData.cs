@@ -33,7 +33,7 @@ public class Map
     }
 
     public List<SRoom> myRooms = new List<SRoom>();
-    int Mapnum;
+    public int Mapnum;
     int RoomRow;
     int Roomcol;
     int Price;
@@ -99,6 +99,9 @@ public class SMapData : MonoBehaviour
 
         for (int i = 0; i < OriginMap.GetRoomRow() * OriginMap.GetRoomCol(); i++)
         {
+            if (!_usermap.myRooms[i].Checking) continue; // 들어가보지 않은 방인 경우, 스코어 계산 스킵
+
+
             if(OriginMap.myRooms[i].EntUp == _usermap.myRooms[i].EntUp)
                 score++;
             if (OriginMap.myRooms[i].EntRight == _usermap.myRooms[i].EntRight)
