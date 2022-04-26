@@ -1,124 +1,124 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.33f1 (915a7af8b0d5) revision 9525882'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 16333 MB
+OS: 'Windows 10  (10.0.19043) 64bit Professional' Language: 'ko' Physical Memory: 16335 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe
+D:\Program Files (x86)\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/DW/Documents/GitHub/doowon/Team Project E
+D:/Program Files (x86)/Github/Project_E/Team Project E
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-61097
-Successfully changed project path to: C:/Users/DW/Documents/GitHub/doowon/Team Project E
-C:/Users/DW/Documents/GitHub/doowon/Team Project E
+54047
+Successfully changed project path to: D:/Program Files (x86)/Github/Project_E/Team Project E
+D:/Program Files (x86)/Github/Project_E/Team Project E
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 50.54 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 76.38 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.33f1 (915a7af8b0d5)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/DW/Documents/GitHub/doowon/Team Project E/Assets
+[Subsystems] Discovering subsystems at path D:/Program Files (x86)/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Program Files (x86)/Github/Project_E/Team Project E/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1e89)
+    Renderer: NVIDIA GeForce GTX 960 (ID=0x1401)
     Vendor:   
-    VRAM:     5967 MB
-    Driver:   27.21.14.5671
+    VRAM:     2007 MB
+    Driver:   30.0.15.1215
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56316
+Mono path[0] = 'D:/Program Files (x86)/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files (x86)/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Program Files (x86)/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56988
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001721 seconds.
+Register platform support module: D:/Program Files (x86)/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001939 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 52.59 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 67.08 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.524 seconds
+- Completed reload, in  0.718 seconds
 Domain Reload Profiling:
-	ReloadAssembly (524ms)
-		BeginReloadAssembly (54ms)
+	ReloadAssembly (718ms)
+		BeginReloadAssembly (92ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (404ms)
-			LoadAssemblies (53ms)
+		EndReloadAssembly (542ms)
+			LoadAssemblies (91ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (122ms)
+			SetupTypeCache (176ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (32ms)
-			SetupLoadedEditorAssemblies (163ms)
+			SetupLoadedEditorAssemblies (216ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (53ms)
-				BeforeProcessingInitializeOnLoad (14ms)
-				ProcessInitializeOnLoadAttributes (68ms)
-				ProcessInitializeOnLoadMethodAttributes (23ms)
+				RefreshPlugins (67ms)
+				BeforeProcessingInitializeOnLoad (16ms)
+				ProcessInitializeOnLoadAttributes (95ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002884 seconds.
+Registered in 0.005958 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\DW\Documents\GitHub\doowon\Team Project E\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Symbol file LoadedFromMemory doesn't match image D:\Program Files (x86)\Github\Project_E\Team Project E\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.71 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.882 seconds
+- Completed reload, in  1.198 seconds
 Domain Reload Profiling:
-	ReloadAssembly (883ms)
-		BeginReloadAssembly (133ms)
+	ReloadAssembly (1200ms)
+		BeginReloadAssembly (205ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (695ms)
-			LoadAssemblies (80ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (929ms)
+			LoadAssemblies (142ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (221ms)
+			SetupTypeCache (317ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (48ms)
-			SetupLoadedEditorAssemblies (277ms)
+			RebuildScriptCaches (55ms)
+			SetupLoadedEditorAssemblies (353ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (84ms)
-				ProcessInitializeOnLoadAttributes (174ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (5ms)
+				BeforeProcessingInitializeOnLoad (101ms)
+				ProcessInitializeOnLoadAttributes (231ms)
+				ProcessInitializeOnLoadMethodAttributes (11ms)
+				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.75 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.57 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1694 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 80.1 MB.
-System memory in use after: 80.2 MB.
+Unloading 1702 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.4 MB.
+System memory in use after: 84.5 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2136.
-Total: 2.753500 ms (FindLiveObjects: 0.152800 ms CreateObjectMapping: 0.038800 ms MarkObjects: 2.533200 ms  DeleteObjects: 0.027900 ms)
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2144.
+Total: 3.007000 ms (FindLiveObjects: 0.131100 ms CreateObjectMapping: 0.059300 ms MarkObjects: 2.786400 ms  DeleteObjects: 0.029500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,845 +134,29 @@ AssetImportParameters requested are different than current active one (requested
 Received Import Request.
   path: Assets/Scenes/MapScene/NavMesh.asset
   artifactKey: Guid(661bbd925ec3b4a4f878145d985f491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MapScene/NavMesh.asset using Guid(661bbd925ec3b4a4f878145d985f491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aab929c4c4fe216a022f6fec1112914a') in 0.031227 seconds 
+Start importing Assets/Scenes/MapScene/NavMesh.asset using Guid(661bbd925ec3b4a4f878145d985f491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ae93248bcc45c760bcd8ce82e0a85bf') in 0.089378 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.225211 seconds.
-  path: Assets/Scenes/MapScene.unity
-  artifactKey: Guid(b90b8eec8dba92548be85e86bfbd02be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MapScene.unity using Guid(b90b8eec8dba92548be85e86bfbd02be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d62db974dbc2516ba187ab356dba1d2') in 0.006448 seconds 
+  Time since last request: 19.131550 seconds.
+  path: Assets/Scripts/ITEM/SmokeShell.cs
+  artifactKey: Guid(07fe19b22a30be7478755122a610d6c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ITEM/SmokeShell.cs using Guid(07fe19b22a30be7478755122a610d6c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1015d5a2af8f7b73d7b8e4bafe20035e') in 0.036571 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 51.427429 seconds.
-  path: Assets/Map/Dungeon/2Door_Dungeon.prefab
-  artifactKey: Guid(eb87bc09190dce94d9b0b51c92549e6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/2Door_Dungeon.prefab using Guid(eb87bc09190dce94d9b0b51c92549e6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4239aed38bdcd1691e7225653ec21fd3') in 0.097745 seconds 
+  Time since last request: 624.947238 seconds.
+  path: Assets/Data/Character/PC Computer - Genshin Impact - Aether.fbm/Aether_Tex_Body_Diffuse.png
+  artifactKey: Guid(bdee0205582d356499b40d5f89e5cf07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/Character/PC Computer - Genshin Impact - Aether.fbm/Aether_Tex_Body_Diffuse.png using Guid(bdee0205582d356499b40d5f89e5cf07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea8abcf290df486a6ed955605ffc0925') in 0.246725 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/Map/Dungeon/Gate.prefab
-  artifactKey: Guid(5b6fc1fd848869e41b175739f99d5382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Gate.prefab using Guid(5b6fc1fd848869e41b175739f99d5382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75053072299dee33bec0c8b655238033') in 0.038719 seconds 
+  Time since last request: 0.000219 seconds.
+  path: Assets/Data/Character/PC Computer - Genshin Impact - Aether.fbm/Aether_Tex_Face_Diffuse.png
+  artifactKey: Guid(809d2b44a550ed84692ee04eddcd53a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/Character/PC Computer - Genshin Impact - Aether.fbm/Aether_Tex_Face_Diffuse.png using Guid(809d2b44a550ed84692ee04eddcd53a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aead335e612400c277418a0ebebc04d1') in 0.031382 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000161 seconds.
-  path: Assets/Map/Dungeon/Dungeon.prefab
-  artifactKey: Guid(a835f1d6256432b419473b1612863b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon.prefab using Guid(a835f1d6256432b419473b1612863b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7dcb950a69c87e687ad3ac51e70473a1') in 0.040259 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000179 seconds.
-  path: Assets/Map/Dungeon/2Door_Dungeon_lake.prefab
-  artifactKey: Guid(1ba2a3ae6a73c7a468c7306e5f885b45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/2Door_Dungeon_lake.prefab using Guid(1ba2a3ae6a73c7a468c7306e5f885b45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a87c648914e56ddd71e7b2e95142379') in 0.021013 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/Map/Dungeon/2Door_Dungeon_Coner.prefab
-  artifactKey: Guid(929c86a11e23c12418d7df0ff68eddc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/2Door_Dungeon_Coner.prefab using Guid(929c86a11e23c12418d7df0ff68eddc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44919910c90d5fe387d00e69306ba9a1') in 0.041810 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000165 seconds.
-  path: Assets/Map/Dungeon/2Door_Dungeon_Opt.prefab
-  artifactKey: Guid(9d04d3662342f164592c8de8c02c2f0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/2Door_Dungeon_Opt.prefab using Guid(9d04d3662342f164592c8de8c02c2f0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bdcf27fe4afc919b3732cf9a587a8e4') in 0.062712 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/Map/Dungeon/3Door_Dungeon.prefab
-  artifactKey: Guid(fbbda53761aa41a43b7d7e92f80e4c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/3Door_Dungeon.prefab using Guid(fbbda53761aa41a43b7d7e92f80e4c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbf25f2ab61e57e433b28777704c195d') in 0.028010 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '925fa442ba856d24477199aef82bf557') in 0.223362 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Map/Dungeon/4Door_Dungeon.prefab
-  artifactKey: Guid(995b5676785ba4f49be5a39417d35794) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/4Door_Dungeon.prefab using Guid(995b5676785ba4f49be5a39417d35794) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28a75a2e768f461c4ca2d2f58771ed24') in 0.030204 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.999277 seconds.
-  path: Assets/Map/Dungeon/Dungeon12 (1).prefab
-  artifactKey: Guid(a926555ddc48b3948af52052f3db4bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12 (1).prefab using Guid(a926555ddc48b3948af52052f3db4bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '389510ebe04ca32f53415364ada05fa7') in 0.212917 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 51.509945 seconds.
-  path: Assets/Map/Dungeon/Dungeon12 (1).prefab
-  artifactKey: Guid(a926555ddc48b3948af52052f3db4bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12 (1).prefab using Guid(a926555ddc48b3948af52052f3db4bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0de0712173218be497188b806e334dad') in 0.207354 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 60.939912 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7fc5aa805f88122814324fbe4c84f56') in 0.215620 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 38.498203 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '655284a1a32635c073d0f92038feadb0') in 0.211794 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.461764 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea28ef4f63cd17aa21ba42d75d4c176e') in 0.305852 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.491005 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93b740ba0874f98272c809ef6d6c9aed') in 0.200937 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 16.890321 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c26f2897263319a840b11437edeab37b') in 0.205416 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.929295 seconds.
-  path: Assets/Map/Dungeon/2Door_Dungeon_Coner.prefab
-  artifactKey: Guid(929c86a11e23c12418d7df0ff68eddc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/2Door_Dungeon_Coner.prefab using Guid(929c86a11e23c12418d7df0ff68eddc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bdb54f0f4ad4ba42a92807fad4807f5') in 0.017731 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000177 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '642ccda7c6af32f4e031536e2e565d90') in 0.206162 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000236 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f44d9d73fdffd7f3d38175bbbaa2febf') in 0.233061 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 29.927494 seconds.
-  path: Assets/Map/Dungeon/Dungeon.prefab
-  artifactKey: Guid(a835f1d6256432b419473b1612863b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon.prefab using Guid(a835f1d6256432b419473b1612863b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0edd5611c1bb5cbe41ca03ac38b5dcf1') in 0.026678 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000145 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '484ad6ef3e2a9b7606c551f5181a406a') in 0.207461 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000231 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e31bc51e5d0ece4b2d4df6867297a6a7') in 0.212482 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 216.327054 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60703ead69e786148b90b0506bb394f2') in 0.210762 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.856871 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd085f7bfe582481939da1519d05213f') in 0.202875 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.432103 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9db7cce8c1b8c48d5e89b5be5d08b9a') in 0.205135 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.869359 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a662c3a29a0d467d705b6c1e83b3c8a') in 0.206720 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.789121 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce9ecc6a73326965c9522fd52fe44155') in 0.227380 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.747087 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80ad6a222a0ff38c5c9d3bd4d5ead337') in 0.208090 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.595095 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38e1eac7d30bd287a584cfab2050110c') in 0.214816 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.401677 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4329e0736c78179f1e9c88b5634f6adc') in 0.217443 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.188929 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '443e76ab228603cf8fb9f0792c7c3426') in 0.228168 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.957496 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00ddf28ebbfa016e931416418acdd9bf') in 0.209244 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.193265 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b9dd5adb6cd9b227af6344bad854d0b') in 0.217556 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.220065 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e7aa7387d62880613f48762c281979d') in 0.270854 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.370315 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '543cdd7ff5f7d1fc8ae599a4d0f4e198') in 0.263016 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 17.899625 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58cf67fb5e84e678909b4123662b0f99') in 0.212339 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.215159 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c76a5ef719523e986c93f5ca9a5ef02') in 0.215630 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.027248 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a3f48d9e3da5f35fe2ba44c2551f7c2') in 0.211336 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.195808 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a733097e14308a512238da2029b1d1df') in 0.210480 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.637230 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6ae92a37d152d49b47123ad3befa0da') in 0.234262 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 22.693216 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bfc9390f16f3bf8668a0d71d2ef446e') in 0.241264 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.007845 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec29decb6e54600402cbf9d213bebae7') in 0.211569 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.887188 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98b332454054309ce2040ff5de46ffa2') in 0.238008 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.209813 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9b3ce71bfc70156fce907721331ecc8') in 0.236792 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.974445 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36d119d9d53dc63904898a668b5181ff') in 0.206405 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.740903 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4db60cc9f2af64b94b4330bbb794375') in 0.226919 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.773126 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a012cf5fd6ee58caa6aacd123bc399c8') in 0.210290 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.969689 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '907cafe79aadba7627c655821f90a8d5') in 0.207391 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.680974 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6b1e22bb2f57106f081cbc96f9fff94') in 0.209277 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.424648 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b304bfdc7f1f097a58f67c291cff16a0') in 0.223858 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.268806 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e09d1deeafc8901ce3eccf75ebd27b7') in 0.214528 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.733970 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81f183da16efe93fc746f7e8b62edc5b') in 0.213653 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.204967 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03c23441156bcb25ef81233ef1de568c') in 0.217109 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.972433 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd048a4f93e1fd4abdaf4428377ed8e0c') in 0.212436 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 13.181344 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54aae8c524965d29f01c528aeb1e6165') in 0.218862 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.190945 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a7b9f74aa565cc9e71d08d4c45aadfa') in 0.210380 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.551236 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bb918398e335469784d478fe5d9b087') in 0.221258 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.698112 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77e325b236e239a9fcccf1e1aa015801') in 0.217427 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.903819 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2425a00b027c31a1ca284ae40a6ec1bd') in 0.214590 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.524194 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b48dc9fa4b0da4d2151976e10019c708') in 0.209763 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.816016 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'deed5bb2bce67d0006bf564b2be323c7') in 0.217272 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.831960 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dec7219b181d3f026de8ccd2f0e29648') in 0.209249 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4.245129 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a7bfd3811dd9491796d7abf5f50d498') in 0.213251 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.439649 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd834b57faf71b90748322907c39ef244') in 0.238627 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.428276 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cbf4ddb64bc96f859846f9cba81c808') in 0.214578 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.303613 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef68a1ff3def04c49dfee85b4b62c021') in 0.242877 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.374704 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '887780bbcd6e4ad706e5f994536250a1') in 0.206117 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.027830 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fa553d0108f2dc13537c1b4bda71b1e') in 0.218834 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.228950 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e46b86b7882680ec3538c9ee82c1e52f') in 0.217297 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.263691 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '201dced276bc5c377cda63cccc28fbc6') in 0.217775 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.034709 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49d8652c3e8b0da1d368b23346d4c5e9') in 0.221823 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.527385 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce45c5ea0b88aa3993612bef5993c9fb') in 0.221101 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.527247 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bf87f1906bd309ecc74fabbcdda7a2a') in 0.210660 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.856410 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55112b89bb96a15574df94956cf2348b') in 0.217083 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.843114 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50bf69391a428e36f758ff0f21d0ccc7') in 0.222071 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.253560 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb391b0e2c15afecc268b6b99224d846') in 0.217033 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.057405 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62576befa97506fe2aa427895a137744') in 0.237529 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 17.022725 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30677f1c38fd18bf2cccfe68671c7b21') in 0.295792 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.540239 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3b76e330f81b505b8a3877b2707a3e0') in 0.225648 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.479476 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54ebc790601ff3af5f287391b88cd969') in 0.211135 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.298196 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a606a4c3faf1c7161db3f2d483c0344b') in 0.227000 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.690800 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21a56c05bc19e9756120b920e731602b') in 0.230668 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.606494 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '097ecf74fe29c897ce0dc375c9b4db88') in 0.233953 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.799840 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c912efce972a680b1b5e37257deda3c8') in 0.213737 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.240619 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '312792efc21097d069d979fee95b5ac6') in 0.227126 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.216573 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '527419e95ab7728078bdec637fd2f770') in 0.222227 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.642416 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c310eaac41548ca8373fcd9f688539a') in 0.228117 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.613188 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd64eccdca6061f0b30e1373af96f3e6') in 0.217245 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.205907 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ba0902559f8b4bdc6b08914e20e6b34') in 0.219414 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.205006 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11f20577b4f857c456e23e6425e2734d') in 0.216622 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.813031 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd97142bb89784994b2b23df7d4b9fdd0') in 0.211228 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.824725 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b58259fb8e56a15e0cdcc267b6aa5347') in 0.227657 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.984860 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78c1f3e87121e66307581d9f95222c5a') in 0.230458 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.389744 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b07687f445e1cfd5a0046853bcc47e8b') in 0.214231 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.660263 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '119373da1d61be8dff231e2ca3a87ec8') in 0.218633 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.200514 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f56ea277c4a0e53db39026bcbf1a6761') in 0.220358 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.851436 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b03e788f859f44e67fef62ccf27b64a3') in 0.235956 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.193658 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1ea37457ad5c26f4c067a25db4c7b43') in 0.217468 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.218767 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd604483e8d23b4cba3fecd2adcda24b') in 0.219711 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.205494 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4aaeb501207dbc7ca7a2a6d4b8bff82f') in 0.215774 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.822348 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1352dcc0586971ce9274042d5e6b0b49') in 0.218495 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.203358 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b06584fdafc4929b2160206214ce281') in 0.232062 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.416832 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b07f73319d45f99795a50fb34271680') in 0.220053 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.216970 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ebaef5c6709be372367d32c41018184') in 0.247333 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.181466 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3ff927709385b3fec003089fefaec57') in 0.215146 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.205467 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '293da7df15275ea817cb989198de8b53') in 0.219034 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.020432 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6445febeb83a10b76357d3fb8e8e69c5') in 0.220205 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.206821 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c4fe7f02e748f39f7cba1cb4ea72cf3') in 0.219512 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.022111 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cfab29a091edceb19dec5151078b9f1') in 0.224374 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.024119 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95dc214ecf650a195c529929d4b2c2f1') in 0.219097 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.216507 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2af6a5cd9d7d0965241153de1b8e53e5') in 0.222805 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.030287 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a222f840df87cca27eb7b00ffe5cfc9b') in 0.221790 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.207869 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80019222a6714d0d3e54d1af79b6bb40') in 0.223769 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.817275 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea68e6d87a0eab6d7510d97755a14ac8') in 0.224891 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.210423 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4506739735e728f414ac8f8e0121c52') in 0.227454 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.829313 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '409762183b9a799e9c7b165a5bc66ba7') in 0.216327 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.213552 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46a1ce05ca44912ebdd1f964e70dc1ee') in 0.215967 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.022975 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce2f1622d043da28e5596f05e7322623') in 0.220816 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.049122 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffe6190c9d1c7f599e72e3b22d8a6931') in 0.231385 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.213698 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bac9d522efaad3f323d95e0bf8ee6fe4') in 0.213400 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.690804 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b469516a31bbdc795b6a574c4326b1fc') in 0.217625 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.211842 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abacee5f5dd3e3182d1967f0bfe9f056') in 0.220253 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.816769 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffa5912dc54ef3355f7ff4d565272109') in 0.297121 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.938296 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac30365fd2ccdc5c6abf6b4f3a7e2ea1') in 0.300953 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.995014 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a88712ad888408e6df452b65ed6374a') in 0.221005 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.207420 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(f80b4d0d1b5cb1847868712e324e3866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '484ff5b6295e8d55ab2e571b7352b640') in 0.236114 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 4735.327856 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2 1.prefab
-  artifactKey: Guid(bb47be25d7355224a9bb5e22d3271fa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2 1.prefab using Guid(bb47be25d7355224a9bb5e22d3271fa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20a297a6eedf0924c1868a9f4ec54107') in 0.420624 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 20.177384 seconds.
-  path: Assets/Map/Dungeon/Dungeon12_2.prefab
-  artifactKey: Guid(bb47be25d7355224a9bb5e22d3271fa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12_2.prefab using Guid(bb47be25d7355224a9bb5e22d3271fa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '442c146b899e08472a6e6b070f0dd2b1') in 0.315153 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 69.961560 seconds.
-  path: Assets/Map/Dungeon/Dungeon (3).prefab
-  artifactKey: Guid(5d647a924873aeb4f903245e245d32ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon (3).prefab using Guid(5d647a924873aeb4f903245e245d32ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78fd7739a9e5d6aa6678fa4a316efd2e') in 0.025893 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000173 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c6f54321dfc7e4f49bf87c5ef5e5b8c') in 0.276043 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 125.378240 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '774da2d917a3d6c038344261f6828292') in 0.220184 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.375692 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4766e2253890ccef2f1cf0a2d983ad9f') in 0.212571 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.392233 seconds.
-  path: Assets/Map/Dungeon/Dungeon (2).prefab
-  artifactKey: Guid(5fde718f6dc9e0749b972bc973e0c2fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon (2).prefab using Guid(5fde718f6dc9e0749b972bc973e0c2fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '591f96b27cb64813345cd110f02db3c4') in 0.030316 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83ac60526c07139c0f69f5e3058e6b0e') in 0.216453 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.938915 seconds.
-  path: Assets/Map/Dungeon
-  artifactKey: Guid(ae0997de34a78c64c9729306459e0433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon using Guid(ae0997de34a78c64c9729306459e0433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47ab090d186c3930dd1c302d558fcd94') in 0.001792 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.257331 seconds.
-  path: Assets/Map/Dungeon/Data
-  artifactKey: Guid(c9fbc15064412a841b3ab265ea3bebdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Data using Guid(c9fbc15064412a841b3ab265ea3bebdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f115722db4d3e8428bac3e09413b6524') in 0.004837 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 100.952967 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(77828f33093a3d54e9b83a7df13f0ef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8046c443e119261145447dadfab35f5b') in 0.224267 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.161179 seconds.
-  path: Assets/Map/Dungeon/Dungeon12 1.prefab
-  artifactKey: Guid(6a8b73d452aeb4b4a9255693c6ca7a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12 1.prefab using Guid(6a8b73d452aeb4b4a9255693c6ca7a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67d69a8eeeb7333220238da8d191028b') in 0.226555 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 10.823881 seconds.
-  path: Assets/Map/Dungeon/Dungeon12.prefab
-  artifactKey: Guid(6a8b73d452aeb4b4a9255693c6ca7a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Map/Dungeon/Dungeon12.prefab using Guid(6a8b73d452aeb4b4a9255693c6ca7a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '454da76907380340a8dad7bc87829f02') in 0.207861 seconds 
+  Time since last request: 0.000286 seconds.
+  path: Assets/Data/Character/PC Computer - Genshin Impact - Aether.fbm/Aether_Tex_Hair_Diffuse.png
+  artifactKey: Guid(269a210d632499c4281a0e2c9363bf8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/Character/PC Computer - Genshin Impact - Aether.fbm/Aether_Tex_Hair_Diffuse.png using Guid(269a210d632499c4281a0e2c9363bf8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '515f3f5c82ccb656458065f2809f3983') in 0.027069 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
