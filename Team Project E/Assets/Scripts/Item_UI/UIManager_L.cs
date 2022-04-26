@@ -15,9 +15,8 @@ public class UIManager_L : MonoBehaviour
     bool ActiveInven = false;
     bool ActiveMap = false;
 
-    // Start is called before the first frame update
     void Start()
-    {
+{
         myInven.SetActive(ActiveInven);
         myMap.SetActive(ActiveMap);
         myItemSlot = myInven.GetComponentsInChildren<SItemSlot>();
@@ -26,7 +25,6 @@ public class UIManager_L : MonoBehaviour
         {
             button.gameObject.SetActive(false);
         }
-
     }
     // Update is called once per frame
     void Update()
@@ -56,10 +54,12 @@ public class UIManager_L : MonoBehaviour
 
     public void SetMyButton(int Row, int Col)
     {
+
         if (myButtons != null)
         {
             myButtons[(Row - 1) * 4 + Col - 1].gameObject.SetActive(true);
-            this.GetComponent<PlayerstatManagement_L>().myPlayer.GetComponent<SPlayer>().myMap.myRooms[(Row-1)*4+Col -1].Checking = true;
+            SPlayer.instance.GetmyMap().myRooms[(Row - 1) * 4 + Col - 1].Checking = true;
+            //this.GetComponent<PlayerstatManagement_L>().myPlayer.GetComponent<SPlayer>().GetmyMap().myRooms[(Row-1)*4+Col -1].Checking = true;
         }
     }
     public void AddItem(SItem _additem, int count = 1, int price = 0)
@@ -112,7 +112,23 @@ public class UIManager_L : MonoBehaviour
         obj.transform.SetAsFirstSibling();
         obj.GetComponent<SItem>().Price = price;
 
-
     }
 
+    // 아이템 슬롯에서 매개 변수로 받아온 아이템이 있는지 확인한다.
+    // 있다면 아이템 슬롯 번호를 return 해주고, 없다면 -1을 리턴해준다.
+    public int FindItem(SItem findItem)
+    {
+        for(int i = 0; i < myItemSlot.Length; i++)
+        {
+            if (myItemSlot[i].myItem == null) continue;
+
+            if(myItemSlot[i].myItem.name == findItem.name)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    
 }

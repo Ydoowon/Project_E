@@ -81,10 +81,27 @@ public class PlayerStatus
 
 public class SPlayer : MonoBehaviour
 {
+    static public SPlayer instance;
+
     float hAxis;
     float vAxis;
     bool Running;
     Coroutine SpeedSet;
+    Coroutine Cloaking;
+    SkinnedMeshRenderer[] _mySkin;
+    SkinnedMeshRenderer[] MySkin
+    {
+        get 
+        {
+            if (_mySkin == null)
+                _mySkin = this.GetComponentsInChildren<SkinnedMeshRenderer>();
+            return _mySkin; 
+        }
+        set
+        {
+            _mySkin = value;
+        }
+    }
 
     public PlayerStatus MyStatus;
     public bool OnHide = false;
@@ -98,9 +115,16 @@ public class SPlayer : MonoBehaviour
     public LayerMask DungeonMask;
     public UIManager_L myUIManager;
     SStock_Shelves myStock;
-    [SerializeField]
     Open myDoor;
-    public Map myMap;  // 인벤토리 대신 임시로 넣어놓는 아이템
+    [SerializeField]
+    Map myMap;  // 플레이어 지도
+    public Map GetmyMap()
+    {
+        if (myMap != null)
+            return myMap;
+
+        return null;
+    }
     public SMapData MapDatabase;
     public GameObject[] MyItem;
     Animator _Anim = null;
@@ -132,7 +156,16 @@ public class SPlayer : MonoBehaviour
 
     void Start()
     {
-        ChangeState(STATE.CREATE);
+        if(instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            ChangeState(STATE.CREATE);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -196,9 +229,13 @@ public class SPlayer : MonoBehaviour
                 if(myDoor != null)
                     Unlocking();
 
-                if(Input.GetKeyDown(KeyCode.H))
+                if(Input.GetKeyDown(KeyCode.G))
                 {
                     myUIManager.AddItem(MyItem[0].GetComponent<SItem>());
+                }
+                if(Input.GetKeyDown(KeyCode.H))
+                {
+                    myUIManager.AddItem(MyItem[2].GetComponent<SItem>());
                 }
                 if(Input.GetKeyDown(KeyCode.J))
                 {
@@ -245,10 +282,17 @@ public class SPlayer : MonoBehaviour
             myAnim.SetTrigger("Hiding");  // Hiding 애니메이션 실행
             Down = true;
             OnHide = true;
+
+            if (Cloaking != null) StopCoroutine(Cloaking);
+            Cloaking = StartCoroutine(Clock());
         }
         else
         {
             myAnim.SetTrigger("StandUp");
+
+            if (Cloaking != null) StopCoroutine(Cloaking);
+            Cloaking = StartCoroutine(Reveal());
+
         }
 
     }
@@ -292,6 +336,9 @@ public class SPlayer : MonoBehaviour
     public void Ondamage(float Damage)
     {
         MyStatus.HP -= Damage;
+        if(Cloaking != null) StopCoroutine(Cloaking);
+        Cloaking = StartCoroutine(Reveal()); // 맞았을 때 해제되도록
+
         if (MyStatus.HP <= 0.0f)
         {
             MyStatus.HP = 0.0f;
@@ -352,8 +399,19 @@ public class SPlayer : MonoBehaviour
 
     public void DrawMap()
     {
-        //myUIManager.AddItem();
-        myUIManager.AddItem(MyItem[2].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMap.Mapnum, myMap));
+        int InkSlot = myUIManager.FindItem(MyItem[1].GetComponent<SItem>());
+        int PaperSlot = myUIManager.FindItem(MyItem[2].GetComponent<SItem>());
+
+        if(InkSlot != -1 && PaperSlot != -1)
+        {
+            myUIManager.myItemSlot[InkSlot].RemoveItem();
+            myUIManager.myItemSlot[PaperSlot].RemoveItem();
+            myUIManager.AddItem(MyItem[3].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMap.Mapnum, myMap));
+        }
+        else
+        {
+            Debug.Log("재료가 부족합니다.");
+        }
     }
     public void Unlocking()
     {
@@ -392,5 +450,32 @@ public class SPlayer : MonoBehaviour
     {
         MyStatus.Hidepoint += value;
         if (MyStatus.Hidepoint > 100.0f) MyStatus.Hidepoint = 100.0f;
+    }
+
+    
+    IEnumerator Clock()
+    {
+        for(int i = 0; i<= 60; i++ )
+        {
+            for (int j = 0; j < MySkin.Length; j++)
+            {
+                MySkin[j].material.SetFloat("_DissolveAmount", (float)i / 60.0f);
+            }
+            yield return null;
+        }
+        Cloaking = null;
+    }
+
+    IEnumerator Reveal()
+    {
+        for (int i = 60; i >= 0; i--)
+        {
+            for(int j = 0; j < MySkin.Length; j++)
+            {
+                MySkin[j].material.SetFloat("_DissolveAmount", (float)i / 60.0f);
+            }
+            yield return null;
+        }
+        Cloaking = null;
     }
 }

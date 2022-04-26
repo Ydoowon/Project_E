@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerstatManagement_L : MonoBehaviour
 {
+    static public PlayerstatManagement_L instance;
     public GameObject myPlayer;
 
     //For HP
@@ -15,7 +16,15 @@ public class PlayerstatManagement_L : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

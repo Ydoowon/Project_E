@@ -196,6 +196,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 572774209}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &1374808654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +712,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 3804849615086255117}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &8926649246509079858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,6 +805,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 8049797628870152176}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &569122629005590274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1187,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 1830703560727773340}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &2330405868303817794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1586,6 +1590,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 8997308962630353372}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &2821012808344689036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,6 +1817,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 6631927379774079795}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &6181843396632111104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,6 +1910,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 5440104149730334895}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &418720517551621342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2659,7 +2666,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4389990864350787756}
+  - component: {fileID: 3381820745628999754}
   m_Layer: 0
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -2667,8 +2674,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4389990864350787756
-Transform:
+--- !u!224 &3381820745628999754
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2682,6 +2689,11 @@ Transform:
   m_Father: {fileID: 4389990865100885718}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4389990864382605465
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,6 +3495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff97d336482d2419f8aa78bead716068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRoot: {fileID: 0}
 --- !u!1 &4389990865060836877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,6 +3715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4389990865100885718}
+  - component: {fileID: 1781844230142942451}
   - component: {fileID: 4389990865100885719}
   - component: {fileID: 4389990865100885716}
   - component: {fileID: 4389990865100885717}
@@ -3724,7 +3738,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4389990865543166380}
-  - {fileID: 4389990864350787756}
+  - {fileID: 3381820745628999754}
   - {fileID: 4389990864391273931}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3734,6 +3748,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1781844230142942451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389990865100885706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd3217b4c0215419e908ce21003540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &4389990865100885719
 Canvas:
   m_ObjectHideFlags: 0
@@ -4034,6 +4060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4389990865441418603}
+  - component: {fileID: 2399357034445271792}
   - component: {fileID: 4389990865441418613}
   - component: {fileID: 4389990865441418602}
   m_Layer: 5
@@ -4063,6 +4090,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 265}
   m_SizeDelta: {x: 580, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2399357034445271792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389990865441418600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97d336482d2419f8aa78bead716068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRoot: {fileID: 3381820745628999754}
 --- !u!222 &4389990865441418613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4496,7 +4536,6 @@ GameObject:
   - component: {fileID: 4389990865865885924}
   - component: {fileID: 4389990865865885926}
   - component: {fileID: 4389990865865885927}
-  - component: {fileID: 4389990865865885921}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -4518,7 +4557,7 @@ RectTransform:
   - {fileID: 4389990865441418603}
   - {fileID: 3677005521561038780}
   - {fileID: 4389990865078636945}
-  m_Father: {fileID: 4389990864350787756}
+  m_Father: {fileID: 3381820745628999754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4564,18 +4603,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4389990865865885921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4389990865865885925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff97d336482d2419f8aa78bead716068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4389990865993012729
 GameObject:
   m_ObjectHideFlags: 0
@@ -5173,6 +5200,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 337500763144302490}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &6985169514227190591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6132,6 +6160,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 4923421768915127377}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &2984926965305669479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6802,6 +6831,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 1772009843790254644}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &8819943247813001881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7049,6 +7079,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 9165432417243592866}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &7971299332199618744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7141,6 +7172,7 @@ MonoBehaviour:
   Itemcnt: {fileID: 7008597466754773667}
   myItem: {fileID: 0}
   ItemCount: 0
+  Player: {fileID: 0}
 --- !u!114 &3879467461736925978
 MonoBehaviour:
   m_ObjectHideFlags: 0
