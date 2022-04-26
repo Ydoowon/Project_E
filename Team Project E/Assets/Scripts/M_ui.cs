@@ -28,7 +28,7 @@ public class M_ui : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && Shop)
-        {
+        { // NPC 상점
             if (Shopshow)
             {
                 Open?.Invoke();
@@ -43,6 +43,9 @@ public class M_ui : MonoBehaviour
                 Shopshow = true;
                 this.GetComponentInChildren<M_shop>()?.Close();
             }
+         // Player 상점
+
+
         }
 
 
