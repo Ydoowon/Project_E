@@ -1,28 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class M_menu : MonoBehaviour
 {
-    public event UnityAction layouts = null;
-    public event UnityAction shows= null;
+    public GameObject layout;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public void OnClose()
+    public void Open()
     {
-        layouts?.Invoke();
-        shows?.Invoke();
-        Destroy(this.gameObject);
+        Time.timeScale = 0;
+        layout.SetActive(true);
+           
+    }
+    public void Close()
+    {
         Time.timeScale = 1;
+        layout.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

@@ -8,7 +8,6 @@ public class M_shop : MonoBehaviour
 
     public GameObject layout;
     public event UnityAction shopOpen;
-    public event UnityAction Open;
     private void Start()
     {
         
@@ -21,7 +20,7 @@ public class M_shop : MonoBehaviour
     }
     public void BuyManyOpen()
     {
-        GameObject obj = Instantiate(Resources.Load("UI/M_Buymany"), this.transform.parent) as GameObject;
+        GameObject obj = Instantiate(Resources.Load("UI/M_Buymany"), this.transform) as GameObject;
         obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
         obj.GetComponent<M_Buymany>().layout += () => layout.SetActive(false);
         layout.SetActive(true);       
@@ -29,7 +28,6 @@ public class M_shop : MonoBehaviour
     public void Close()
     {
         shopOpen?.Invoke();
-        Open?.Invoke();
         Destroy(this.gameObject);
     }
 }
