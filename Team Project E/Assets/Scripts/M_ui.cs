@@ -5,60 +5,63 @@ using UnityEngine.Events;
 
 public class M_ui : MonoBehaviour
 {
-    bool can = true;
-    bool Menushow = true;
-    bool Shop = false;
-    bool Shopshow = true;
-    public event UnityAction Open = null;
+    bool Menushow = true; // esc키를 눌러서 나온 메뉴창이 나왔는지 안나왔는지
+    bool Shoprng = false; // Shop을 열 범위에 있는지 없는지
+    bool Shopshow = true; // Shop이 열려 있는지 안열려있는지
 
 
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponentInChildren<M_popup>().showing += () => Menushow = !Menushow;
 
-        GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shop = !Shop;
-      
-
-        
+        GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;            
      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && Shop)
-        {
+        if (Input.GetKeyDown(KeyCode.E) && Shoprng)
+        { // NPC 상점
             if (Shopshow)
             {
-                Open.Invoke();
-                GameObject obj = Instantiate(Resources.Load("UI/M_Shop"), this.transform) as GameObject;
-                obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
+                GameObject obj1 = Instantiate(Resources.Load("UI/M_Shop"), this.transform) as GameObject;
+                obj1.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
                 this.GetComponentInChildren<M_shop>().shopOpen += () => Shopshow = true;
-                this.GetComponentInChildren<M_shop>().Open += () => Open();
                 Shopshow = false;
             }
             else
             {
-                this.GetComponentInChildren<M_shop>().Close();
+                Shopshow = true;
+                this.GetComponentInChildren<M_shop>()?.Close();
             }
+         // Player 상점
+
+
         }
 
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {       
-                if (Menushow && can)
+                if (Menushow)
                 {
                     if (Shopshow)
                     {
-                        this.GetComponentInChildren<M_popup>().Open();
+                    GameObject obj2 = Instantiate(Resources.Load("UI/M_Menu"), this.transform) as GameObject;
+                    obj2.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
+                    obj2.GetComponent<M_menu>()?.Open();
+                    Menushow = false;
                     }
 
                 }
                 else
                 {
-                    this.GetComponentInChildren<M_menu>().OnClose();
+                    this.GetComponentInChildren<M_menu>()?.Close();
+                    Menushow = true;
                 }
+
         }
+
+
     }
 }

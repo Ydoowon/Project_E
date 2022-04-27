@@ -48,10 +48,10 @@ public class M_Buymany : MonoBehaviour
     }
     public void Buy()
     {
-        GameObject obj = Instantiate(Resources.Load("UI/M_Check"), this.transform) as GameObject;
+        GameObject obj = Instantiate(Resources.Load("UI/M_Check"), this.transform.parent) as GameObject;
         obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
-        this.GetComponentInChildren<M_BuyChek>().Parent += () => Destroy(this.gameObject);
-        this.GetComponentInChildren<M_BuyChek>().Layout += layout;
+        obj.GetComponent<M_BuyChek>().Layout += layout;
+        Destroy(this.gameObject);
 
     }
     public void Cancel()
