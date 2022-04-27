@@ -5,6 +5,7 @@ public class PlayerstatManagement_L : MonoBehaviour
 {
     static public PlayerstatManagement_L instance;
     public GameObject myPlayer;
+    public GameObject UnlockGauge;
 
     //For HP
     public TMPro.TMP_Text playerHP;
@@ -50,8 +51,17 @@ public class PlayerstatManagement_L : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Unlocking(float point)
     {
-
+        UnlockGauge.GetComponentInChildren<Slider>().value = (100.0f - point) / 100.0f;
+        if(point <= 0)
+        {
+            UnlockSet(false);
+        }
     }
+    public void UnlockSet(bool boolean)
+    {
+        UnlockGauge.gameObject.SetActive(boolean);
+    }
+
 }

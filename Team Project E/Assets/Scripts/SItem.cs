@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerEnterHandler, IPointerExitHandler
 {
     public SItemData ItemData;
     Vector2 DragOffset;
@@ -53,11 +53,45 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     {
         return curParent;
     }
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TMPro.TMP_Text[] ToolTip = SGameManager.instance.ItemToolTip.GetComponentsInChildren<TMPro.TMP_Text>();
+        ToolTip[0].text = "<color=red>" + ItemData.Name + "</color>";
+        ToolTip[1].text = ItemData.ToolTip;
+
+        switch(ItemData.ItemType)
+        {
+            case SItemData.Type.Map:
+                ToolTip[2].text = "<color=blue> 지도</color> 아이템";
+                break;
+            case SItemData.Type.Consume:
+                ToolTip[2].text = "<color=blue> 더블클릭</color>으로 사용";
+                break;
+            case SItemData.Type.ETC:
+                ToolTip[2].text = "재료 아이템";
+                break;
+
+        }
+        //
+
+        float x = (Screen.width / 1920.0f) * SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
+        float y = (Screen.width / 1920.0f) * SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
+
+        SGameManager.instance.ItemToolTip.transform.position = this.transform.position + new Vector3(x, -y, 0f);
+        SGameManager.instance.ItemToolTip.SetActive(true);
+        
+        //포지션 값에 얼마를 넣어줘야 하는 것??
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SGameManager.instance.ItemToolTip.SetActive(false);
+    }
 
 
     
 
-    // Start is called before the first frame update
 
 
 

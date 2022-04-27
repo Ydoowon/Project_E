@@ -44,5 +44,9 @@ public class Open : MonoBehaviour
             DoorOpen = true;
         }
     }
+    public float GetLockgauge()
+    {
+        return Lockgauge;
+    }
 
 }

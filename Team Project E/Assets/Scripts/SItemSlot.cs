@@ -120,7 +120,6 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         }
         else
         {
-            Debug.Log("Click");
             ClickTime = Time.time;
         }
     }
@@ -153,4 +152,6 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         if(isEffected) // 포션이 효과가 있었다면(hp가 가득차거나 hidepoint가 가득차서 사용되지 않은 경우가 아니라면)
         RemoveItem();
     }
+
+    
 }

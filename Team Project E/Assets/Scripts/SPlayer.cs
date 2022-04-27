@@ -419,12 +419,15 @@ public class SPlayer : MonoBehaviour
         {
             if (!myAnim.GetBool("IsRun") && !myAnim.GetBool("IsWalk"))
             {
+                myUIManager.GetComponent<PlayerstatManagement_L>().UnlockSet(true);
                 myAnim.SetBool("Unlocking", true);
             }
         }
         if(Input.GetKey(KeyCode.E) && !myAnim.GetBool("IsWalk"))
         {
             myDoor.DoorUnlock(MyStatus.UnlockingSpeed);
+            myUIManager.GetComponent<PlayerstatManagement_L>().Unlocking(myDoor.GetLockgauge());
+
             if (myDoor.DoorOpen)
             {
                 myAnim.SetBool("Unlocking", false);
@@ -434,6 +437,7 @@ public class SPlayer : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
+            myUIManager.GetComponent<PlayerstatManagement_L>().UnlockSet(false);
             myAnim.SetBool("Unlocking", false);
         }
     }
