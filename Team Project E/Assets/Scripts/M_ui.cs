@@ -28,7 +28,7 @@ public class M_ui : MonoBehaviour
             {
                 GameObject obj1 = Instantiate(Resources.Load("UI/M_Shop"), this.transform) as GameObject;
                 obj1.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
-                this.GetComponentInChildren<M_shop>().shopOpen += () => Shopshow = true;
+                obj1.GetComponent<M_shop>().shopOpen += () => Shopshow = true;
                 Shopshow = false;
             }
             else
@@ -51,6 +51,7 @@ public class M_ui : MonoBehaviour
                     GameObject obj2 = Instantiate(Resources.Load("UI/M_Menu"), this.transform) as GameObject;
                     obj2.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
                     obj2.GetComponent<M_menu>()?.Open();
+                    obj2.GetComponent<M_menu>().MenuShow += () => Menushow = true;
                     Menushow = false;
                     }
 
@@ -58,7 +59,6 @@ public class M_ui : MonoBehaviour
                 else
                 {
                     this.GetComponentInChildren<M_menu>()?.Close();
-                    Menushow = true;
                 }
 
         }
