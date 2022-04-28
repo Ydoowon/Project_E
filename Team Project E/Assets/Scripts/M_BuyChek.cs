@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class M_BuyChek : MonoBehaviour
 {
-    public event UnityAction Parent = null;
     public event UnityAction Layout = null;
 
     // Start is called before the first frame update
@@ -22,13 +21,13 @@ public class M_BuyChek : MonoBehaviour
     }
     public void Buy()
     {
-        Layout.Invoke();
-        Parent.Invoke();
+        Layout?.Invoke();
+        Destroy(this.gameObject);
 
     }
     public void Cencel()
     {
-        Layout.Invoke();
-        Parent.Invoke();
+        Layout?.Invoke();
+        Destroy(this.gameObject);
     }
 }
