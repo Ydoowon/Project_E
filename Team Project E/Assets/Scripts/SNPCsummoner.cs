@@ -18,7 +18,7 @@ public class SNPCsummoner : MonoBehaviour
 
     void Start()
     {
-        ChangeState(STATE.CLOSED);
+        ChangeState(STATE.OPEN);
     }
 
     // Update is called once per frame

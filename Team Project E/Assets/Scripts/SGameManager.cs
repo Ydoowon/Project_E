@@ -10,6 +10,7 @@ public class SGameManager : MonoBehaviour
     public Animator FadeAnim;
     public GameObject ItemToolTip;
     public GameObject UnLockGauge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +32,4 @@ public class SGameManager : MonoBehaviour
 
     }
 
-    public void unlocking()
-    {
-
-
-    }
 }

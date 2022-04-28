@@ -85,7 +85,15 @@ public class SConsumer : MonoBehaviour
                             }
                             else
                             {
-                                ChangeState(STATE.OUT);
+                                int Rnd = Random.Range(0, 2);
+                                if (Rnd == 0)
+                                {
+                                    ChangeState(STATE.ENTRANCE);
+                                }
+                                else
+                                {
+                                    ChangeState(STATE.OUT);
+                                }
                             }
                             break;
                         case STATE.IDLE:
