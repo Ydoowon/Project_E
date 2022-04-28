@@ -90,7 +90,10 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     }
 
 
-    
+    public virtual bool UsingItem(GameObject Target)
+    {
+        return false;
+    }
 
 
 

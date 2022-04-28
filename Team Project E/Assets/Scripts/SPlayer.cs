@@ -229,23 +229,7 @@ public class SPlayer : MonoBehaviour
                 if(myDoor != null)
                     Unlocking();
 
-                if(Input.GetKeyDown(KeyCode.G))
-                {
-                    myUIManager.AddItem(MyItem[0].GetComponent<SItem>());
-                }
-                if(Input.GetKeyDown(KeyCode.H))
-                {
-                    myUIManager.AddItem(MyItem[2].GetComponent<SItem>());
-                }
-                if(Input.GetKeyDown(KeyCode.J))
-                {
-                    DrawMap();
-                }
-                if(Input.GetKeyDown(KeyCode.K))
-                {
-                    myUIManager.myItemSlot[0].RemoveItem(1);
-                }
-               
+                CreateItem();
                 break;
             case STATE.DEATH:
                 break;
@@ -336,8 +320,11 @@ public class SPlayer : MonoBehaviour
     public void Ondamage(float Damage)
     {
         MyStatus.HP -= Damage;
-        if(Cloaking != null) StopCoroutine(Cloaking);
-        Cloaking = StartCoroutine(Reveal()); // 맞았을 때 해제되도록
+        if (OnHide == true)
+        {
+            if (Cloaking != null) StopCoroutine(Cloaking);
+            Cloaking = StartCoroutine(Reveal()); // 맞았을 때 해제되도록
+        }
 
         if (MyStatus.HP <= 0.0f)
         {
@@ -382,7 +369,6 @@ public class SPlayer : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if(myStock != null)
@@ -419,7 +405,8 @@ public class SPlayer : MonoBehaviour
         {
             if (!myAnim.GetBool("IsRun") && !myAnim.GetBool("IsWalk"))
             {
-                myUIManager.GetComponent<PlayerstatManagement_L>().UnlockSet(true);
+                PlayerstatManagement_L.instance.UnlockSet(true);
+                myUIManager.GetComponent<PlayerstatManagement_L>().UnlockGauge.GetComponent<SGauge>().myText.text = "문 여는중...";
                 myAnim.SetBool("Unlocking", true);
             }
         }
@@ -456,9 +443,9 @@ public class SPlayer : MonoBehaviour
         if (MyStatus.Hidepoint > 100.0f) MyStatus.Hidepoint = 100.0f;
     }
 
-    
     IEnumerator Clock()
     {
+        yield return new WaitForSeconds(0.5f);
         for(int i = 0; i<= 60; i++ )
         {
             for (int j = 0; j < MySkin.Length; j++)
@@ -469,7 +456,6 @@ public class SPlayer : MonoBehaviour
         }
         Cloaking = null;
     }
-
     IEnumerator Reveal()
     {
         for (int i = 60; i >= 0; i--)
@@ -482,4 +468,39 @@ public class SPlayer : MonoBehaviour
         }
         Cloaking = null;
     }
+
+    public void CreateItem()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            myUIManager.AddItem(SGameManager.instance.Itemlist[0]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            myUIManager.AddItem(SGameManager.instance.Itemlist[1]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            myUIManager.AddItem(SGameManager.instance.Itemlist[2]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            DrawMap();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            foreach(SItemSlot slot in myUIManager.myItemSlot)
+            {
+                if (slot.myItem != null)
+                {
+                    slot.RemoveItem(1);
+                    break;
+                }
+            }
+        }
+    }
+
+
+
 }

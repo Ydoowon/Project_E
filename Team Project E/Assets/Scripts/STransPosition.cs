@@ -7,6 +7,7 @@ public class STransPosition : MonoBehaviour
 {
     [SerializeField]
     Vector3 WarpPosition = Vector3.zero;
+    public Transform WarpPos;
     public string Destination;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
@@ -21,7 +22,8 @@ public class STransPosition : MonoBehaviour
     {
         SGameManager.instance.FadeAnim.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1.0f);
-        Player.GetComponent<NavMeshAgent>().Warp(WarpPosition);
+        Player.GetComponent<NavMeshAgent>().Warp(WarpPos.position);
+        Player.GetComponent<SPlayer>().myPlayer.rotation = WarpPos.rotation;
         SGameManager.instance.FadeAnim.SetTrigger("FadeIn");
     }
 

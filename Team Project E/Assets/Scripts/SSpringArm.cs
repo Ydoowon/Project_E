@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SSpringArm : MonoBehaviour
 {
-    static public SSpringArm instance;
-
+   
     Vector3 RotVec = Vector3.zero;
     public Transform myCam;
 
@@ -18,16 +17,7 @@ public class SSpringArm : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            TargetZoomDist = ZoomDist = -myCam.localPosition.z;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        TargetZoomDist = ZoomDist = -myCam.localPosition.z;
     }
 
     // Update is called once per frame

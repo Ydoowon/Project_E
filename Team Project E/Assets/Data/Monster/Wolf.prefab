@@ -52,11 +52,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   MoveSpeed: 1.5
-  RunSpeed: 3
-  RotSpeed: 360
+  RunSpeed: 5
   Damage: 20
+  MissingTime: 5
   DestList: []
-  ListCnt: 0
 --- !u!195 &6812818410093276028
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -66,11 +65,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 6812818410093276027}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 5
-  m_Acceleration: 8
+  m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -122,7 +121,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6812818411822812391
 MonoBehaviour:

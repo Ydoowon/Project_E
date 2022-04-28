@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4630662366249145346}
   - component: {fileID: 344376354}
   - component: {fileID: 344376355}
+  - component: {fileID: 254722417}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -49,8 +50,8 @@ MonoBehaviour:
   MyStatus:
     _level: 1
     _Exp: 0
-    _HP: 100
-    _hidepoint: 100
+    _HP: 80
+    _hidepoint: 80
     _gold: 0
     myLocation: 0
   OnHide: 0
@@ -64,7 +65,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   myUIManager: {fileID: 0}
-  myDoor: {fileID: 0}
   myMap:
     myRooms: []
     Mapnum: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
   MyItem:
   - {fileID: 2938883107697417689, guid: 9b661c9e1feaa9f41bc8733e6da02dfb, type: 3}
   - {fileID: 4577038386886444369, guid: c0aefd2552e1bee4f8bd28abcd769031, type: 3}
+  - {fileID: 1482866201771821482, guid: 1dfb126e0411b584cbc59517ce0b533a, type: 3}
   - {fileID: 5156838890994186592, guid: f3f301413c121644cb5eef1deb18ba9e, type: 3}
 --- !u!143 &344376354
 CharacterController:
@@ -113,6 +114,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &254722417
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630662366249145347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.89, z: 0}
 --- !u!1001 &5722221366923731262
 PrefabInstance:
   m_ObjectHideFlags: 0

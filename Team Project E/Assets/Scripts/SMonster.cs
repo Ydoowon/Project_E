@@ -6,8 +6,6 @@ using UnityEngine.AI;
 public class SMonster : MonoBehaviour
 {
     public STATE myState = STATE.NONE;
-    Coroutine MoveRoutine = null;
-    Coroutine RotRoutine = null;
     public SAIperception myPerception;
     NavMeshAgent myNav;
     public LayerMask CrashMask;
@@ -17,9 +15,9 @@ public class SMonster : MonoBehaviour
     [SerializeField]
     float RunSpeed = 6.0f;
 
-    public float RotSpeed = 360.0f;
     public float Damage = 5.0f;
     float AttackDelay = 0.0f;
+    [SerializeField]
     float MissingTime = 5.0f;
     
     public List<Transform> DestList = new List<Transform>();
@@ -129,7 +127,7 @@ public class SMonster : MonoBehaviour
             case STATE.FOLLOW:
                 if (myPerception.myEnemyList.Count == 0)
                 {
-                    //myNav.isStopped = true;
+                    myNav.SetDestination(this.gameObject.transform.position);
                     ChangeState(STATE.IDLE);
                 }
                 else 
@@ -139,10 +137,6 @@ public class SMonster : MonoBehaviour
                     AttackRoutine();
                 }
                 break;
-                /*
-                float Dist = Random.Range(4.0f, 5.0f);
-                MoveAround(Dist);
-                */
             case STATE.DEATH:
                 break;
         }
@@ -157,7 +151,6 @@ public class SMonster : MonoBehaviour
             if (myPerception.myEnemyList[0].GetComponent<SPlayer>().myState == SPlayer.STATE.DEATH)
             {
                 myAnim.SetBool("AttPossible", false);
-                //myNav.isStopped = true;
                 myPerception.myEnemyList.RemoveAt(0);
                 ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
             }
@@ -170,7 +163,6 @@ public class SMonster : MonoBehaviour
                 else
                 {
                     AttackDelay = 2.0f;
-                    //myNav.isStopped = true;
                     myAnim.SetTrigger("Attack");
                 }
             }
@@ -179,7 +171,6 @@ public class SMonster : MonoBehaviour
         {
             myAnim.SetBool("AttPossible", false);
             AttackDelay = 0.0f;
-            //myNav.isStopped = false;
             myNav.SetDestination(myPerception.myEnemyList[0].transform.position);
         }
     }
@@ -205,15 +196,6 @@ public class SMonster : MonoBehaviour
             ChangeState(STATE.IDLE);
         }
     }
-   
-    public void MoveAround(float Dist)   // 주위를 랜덤으로 배회한다
-    {
-        if (RotRoutine == null && MoveRoutine == null)
-            RotRoutine = StartCoroutine(Rotating());
-
-        if (MoveRoutine != null) return;
-        MoveRoutine = StartCoroutine(Moving(Dist));
-    }
 
 
     IEnumerator Wait(float t)
@@ -226,56 +208,8 @@ public class SMonster : MonoBehaviour
             ChangeState(STATE.MOVE);
         }
     }
-    IEnumerator Moving(float Dist)
-    {
 
-        while (Dist > 0.0f)   //move상태일때 계속 와리가리 하면서 이동
-        {
-            if (myState == STATE.FOLLOW) break;
 
-            float delta = MoveSpeed * Time.deltaTime;
-            if (delta > Dist)
-                delta = Dist;
-
-            this.transform.position += this.transform.forward * delta;
-            Dist -= delta;
-            yield return null;
-        }
-        yield return StartCoroutine(Wait(3.0f));
-
-        myNav.isStopped = false;
-        ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE);
-
-        MoveRoutine = null;
-
-        // 루틴이 끝나면 3초 대기
-    }
-    IEnumerator Rotating()
-    {
-
-        float RotAngle = Random.Range(0.0f, 180.0f);
-        float Dir = 1.0f;
-        if (RotAngle > 180.0f)
-            Dir = -1.0f;
-
-        while (RotAngle > 0)  //  돌아야 할 각도가 남아 있을 때
-        {
-            if (myState == STATE.FOLLOW) break;
-
-            float delta = RotSpeed * Time.deltaTime;
-
-            if (RotAngle < delta)
-            {
-                delta = RotAngle;
-            }
-
-            this.transform.Rotate(Vector3.up, delta * Dir, Space.World);
-            RotAngle -= delta;
-
-            yield return null;
-        }
-        RotRoutine = null;
-    }
     public void FindTarget(GameObject Target)   // 플레이어를 찾아 다닌다.
     {
         if (Target == null) return;
@@ -284,25 +218,29 @@ public class SMonster : MonoBehaviour
         float Angle = Mathf.Acos(Vector3.Dot(this.transform.forward, pos)) * 180.0f / Mathf.PI;
         // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
 
-        // 앵글이 -30 ~ 30도 사이일 때, 플레이어가 숨지않았을 때
-        if (Angle < 30.0f && !Target.GetComponent<SPlayer>().OnHide)  
+        // 앵글이 -45 ~ 45도 사이일 때, 플레이어가 숨지않았을 때
+        if (Angle < 45.0f && !Target.GetComponent<SPlayer>().OnHide)  
         {
             
             Ray ray = new Ray(this.transform.position + new Vector3(0,2,0), pos);  // 자신에서 플레이어로 향하는 Ray 생성
-            if (Physics.Raycast(ray, out RaycastHit hit, 20.0f, CrashMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, 30.0f, CrashMask))
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     MissingTime = 5.0f;
-                    myNav.isStopped = false;
                     ChangeState(STATE.FOLLOW);
                 }
+            }
+            else
+            {
+                Missing();
             }
         }
         else
         {
             Missing();
         }
+        
     }
     public void Missing()
     {
@@ -311,7 +249,7 @@ public class SMonster : MonoBehaviour
         MissingTime -= Time.deltaTime;
         if (MissingTime <= 0.0f)
         {
-            //myNav.isStopped = true;
+            myNav.SetDestination(this.gameObject.transform.position);
             ChangeState(STATE.IDLE);
             MissingTime = 5.0f;
         }
@@ -345,3 +283,66 @@ IEnumerator Following()
 
     MoveRoutine = null;
 }*/
+/*
+ public void MoveAround(float Dist)   // 주위를 랜덤으로 배회한다
+ {
+     if (RotRoutine == null && MoveRoutine == null)
+         RotRoutine = StartCoroutine(Rotating());
+
+     if (MoveRoutine != null) return;
+     MoveRoutine = StartCoroutine(Moving(Dist));
+ }
+*/
+/*
+IEnumerator Rotating()
+{
+
+    float RotAngle = Random.Range(0.0f, 180.0f);
+    float Dir = 1.0f;
+    if (RotAngle > 180.0f)
+        Dir = -1.0f;
+
+    while (RotAngle > 0)  //  돌아야 할 각도가 남아 있을 때
+    {
+        if (myState == STATE.FOLLOW) break;
+
+        float delta = RotSpeed * Time.deltaTime;
+
+        if (RotAngle < delta)
+        {
+            delta = RotAngle;
+        }
+
+        this.transform.Rotate(Vector3.up, delta * Dir, Space.World);
+        RotAngle -= delta;
+
+        yield return null;
+    }
+    RotRoutine = null;
+}
+*/
+/*
+IEnumerator Moving(float Dist)
+{
+
+    while (Dist > 0.0f)   //move상태일때 계속 와리가리 하면서 이동
+    {
+        if (myState == STATE.FOLLOW) break;
+
+        float delta = MoveSpeed * Time.deltaTime;
+        if (delta > Dist)
+            delta = Dist;
+
+        this.transform.position += this.transform.forward * delta;
+        Dist -= delta;
+        yield return null;
+    }
+    yield return StartCoroutine(Wait(3.0f));
+
+    ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE);
+
+    MoveRoutine = null;
+
+    // 루틴이 끝나면 3초 대기
+}
+*/

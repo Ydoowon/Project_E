@@ -9,7 +9,7 @@ public class SGameManager : MonoBehaviour
 
     public Animator FadeAnim;
     public GameObject ItemToolTip;
-    public GameObject UnLockGauge;
+    public SItem[] Itemlist = null;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +23,6 @@ public class SGameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 

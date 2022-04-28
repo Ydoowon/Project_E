@@ -53,7 +53,7 @@ public class PlayerstatManagement_L : MonoBehaviour
 
     public void Unlocking(float point)
     {
-        UnlockGauge.GetComponentInChildren<Slider>().value = (100.0f - point) / 100.0f;
+        UnlockGauge.GetComponent<SGauge>().mySlider.value = (100.0f - point) / 100.0f;
         if(point <= 0)
         {
             UnlockSet(false);

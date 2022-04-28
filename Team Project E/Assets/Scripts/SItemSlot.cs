@@ -92,6 +92,7 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             GameObject myItemObj = this.GetComponentInChildren<SItem>().gameObject;
             Destroy(myItemObj);
             myItem = null;
+            SGameManager.instance.ItemToolTip.SetActive(false);
         }
         else
         {
@@ -106,14 +107,11 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         {
             if (myItem != null)
             {
-                if (myItem.GetComponent<SPotion>() != null)
-                {
-                    OnMouseDoubleClick(Player);
-                }
-                else
-                {
-                    Debug.Log(myItem.name + " 은 사용할 수 없는 아이템입니다.");
-                }
+                OnMouseDoubleClick(Player);
+            }
+            else
+            {
+                Debug.Log(myItem.name + " 은 사용할 수 없는 아이템입니다.");
             }
             ClickTime = -1.0f;
             
@@ -125,33 +123,7 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     }
     void OnMouseDoubleClick(GameObject Target)
     {
-        if (myItem.GetComponent<SPotion>() == null) return;
-
-        bool isEffected = false;
-
-        SPotion myPotion = myItem.GetComponent<SPotion>();
-        if (myPotion.HP != 0) // 회복량이 0이 아니라면
-        {
-            float Target_HP = Target.GetComponent<SPlayer>().MyStatus.HP;
-            if (Target_HP != 100.0f)
-            {
-                Target.GetComponent<SPlayer>().HealingHP(myPotion.HP);
-                isEffected = true;
-            }
-        }
-        if (myPotion.HidePoint != 0) // 회복량이 0이 아니라면
-        {
-
-            float Target_HidePoint = Target.GetComponent<SPlayer>().MyStatus.Hidepoint;
-            if (Target_HidePoint != 100.0f) 
-            {
-                Target.GetComponent<SPlayer>().HealingHidePoint(myPotion.HidePoint);
-                isEffected = true;
-            }
-        }
-        if(isEffected) // 포션이 효과가 있었다면(hp가 가득차거나 hidepoint가 가득차서 사용되지 않은 경우가 아니라면)
-        RemoveItem();
+        if (myItem.GetComponent<SItem>().UsingItem(Target) == true)
+            RemoveItem();
     }
-
-    
 }
