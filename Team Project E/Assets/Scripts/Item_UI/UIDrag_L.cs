@@ -18,6 +18,7 @@ public class UIDrag_L : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDra
         Min.y = myRoot.GetComponent<RectTransform>().sizeDelta.y / 2;
         Max.x = Screen.width - Min.x;
         Max.y = Screen.height - Min.y;
+        this.transform.parent.parent.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)

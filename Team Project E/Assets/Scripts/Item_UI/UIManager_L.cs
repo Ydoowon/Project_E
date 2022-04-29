@@ -15,6 +15,9 @@ public class UIManager_L : MonoBehaviour
     bool ActiveInven = false;
     bool ActiveMap = false;
 
+    public Transform myPlayer;
+    public Image myCompass;
+
     void Start()
 {
         myInven.SetActive(ActiveInven);
@@ -31,6 +34,7 @@ public class UIManager_L : MonoBehaviour
     {
         InvenOnOff(); // Ieven On,Off
         MapOnOff();
+        SetCompass();
         //Pause();      // Game Pause
     }
     void InvenOnOff()
@@ -60,24 +64,32 @@ public class UIManager_L : MonoBehaviour
             myButtons[(Row - 1) * 4 + Col - 1].gameObject.SetActive(true);
             SPlayer.instance.GetmyMap().myRooms[(Row - 1) * 4 + Col - 1].Checking = true;
             //this.GetComponent<PlayerstatManagement_L>().myPlayer.GetComponent<SPlayer>().GetmyMap().myRooms[(Row-1)*4+Col -1].Checking = true;
+
+            myCompass.transform.SetParent(myButtons[(Row - 1) * 4 + Col - 1].transform);
+            myCompass.rectTransform.localPosition = new Vector3(0, 0, 0);
         }
+    }
+
+    public void SetCompass()
+    {
+        myCompass.rectTransform.localRotation = Quaternion.Euler(0, 0, -myPlayer.transform.localRotation.eulerAngles.y);
     }
     public void AddItem(SItem _additem, int count = 1, int price = 0)
     {
-        if(_additem.ItemData.Countable)  // 셀 수 있는 아이템을 추가할 때
+        if(_additem.ItemData.Countable)  // ?? ?? ???? ???????? ?????? ??
         {
             for(int i = 0; i < myItemSlot.Length; i++)
             {
-                if (myItemSlot[i].myItem == null) continue; // 슬롯에 아이템이 없으면 스킵
-                //추가하려는 아이템과 중복되는 아이템이 있을 경우 && 아이템 슬롯이 꽉차지 않을 때
+                if (myItemSlot[i].myItem == null) continue; // ?????? ???????? ?????? ????
+                //?????????? ???????? ???????? ???????? ???? ???? && ?????? ?????? ?????? ???? ??
                 if (myItemSlot[i].myItem.ItemData.Name == _additem.ItemData.Name && (myItemSlot[i].ItemCount < 11 - count))
                 {
                     myItemSlot[i].UpdateItem(_additem, count, true);
-                    // 아이템 카운트 늘려주고, 텍스트도 갱신
+                    // ?????? ?????? ????????, ???????? ????
                     return;
                 }
             }
-            // 새 칸에 아이템 생성해야 하는 경우
+            // ?? ???? ?????? ???????? ???? ????
             for(int i = 0; i < myItemSlot.Length; i++)
             {
                 if(myItemSlot[i].myItem == null)
@@ -88,7 +100,7 @@ public class UIManager_L : MonoBehaviour
                 }
             }
         }
-        else // 셀 수 없는 아이템을 추가할 때
+        else // ?? ?? ???? ???????? ?????? ??
         {
             for (int i = 0; i < myItemSlot.Length; i++)
             {
@@ -114,8 +126,8 @@ public class UIManager_L : MonoBehaviour
 
     }
 
-    // 아이템 슬롯에서 매개 변수로 받아온 아이템이 있는지 확인한다.
-    // 있다면 아이템 슬롯 번호를 return 해주고, 없다면 -1을 리턴해준다.
+    // ?????? ???????? ???? ?????? ?????? ???????? ?????? ????????.
+    // ?????? ?????? ???? ?????? return ??????, ?????? -1?? ??????????.
     public int FindItem(SItem findItem)
     {
         for(int i = 0; i < myItemSlot.Length; i++)
