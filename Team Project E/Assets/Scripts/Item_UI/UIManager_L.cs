@@ -10,7 +10,7 @@ public class UIManager_L : MonoBehaviour
     public SItemSlot[] myItemSlot;
     public GameObject myMap;
     RoomButton_L[] myButtons;
-
+    public Canvas myCanvas;
 
     bool ActiveInven = false;
     bool ActiveMap = false;
@@ -111,6 +111,7 @@ public class UIManager_L : MonoBehaviour
         
         obj.transform.SetAsFirstSibling();
         obj.GetComponent<SItem>().Price = price;
+        obj.GetComponent<SItem>().CanvasSF = myCanvas.scaleFactor;
 
     }
 

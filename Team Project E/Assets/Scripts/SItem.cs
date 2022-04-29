@@ -10,6 +10,16 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     Vector2 DragOffset;
     Transform curParent = null;
     public int Price;
+    public float CanvasSF;
+    Vector2 TooltipSize;
+
+    void Start()
+    {
+        float Tooltip_x = SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().sizeDelta.x / 2.2f;
+        float Tooltip_y = SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().sizeDelta.y / 2.2f;
+        TooltipSize = new Vector2 (Tooltip_x, -Tooltip_y);
+
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -73,12 +83,9 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
                 break;
 
         }
-        //
 
-        float x = (Screen.width / 1920.0f) * SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().sizeDelta.x / 2.0f;
-        float y = (Screen.width / 1920.0f) * SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().sizeDelta.y / 2.0f;
 
-        SGameManager.instance.ItemToolTip.transform.position = this.transform.position + new Vector3(x, -y, 0f);
+        SGameManager.instance.ItemToolTip.GetComponent<RectTransform>().position = (Vector2)this.GetComponent<RectTransform>().position + TooltipSize * CanvasSF;
         SGameManager.instance.ItemToolTip.SetActive(true);
         
         //포지션 값에 얼마를 넣어줘야 하는 것??
