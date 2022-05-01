@@ -16,8 +16,10 @@ public class M_ui : MonoBehaviour
     void Start()
     {
 
-        GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;            
-     
+        GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;
+        GameObject.Find("Conter").GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
+
+
     }
 
     // Update is called once per frame
@@ -40,23 +42,24 @@ public class M_ui : MonoBehaviour
                     this.GetComponentInChildren<M_shop>()?.Close();
                 }
             }
-           /* else if(PlayerShoprng)
+
+            //Player 상점
+             if(PlayerShoprng)
             {
                 if (PlayerShopshow)
                 {
+                    GameObject obj = Instantiate(Resources.Load("UI/M_PlayerShop"), this.transform) as GameObject;
+                    obj.transform.position = new Vector3(1370.0f, 540.0f, 0.0f);
                     PlayerShopshow = false;
-                    this.GetComponentInChildren<M_PlayerShop>().ISOpen();
+                    
                 }
                 else
                 {
                     PlayerShopshow = true;
-                    this.GetComponentInChildren<M_PlayerShop>().ISClose();
+                    this.GetComponentInChildren<M_PlayerShop>()?.Close();
                 }
 
-            }*/
-            
-         // Player 상점
-
+            }           
 
         }
 
@@ -65,7 +68,7 @@ public class M_ui : MonoBehaviour
         {       
                 if (Menushow)
                 {
-                    if (Shopshow)
+                    if (Shopshow && PlayerShopshow)
                     {
                     GameObject obj2 = Instantiate(Resources.Load("UI/M_Menu"), this.transform) as GameObject;
                     obj2.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
