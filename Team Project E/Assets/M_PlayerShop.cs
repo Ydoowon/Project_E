@@ -5,7 +5,15 @@ using UnityEngine.EventSystems;
 
 public class M_PlayerShop : MonoBehaviour
 {
-    public GameObject ReturnBT;
+    public GameObject ReturnBT1;
+    public GameObject ReturnBT2;
+    public GameObject ReturnBT3;
+    public GameObject ReturnBT4;
+    public GameObject ReturnBT5;
+    public GameObject ReturnBT6;
+    public GameObject ReturnBT7;
+    public GameObject ReturnBT8;
+
     public GameObject slae3;
     public GameObject slae4;
     public GameObject slae5;
@@ -13,6 +21,8 @@ public class M_PlayerShop : MonoBehaviour
     public GameObject slae7;
     public GameObject slae8;
     public static int tableMany = 2;
+
+    public int gold = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +45,11 @@ public class M_PlayerShop : MonoBehaviour
 
     public void Return()
     {
-        ReturnBT.SetActive(false);
+       
+
+    }
+    public void ResetGold()
+    {
 
     }
 
