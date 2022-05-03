@@ -8,10 +8,9 @@ public class M_ui : MonoBehaviour
     bool Menushow = true; // esc키를 눌러서 나온 메뉴창이 나왔는지 안나왔는지
     bool Shoprng = false; // Shop을 열 범위에 있는지 없는지
     bool Shopshow = true; // Shop이 열려 있는지 안열려있는지
-    bool PlayerShoprng = false;
-    bool PlayerShopshow = true;
+    bool PlayerShoprng = false; // 플레이어 상점 범위에 있는지
+    bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -50,13 +49,16 @@ public class M_ui : MonoBehaviour
                 {
                     GameObject obj = Instantiate(Resources.Load("UI/M_PlayerShop"), this.transform) as GameObject;
                     obj.transform.position = new Vector3(1370.0f, 540.0f, 0.0f);
+                    obj.name = "M_PlayerShop";
+                    
                     PlayerShopshow = false;
                     
                 }
                 else
                 {
-                    PlayerShopshow = true;
-                    this.GetComponentInChildren<M_PlayerShop>()?.Close();
+                   
+                        PlayerShopshow = true;
+                        this.GetComponentInChildren<M_PlayerShop>()?.Close();
                 }
 
             }           

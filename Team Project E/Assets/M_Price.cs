@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class M_Price : MonoBehaviour
 {
     public TMPro.TMP_Text lable;
-    public GameObject layout;
-    int price = 0;
+    public int price = 0;
     List<int> Number = new List<int>();
     public GameObject myStor;
+    int tempGold;
 
     void BT()
     {
@@ -111,13 +111,12 @@ public class M_Price : MonoBehaviour
 
     public void cancel()
     {
-        layout.SetActive(false);
         Destroy(this.gameObject);
     }
     public void OK()
     {
-        myStor.GetComponent<M_PlayerShop>().gold = price;
-        layout.SetActive(false);
+        
+        GameObject.Find("M_PlayerShop").GetComponentInChildren<M_shopslot>().tempGold = price;
         Destroy(this.gameObject);
     }
         // Start is called before the first frame update
