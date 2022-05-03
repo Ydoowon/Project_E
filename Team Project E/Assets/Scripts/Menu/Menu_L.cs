@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Menu_L : MonoBehaviour
 {
+    public GameObject FirstMenu;
+    //public GameObject OptionMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,4 +17,18 @@ public class Menu_L : MonoBehaviour
     void Update()
     {
     }
+
+    //public void CreateOptionMenu()
+    //{
+    //    GameObject odj = Instantiate(Resources.Load("UI/Canvas_OptionMenu")) as GameObject;
+    //    Destroy(FirstMenu);
+    //}
+
+    //public void CreateMainMenu()
+    //{
+    //    GameObject odj = Instantiate(Resources.Load("UI/Canvas_FirstMenu")) as GameObject;
+    //    Destroy(OptionMenu);
+    //}
+
+
 }

@@ -22,7 +22,7 @@ public class PlayerStatus
         set 
         {
             _Exp += value;
-            // 요구 경험치는 플레이어 레벨^2 * 10 >> 레벨이 2면 경험치 요구량 40 (임시)
+            // ???? ???????? ???????? ????^2 * 10 >> ?????? 2?? ?????? ?????? 40 (????)
             while (_Exp >= PlayerLevel * PlayerLevel * 10)                         
             {
                 _Exp -= PlayerLevel * PlayerLevel * 10;
@@ -117,7 +117,7 @@ public class SPlayer : MonoBehaviour
     SStock_Shelves myStock;
     Open myDoor;
     [SerializeField]
-    Map myMap;  // 플레이어 지도
+    Map myMap;  // ???????? ????
     public Map GetmyMap()
     {
         if (myMap != null)
@@ -172,6 +172,10 @@ public class SPlayer : MonoBehaviour
     void Update()
     {
         StateProcess();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            MyStatus.Exp = 12;
+        }
 
     }
 
@@ -188,10 +192,10 @@ public class SPlayer : MonoBehaviour
                 {
                     Down = false;
                     OnHide = false;
-                };// 숨은 상태 해제되도록 하는 delegate 전달
-                //임시로 받은 맵 테스트
+                };// ???? ???? ?????????? ???? delegate ????
+                //?????? ???? ?? ??????
                 myMap = new Map(0,3,4);
-                ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
+                ChangeState(STATE.PLAY); // ?????? Play STATE?? ????
                 break;
             case STATE.PLAY:
                 break;
@@ -209,7 +213,7 @@ public class SPlayer : MonoBehaviour
                 break;
             case STATE.PLAY:
 
-                if (!Down)  // 엎드린 상태가 아닐때만 이동 가능
+                if (!Down)  // ?????? ?????? ???????? ???? ????
                 {
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
@@ -267,19 +271,19 @@ public class SPlayer : MonoBehaviour
         
         myPlayer.LookAt(myPlayer.transform.position + pos);
 
-        if (SpeedSet == null) // 함정에 걸리지 않은 상태에서만 작동
+        if (SpeedSet == null) // ?????? ?????? ???? ?????????? ????
         {
-            MyStatus.MoveSpeed = myAnim.GetBool("IsRun") || myAnim.GetBool("IsRun_T") ? MyStatus.OriginMoveSpeed : MyStatus.OriginMoveSpeed / 2;  //Run 상태면 5.0f, 아니면 절반
+            MyStatus.MoveSpeed = myAnim.GetBool("IsRun") || myAnim.GetBool("IsRun_T") ? MyStatus.OriginMoveSpeed : MyStatus.OriginMoveSpeed / 2;  //Run ?????? 5.0f, ?????? ????
         }
 
-        this.transform.Translate(pos * MyStatus.MoveSpeed * Time.deltaTime); // 이동  
+        this.transform.Translate(pos * MyStatus.MoveSpeed * Time.deltaTime); // ????  
     }
 
     public void Hiding()
     {
-        if (Down == false)  // 숨지 않은 경우 숨는다
+        if (Down == false)  // ???? ???? ???? ??????
         {
-            myAnim.SetTrigger("Hiding");  // Hiding 애니메이션 실행
+            myAnim.SetTrigger("Hiding");  // Hiding ?????????? ????
             Down = true;
             OnHide = true;
 
@@ -304,14 +308,14 @@ public class SPlayer : MonoBehaviour
             MyStatus.Hidepoint -= Time.deltaTime * 5.0f;
         }
 
-        if (MyStatus.Hidepoint <= 0 && Down)  // Hidepoint가 0이고, 숨은 상태일 때
+        if (MyStatus.Hidepoint <= 0 && Down)  // Hidepoint?? 0????, ???? ?????? ??
         {
-            myAnim.SetTrigger("StandUp"); // 게이지 없으니 일어나게 만듬
+            myAnim.SetTrigger("StandUp"); // ?????? ?????? ???????? ????
         }
 
         if (!Down && MyStatus.Hidepoint < 100.0f)
         {
-            MyStatus.Hidepoint += Time.deltaTime; // 숨은 상태가 아니라면 hidepoint 최대치까지 회복
+            MyStatus.Hidepoint += Time.deltaTime; // ???? ?????? ???????? hidepoint ?????????? ????
 
         }
         MyStatus.Hidepoint = Mathf.Clamp(MyStatus.Hidepoint, 0.0f, 100.0f);
@@ -319,7 +323,7 @@ public class SPlayer : MonoBehaviour
 
     IEnumerator SpeedDown(float speed, float time)
     {
-        if (MyStatus.MoveSpeed > speed)  // 가장 강력한 디버프를 받을 수 있도록 하기 위한 조건
+        if (MyStatus.MoveSpeed > speed)  // ???? ?????? ???????? ???? ?? ?????? ???? ???? ????
         {
             MyStatus.MoveSpeed = speed;
         }
@@ -337,17 +341,17 @@ public class SPlayer : MonoBehaviour
     {
         MyStatus.HP -= Damage;
         if(Cloaking != null) StopCoroutine(Cloaking);
-        Cloaking = StartCoroutine(Reveal()); // 맞았을 때 해제되도록
+        Cloaking = StartCoroutine(Reveal()); // ?????? ?? ??????????
 
         if (MyStatus.HP <= 0.0f)
         {
             MyStatus.HP = 0.0f;
-            myAnim.SetTrigger("Death");  // 쓰러지는 애니메이션 출력
+            myAnim.SetTrigger("Death");  // ???????? ?????????? ????
             ChangeState(STATE.DEATH);
         }
         else
         {
-            myAnim.SetTrigger("Hit");  // 맞았을 때 애니메이션 출력
+            myAnim.SetTrigger("Hit");  // ?????? ?? ?????????? ????
             Down = false;
             OnHide = false;
         }
@@ -410,7 +414,7 @@ public class SPlayer : MonoBehaviour
         }
         else
         {
-            Debug.Log("재료가 부족합니다.");
+            Debug.Log("?????? ??????????.");
         }
     }
     public void Unlocking()

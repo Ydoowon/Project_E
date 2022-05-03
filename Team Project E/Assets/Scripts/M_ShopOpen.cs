@@ -6,9 +6,9 @@ using UnityEngine.Events;
 public class M_ShopOpen : MonoBehaviour
 {
     public event UnityAction Shoprng = null;
-    public TMPro.TMP_Text How; // 설명문 글씨
-    public GameObject HOW; // 설명문 자체
-    public GameObject UI; // 캔버스에 있는 UI스크립트
+    public TMPro.TMP_Text How; // ?????? ????
+    public GameObject HOW; // ?????? ????
+    public GameObject UI; // ???????? ???? UI????????
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class M_ShopOpen : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        How.text = "<#ff0000ff>E</color> <#000000ff>키를 눌러 상점열기";
+        How.text = "<#ff0000ff>E</color> <#000000ff>?? ?? ????";
         Shoprng?.Invoke();
     }
 
