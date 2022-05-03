@@ -21,6 +21,6 @@ public class NewGame_L : MonoBehaviour , IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SceneLoader.Inst.LoadScene(2);
+        SceneLoader_L.Inst.LoadScene(2);
     }
 }

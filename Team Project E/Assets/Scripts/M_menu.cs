@@ -116,7 +116,7 @@ public class M_menu : MonoBehaviour
     public void EndGameButton()
     {
         //SceneManager.LoadScene("MenuScene");
-        SceneLoader.Inst.LoadScene(0);
+        SceneLoader_L.Inst.LoadScene(0);
     }
 
 }
