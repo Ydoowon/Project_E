@@ -116,6 +116,7 @@ public class SPlayer : MonoBehaviour
     public UIManager_L myUIManager;
     SStock_Shelves myStock;
     Open myDoor;
+    public SOrb myOrb;
     [SerializeField]
     Map myMap;  // 플레이어 지도
     public Map GetmyMap()
@@ -186,9 +187,9 @@ public class SPlayer : MonoBehaviour
             case STATE.CREATE:
                 myAnimEvent.StandUp += () =>
                 {
-                    Down = false;
                     OnHide = false;
-                };// 숨은 상태 해제되도록 하는 delegate 전달
+                };
+                // 숨은 상태 해제되도록 하는 delegate 전달
                 //임시로 받은 맵 테스트
                 myMap = new Map(0,3,4);
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
@@ -209,7 +210,7 @@ public class SPlayer : MonoBehaviour
                 break;
             case STATE.PLAY:
 
-                if (!Down)  // 엎드린 상태가 아닐때만 이동 가능
+                if (!OnHide)  // 엎드린 상태가 아닐때만 이동 가능
                 {
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
@@ -221,13 +222,15 @@ public class SPlayer : MonoBehaviour
                     Moving(CompVec);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space) && MyStatus.Hidepoint > 5.0f)
+                if (Input.GetKeyDown(KeyCode.Space) && !myAnim.GetBool("IsWalk") && MyStatus.Hidepoint > 5.0f)
                     Hiding();
 
                 HideSystem();
 
-                if(myDoor != null)
+                if (myDoor != null)
                     Unlocking();
+                if (myOrb != null)
+                    OrbSetting();
 
                 CreateItem();
                 break;
@@ -273,12 +276,11 @@ public class SPlayer : MonoBehaviour
         else
         {
             myAnim.SetTrigger("StandUp");
-
+            Down = false;
             if (Cloaking != null) StopCoroutine(Cloaking);
             Cloaking = StartCoroutine(Reveal());
 
         }
-
     }
 
     void HideSystem()
@@ -290,7 +292,12 @@ public class SPlayer : MonoBehaviour
 
         if (MyStatus.Hidepoint <= 0 && Down)  // Hidepoint가 0이고, 숨은 상태일 때
         {
+            Down = false;
+            OnHide = false;
             myAnim.SetTrigger("StandUp"); // 게이지 없으니 일어나게 만듬
+
+            if (Cloaking != null) StopCoroutine(Cloaking);
+            Cloaking = StartCoroutine(Reveal());
         }
 
         if (!Down && MyStatus.Hidepoint < 100.0f)
@@ -357,6 +364,10 @@ public class SPlayer : MonoBehaviour
         {
             myDoor = other.gameObject.GetComponent<Open>();
         }
+        if(other.gameObject.layer == LayerMask.NameToLayer("Orb"))
+        {
+            myOrb = other.gameObject.GetComponent<SOrb>();
+        }
         
     }
     private void OnTriggerStay(Collider other)
@@ -373,9 +384,10 @@ public class SPlayer : MonoBehaviour
     {
         if(myStock != null)
             myStock = null;
-
         if (myDoor != null)
             myDoor = null;
+        if (myOrb != null)
+            myOrb = null;
     }
 
     public void SetMapData(int button_num, int data)
@@ -401,14 +413,12 @@ public class SPlayer : MonoBehaviour
     }
     public void Unlocking()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !myAnim.GetBool("IsWalk"))
         {
-            if (!myAnim.GetBool("IsRun") && !myAnim.GetBool("IsWalk"))
-            {
-                PlayerstatManagement_L.instance.UnlockSet(true);
-                myUIManager.GetComponent<PlayerstatManagement_L>().UnlockGauge.GetComponent<SGauge>().myText.text = "문 여는중...";
-                myAnim.SetBool("Unlocking", true);
-            }
+            PlayerstatManagement_L.instance.UnlockSet(true);
+            myUIManager.GetComponent<PlayerstatManagement_L>().UnlockGauge.GetComponent<SGauge>().myText.text = "문 여는중...";
+            myAnim.SetBool("Unlocking", true);
+
         }
         if(Input.GetKey(KeyCode.E) && !myAnim.GetBool("IsWalk"))
         {
@@ -468,6 +478,40 @@ public class SPlayer : MonoBehaviour
         }
         Cloaking = null;
     }
+
+    IEnumerator DotDamage(float damage, GameObject effect = null)
+    {
+        GameObject eff = Instantiate(effect, this.gameObject.transform);
+        ParticleSystem doteff = eff.GetComponent<ParticleSystem>();
+        doteff.Play();
+        var main = doteff.main;
+        main.loop = true;
+
+        
+        while(damage > 0)
+        {
+            float deltaDamage = Time.deltaTime * 1.5f;
+            if (damage < deltaDamage)
+                deltaDamage = damage;
+
+            damage -= deltaDamage;
+            MyStatus.HP -= deltaDamage;
+            yield return null;
+        }
+        Destroy(eff);
+    }
+
+    public void OnDotDamage(float damage, GameObject effect = null)
+    {
+        StartCoroutine(DotDamage(damage, effect));
+    }
+
+    void OrbSetting()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        myOrb.SetAlpha();
+    }
+
 
     public void CreateItem()
     {

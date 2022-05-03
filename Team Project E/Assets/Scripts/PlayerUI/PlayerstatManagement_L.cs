@@ -38,7 +38,7 @@ public class PlayerstatManagement_L : MonoBehaviour
     public void HPtext()
     {
         float TextHP = myPlayer.GetComponent<SPlayer>().MyStatus.HP;
-        playerHP.text = TextHP + " / " + "100";
+        playerHP.text = (int)TextHP + " / " + "100";
         HPSlider.value = TextHP / 100;
 
     }
