@@ -5,7 +5,7 @@ using UnityEngine;
 public class M_How : MonoBehaviour
 {
     public GameObject position;
-    public float hight = 580;
+    float hight = 580;
     // Start is called before the first frame update
     void Start()
     {

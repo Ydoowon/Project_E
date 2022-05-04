@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class M_menu : MonoBehaviour
 {
     public GameObject layout;
-    public event UnityAction MenuShow = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +25,6 @@ public class M_menu : MonoBehaviour
     public void Close()
     {
         Time.timeScale = 1;
-        MenuShow?.Invoke();
         layout.SetActive(false);
         Destroy(this.gameObject);
     }
