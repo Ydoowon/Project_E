@@ -5,17 +5,39 @@ using UnityEngine.AI;
 
 public class STransPosition : MonoBehaviour
 {
-    [SerializeField]
-    Vector3 WarpPosition = Vector3.zero;
     public Transform WarpPos;
-    public string Destination;
+
+    [SerializeField]
+    [TextArea]
+    string Message;
+
+    SPlayer Player;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            StartCoroutine(FadeInFadeOut(other.gameObject));
+            SGameManager.instance.PressE.SetActive(true);
+            SGameManager.instance.Message.text = Message;
+            Player = other.gameObject.GetComponent<SPlayer>();
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Player = null;
+            SGameManager.instance.PressE.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if(Player!=null && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(FadeInFadeOut(Player.gameObject));
+        }
+            
     }
 
     IEnumerator FadeInFadeOut(GameObject Player)
@@ -26,6 +48,4 @@ public class STransPosition : MonoBehaviour
         Player.GetComponent<SPlayer>().myPlayer.rotation = WarpPos.rotation;
         SGameManager.instance.FadeAnim.SetTrigger("FadeIn");
     }
-
-
 }

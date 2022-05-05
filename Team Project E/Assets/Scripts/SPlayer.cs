@@ -87,6 +87,9 @@ public class SPlayer : MonoBehaviour
     float vAxis;
     bool Running;
     Coroutine SpeedSet;
+
+
+    #region Hide&Seek
     Coroutine Cloaking;
     SkinnedMeshRenderer[] _mySkin;
     SkinnedMeshRenderer[] MySkin
@@ -103,31 +106,37 @@ public class SPlayer : MonoBehaviour
         }
     }
 
-    public PlayerStatus MyStatus;
     public bool OnHide = false;
     bool Down = false;
+    #endregion
+
+    public PlayerStatus MyStatus;
 
     public Transform myPlayer;
     public STATE myState = STATE.NONE;
 
     public Transform mySpringArm;
+    public UIManager_L myUIManager;
+
+    #region Interaction
     public LayerMask InterMask;
     public LayerMask DungeonMask;
-    public UIManager_L myUIManager;
     SStock_Shelves myStock;
-    Open myDoor;
-    public SOrb myOrb;
     [SerializeField]
-    Map myMap;  // 플레이어 지도
-    public Map GetmyMap()
+    Open myDoor;
+    public Open Door
     {
-        if (myMap != null)
-            return myMap;
-
-        return null;
+        get { return myDoor; }
+        set { myDoor = value; }
     }
-    public SMapData MapDatabase;
-    public GameObject[] MyItem;
+    SOrb myOrb;
+    public SOrb Orb
+    {
+        get { return myOrb; }
+        set { myOrb = value; }
+    }
+    #endregion
+    #region Animation
     Animator _Anim = null;
     Animator myAnim
     {
@@ -149,6 +158,21 @@ public class SPlayer : MonoBehaviour
             return _animEvent;
         }
     }
+    #endregion
+
+    [SerializeField]
+    Map myMap;  // 플레이어 지도
+    public Map GetmyMap()
+    {
+        if (myMap != null)
+            return myMap;
+
+        return null;
+    }
+    public SMapData MapDatabase;
+    public GameObject[] MyItem;
+
+   
 
     public enum STATE
     {
@@ -175,7 +199,6 @@ public class SPlayer : MonoBehaviour
         StateProcess();
 
     }
-
 
     public void ChangeState(STATE s)
     {
@@ -360,14 +383,12 @@ public class SPlayer : MonoBehaviour
             int Row = other.gameObject.GetComponent<Dungeon>().Row;
             myUIManager.SetMyButton(Row, Col);
         }
+        /*
         if(other.gameObject.layer == LayerMask.NameToLayer("Door") && !other.gameObject.GetComponent<Open>().DoorOpen)
         {
             myDoor = other.gameObject.GetComponent<Open>();
         }
-        if(other.gameObject.layer == LayerMask.NameToLayer("Orb"))
-        {
-            myOrb = other.gameObject.GetComponent<SOrb>();
-        }
+        */
         
     }
     private void OnTriggerStay(Collider other)
@@ -382,12 +403,18 @@ public class SPlayer : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(myStock != null)
-            myStock = null;
-        if (myDoor != null)
-            myDoor = null;
-        if (myOrb != null)
-            myOrb = null;
+        if ((InterMask & 1 << other.gameObject.layer) != 0)
+        {
+            if (myStock != null)
+                myStock = null;
+        }
+        /*
+        if (other.gameObject.layer == LayerMask.NameToLayer("Door") && !other.gameObject.GetComponent<Open>().DoorOpen)
+        {
+            if (myDoor != null)
+                myDoor = null;
+        }
+        */
     }
 
     public void SetMapData(int button_num, int data)
@@ -395,22 +422,7 @@ public class SPlayer : MonoBehaviour
         myMap.SetRoomsDoor(button_num, data);
     }
 
-    public void DrawMap()
-    {
-        int InkSlot = myUIManager.FindItem(MyItem[1].GetComponent<SItem>());
-        int PaperSlot = myUIManager.FindItem(MyItem[2].GetComponent<SItem>());
-
-        if(InkSlot != -1 && PaperSlot != -1)
-        {
-            myUIManager.myItemSlot[InkSlot].RemoveItem();
-            myUIManager.myItemSlot[PaperSlot].RemoveItem();
-            myUIManager.AddItem(MyItem[3].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMap.Mapnum, myMap));
-        }
-        else
-        {
-            Debug.Log("재료가 부족합니다.");
-        }
-    }
+    #region Interaction
     public void Unlocking()
     {
         if (Input.GetKeyDown(KeyCode.E) && !myAnim.GetBool("IsWalk"))
@@ -420,7 +432,7 @@ public class SPlayer : MonoBehaviour
             myAnim.SetBool("Unlocking", true);
 
         }
-        if(Input.GetKey(KeyCode.E) && !myAnim.GetBool("IsWalk"))
+        if (Input.GetKey(KeyCode.E) && !myAnim.GetBool("IsWalk"))
         {
             myDoor.DoorUnlock(MyStatus.UnlockingSpeed);
             myUIManager.GetComponent<PlayerstatManagement_L>().Unlocking(myDoor.GetLockgauge());
@@ -441,6 +453,29 @@ public class SPlayer : MonoBehaviour
     public Open getMydoor()
     {
         return myDoor;
+    }
+    void OrbSetting()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            myOrb.SetAlpha();
+    }
+    #endregion
+
+    public void DrawMap()
+    {
+        int InkSlot = myUIManager.FindItem(MyItem[1].GetComponent<SItem>());
+        int PaperSlot = myUIManager.FindItem(MyItem[2].GetComponent<SItem>());
+
+        if(InkSlot != -1 && PaperSlot != -1)
+        {
+            myUIManager.myItemSlot[InkSlot].RemoveItem();
+            myUIManager.myItemSlot[PaperSlot].RemoveItem();
+            myUIManager.AddItem(MyItem[3].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMap.Mapnum, myMap));
+        }
+        else
+        {
+            Debug.Log("재료가 부족합니다.");
+        }
     }
     public void HealingHP(float value)
     {
@@ -505,13 +540,6 @@ public class SPlayer : MonoBehaviour
     {
         StartCoroutine(DotDamage(damage, effect));
     }
-
-    void OrbSetting()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        myOrb.SetAlpha();
-    }
-
 
     public void CreateItem()
     {

@@ -43,6 +43,7 @@ public class SOrb : MonoBehaviour
         Color SetColor = myMeshRenderer.material.color;
         SetColor.a = IsEnabled ? 1.0f : 0.3f;
         myMeshRenderer.material.color = SetColor;
+        SGameManager.instance.Message.text = IsEnabled? "E키를 눌러 비활성화" : "E키를 눌러 활성화";
 
         if (IsEnabled)
         {
@@ -61,4 +62,21 @@ public class SOrb : MonoBehaviour
         myMeshRenderer.material.color = SetColor;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            other.GetComponent<SPlayer>().Orb = this;
+            SGameManager.instance.Message.text = IsEnabled ? "E키를 눌러 비활성화" : "E키를 눌러 활성화";
+            SGameManager.instance.PressE.SetActive(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            other.GetComponent<SPlayer>().Orb = null;
+            SGameManager.instance.PressE.SetActive(false);
+        }
+    }
 }
