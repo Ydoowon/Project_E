@@ -14,6 +14,11 @@ public class PlayerstatManagement_L : MonoBehaviour
     //For Hide
     public TMPro.TMP_Text playerHide;
     public Slider HideSlider;
+
+    //For EX
+    public TMPro.TMP_Text playerLevel;
+    public TMPro.TMP_Text playerExp;
+    public Slider EXSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +38,8 @@ public class PlayerstatManagement_L : MonoBehaviour
     {
         HPtext();
         Hidetext();
+        LevelandExpText();
+
     }
 
     public void HPtext()
@@ -49,6 +56,16 @@ public class PlayerstatManagement_L : MonoBehaviour
         playerHide.text = (int)TextHide + " / " + "100";
         HideSlider.value = TextHide / 100;
 
+    }
+
+    public void LevelandExpText()
+    {
+        int TextLevel = myPlayer.GetComponent<SPlayer>().MyStatus.PlayerLevel;
+        playerLevel.text = "Lv. " + TextLevel.ToString("D2");
+
+        float TextExp = myPlayer.GetComponent<SPlayer>().MyStatus.Exp;
+        playerExp.text = (int)TextExp + " / " + TextLevel * TextLevel * 10;
+        EXSlider.value = TextExp / (TextLevel * TextLevel * 10);
     }
 
     public void Unlocking(float point)
