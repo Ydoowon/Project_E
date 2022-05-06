@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class M_shopslot : MonoBehaviour
 {
+    public List<GameObject> BT;
+    public List<int> Gold;
+    public List<TMPro.TMP_Text> Goldtext;
     public GameObject BT1;
     public GameObject BT2;
     public GameObject BT3;
@@ -33,17 +36,19 @@ public class M_shopslot : MonoBehaviour
     static int Gold8 = 0;
 
     public int i = 0;
-    
+
+    M_imageset[] MySales;
     // Start is called before the first frame update
     void Start()
     {
-
+        MySales =  this.GetComponentsInChildren<M_imageset>();
     }
 
     public void destoryBT1()
     {
         BT1.SetActive(false);
         gold1.text = "" + 0;
+
     }
     public void destoryBT2()
     {
@@ -58,7 +63,7 @@ public class M_shopslot : MonoBehaviour
     public void destoryBT4()
     {
         BT4.SetActive(false);
-        gold4.text = "" + 0;
+        gold4.text ="0";
     }
     public void destoryBT5()
     {
@@ -81,6 +86,21 @@ public class M_shopslot : MonoBehaviour
         gold8.text = "" + 0;
     }
 
+    public void DestoryBT(int index)
+    {
+        if (BT.Count - 1 < index || Goldtext.Count - 1 < index) return;
+            
+        BT[index].SetActive(false);
+        Goldtext[index].text = "0";
+        MySales[index].myItem.ableDrag = true;
+        PlayerstatManagement_L.instance.GetComponent<UIManager_L>().AddItem(MySales[index].myItem);
+        Destroy(MySales[index].myItem.gameObject);
+    }
+    public void ActiveBT(int index)
+    {
+        if (BT.Count - 1 < index) return;
+        BT[index].SetActive(true);
+    }
 
 
     public void GoldReset1()
@@ -187,6 +207,5 @@ public class M_shopslot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        Print();
     }
 }

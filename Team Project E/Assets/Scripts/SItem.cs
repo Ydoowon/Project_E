@@ -12,6 +12,7 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     public int Price;
     public float CanvasSF;
     Vector2 TooltipSize;
+   public bool ableDrag = true;
 
     void Start()
     {
@@ -23,6 +24,8 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!ableDrag)  return;
+        
         this.GetComponent<Image>().raycastTarget = false;
         curParent = this.transform.parent;
         curParent.gameObject.GetComponent<SItemSlot>().Itemcnt.gameObject.SetActive(false);
@@ -33,6 +36,7 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!ableDrag) return;
         this.transform.position = DragOffset + eventData.position;
     }
 
@@ -41,7 +45,11 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         this.transform.SetParent(curParent);
         this.transform.localPosition = Vector2.zero;
         this.GetComponent<Image>().raycastTarget = true;
+        if(ItemData.Countable)
         this.transform.SetAsFirstSibling();
+
+        SItemSlot PastSlot = curParent.GetComponent<SItemSlot>();
+        if (PastSlot  != null)
         curParent.GetComponent<SItemSlot>().Itemcnt.gameObject.SetActive(ItemData.Countable);
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class M_Price : MonoBehaviour
 {
+    public M_imageset myImageset;
     public TMPro.TMP_Text lable;
     public int price = 0;
     List<int> Number = new List<int>();
@@ -117,6 +118,7 @@ public class M_Price : MonoBehaviour
     {
         
         GameObject.Find("M_PlayerShop").GetComponentInChildren<M_shopslot>().tempGold = price;
+        myImageset.InputGold(price);
         Destroy(this.gameObject);
     }
         // Start is called before the first frame update
