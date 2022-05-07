@@ -71,6 +71,7 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         Slot.Itemcnt.text = Slot.ItemCount.ToString();
     }
 
+
     public void UpdateItem(SItem Item, int count, bool cntSlot)
     {
         if(myItem == null)
