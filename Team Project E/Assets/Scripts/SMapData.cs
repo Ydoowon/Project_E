@@ -38,14 +38,6 @@ public class Map
     int Roomcol;
     int Price;
 
-    bool _IsSetting = false;
-    public bool IsSetting
-    {
-        get { return _IsSetting; }
-        set { _IsSetting = value; }
-    }
-
-
     public int GetRoomRow()
     {
         return RoomRow;
@@ -81,12 +73,15 @@ public class Map
 public class SMapData : MonoBehaviour
 {
     public List<Map> myMaps;
-    public TextAsset Map1;
+    public TextAsset[] MapList;
 
     void Start()
     {
-        string[] line = Map1.text.Substring(0, Map1.text.Length).Split('\n');
-        myMaps.Add(new Map(0,3,4,line));
+        for(int i = 0; i < MapList.Length; i++)
+        {
+            string[] line = MapList[i].text.Substring(0, MapList[i].text.Length).Split('\n');
+            myMaps.Add(new Map(i, 3, 4, line));
+        }
     }
 
 

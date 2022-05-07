@@ -70,6 +70,13 @@ public class UIManager_L : MonoBehaviour
         }
     }
 
+    // ui상 맵 넘버, 이미지, 보일지 안보일지 매개변수로 받음
+    public void MapLoad(int num, int ImageNum, bool Checking)
+    {
+        myButtons[num].DrowMap(ImageNum);
+        myButtons[num].gameObject.SetActive(Checking);
+    }
+
     public void SetCompass()
     {
         myCompass.rectTransform.localRotation = Quaternion.Euler(0, 0, -myPlayer.transform.localRotation.eulerAngles.y);

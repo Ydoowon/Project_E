@@ -162,10 +162,17 @@ public class SPlayer : MonoBehaviour
 
     [SerializeField]
     Map myMap;  // 플레이어 지도
+    public List<Map> myMapList;
+    int _usingMapNum;
+    public int UsingMapNum
+    {
+        get { return _usingMapNum;}
+        set { _usingMapNum = value; }
+    }
     public Map GetmyMap()
     {
-        if (myMap != null)
-            return myMap;
+        if (myMapList.Count != 0)
+            return myMapList[UsingMapNum];
 
         return null;
     }
@@ -419,7 +426,7 @@ public class SPlayer : MonoBehaviour
 
     public void SetMapData(int button_num, int data)
     {
-        myMap.SetRoomsDoor(button_num, data);
+        myMapList[UsingMapNum].SetRoomsDoor(button_num, data);
     }
 
     #region Interaction
@@ -470,7 +477,7 @@ public class SPlayer : MonoBehaviour
         {
             myUIManager.myItemSlot[InkSlot].RemoveItem();
             myUIManager.myItemSlot[PaperSlot].RemoveItem();
-            myUIManager.AddItem(MyItem[3].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMap.Mapnum, myMap));
+            myUIManager.AddItem(MyItem[3].GetComponent<SItem>(), 1, MapDatabase.CompareMap(myMapList[UsingMapNum].Mapnum, myMapList[UsingMapNum]));
         }
         else
         {

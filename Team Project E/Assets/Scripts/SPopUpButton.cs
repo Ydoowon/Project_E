@@ -6,6 +6,7 @@ public class SPopUpButton : MonoBehaviour
 {
     public GameObject NoTouch;
     public TMPro.TMP_Text Map_Name;
+    int MapNum;
 
     public void TimeStop(TMPro.TMP_Text Mapname)
     {
@@ -15,9 +16,13 @@ public class SPopUpButton : MonoBehaviour
     }
     public void TimeStart()
     {
+        SGameManager.instance.CreateNewMap(MapNum);
         this.gameObject.SetActive(false);
         NoTouch.SetActive(false);
         Time.timeScale = 1.0f;
     }
-
+    public void SetMapNum(int num)
+    {
+        MapNum = num;
+    }
 }
