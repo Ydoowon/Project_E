@@ -11,12 +11,16 @@ public class M_ui : MonoBehaviour
     bool PlayerShoprng = false; // 플레이어 상점 범위에 있는지
     bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
 
+    public GameObject Shoprang;
+    public GameObject Counter;
+    public GameObject PlaterShop;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;
-        GameObject.Find("Conter").GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
+        Shoprang.GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;
+        Counter.GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
 
 
     }
@@ -47,17 +51,16 @@ public class M_ui : MonoBehaviour
             {
                 if (PlayerShopshow)
                 {
-                    GameObject obj = Instantiate(Resources.Load("UI/M_PlayerShop"), this.transform) as GameObject;
-                    obj.transform.position = new Vector3(1370.0f, 540.0f, 0.0f);
-                    obj.name = "M_PlayerShop";
-                    
-                    PlayerShopshow = false;
+                    PlaterShop.SetActive(true);
+
+                      PlayerShopshow = false;
                     
                 }
                 else
-                {                 
-                        PlayerShopshow = true;
-                        this.GetComponentInChildren<M_PlayerShop>()?.Close();
+                {
+
+                    PlayerShopshow = true;
+                    this.GetComponentInChildren<M_PlayerShop>()?.Close();
                 }
 
             }           

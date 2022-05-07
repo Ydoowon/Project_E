@@ -32,7 +32,7 @@ public class M_PlayerShop : MonoBehaviour
     }   
     public void Close()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
 
