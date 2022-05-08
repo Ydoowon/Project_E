@@ -11,17 +11,18 @@ public class M_ShopOpen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
     }
     private void OnTriggerEnter(Collider other)
     {
         HOW.SetActive(true);
-        How.text = "상점열기";
+        How.text = "<#ff0000ff>E</color> <#000000ff>키를 눌러 상점열기";
         Shoping?.Invoke();
 
     }

@@ -10,6 +10,7 @@ public class M_Price : MonoBehaviour
     public int price = 0;
     List<int> Number = new List<int>();
     public GameObject myStor;
+    int tempGold;
 
     void BT()
     {
@@ -37,9 +38,54 @@ public class M_Price : MonoBehaviour
         }
     }
  
-    public  void Bt(int index)
+    public  void Bt1()
     {
-        Number.Add(index);
+        Number.Add(1);
+        BT();
+    }
+    public void Bt2()
+    {
+        Number.Add(2);
+        BT();
+    }
+    public void Bt3()
+    {
+        Number.Add(3);
+        BT();
+    }
+    public void Bt4()
+    {
+        Number.Add(4);
+        BT();
+    }
+    public void Bt5()
+    {
+        Number.Add(5);
+        BT();
+    }
+    public void Bt6()
+    {
+        Number.Add(6);
+        BT();
+    }
+    public void Bt7()
+    {
+        Number.Add(7);
+        BT();
+    }
+    public void Bt8()
+    {
+        Number.Add(8);
+        BT();
+    }
+    public void Bt9()
+    {
+        Number.Add(9);
+        BT();
+    }
+    public void Bt0()
+    {
+        Number.Add(0);
         BT();
     }
 
@@ -68,18 +114,11 @@ public class M_Price : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
     public void OK()
     {
-               
-       if( myImageset == null)
-        {
-            this.transform.parent.GetComponentInChildren<M_shopslot>().Write(price);
-            Destroy(this.gameObject);
-            return;
-        }
+        
+        GameObject.Find("M_PlayerShop").GetComponentInChildren<M_shopslot>().tempGold = price;
         myImageset.InputGold(price);
-        myImageset = null;
         Destroy(this.gameObject);
     }
         // Start is called before the first frame update
