@@ -8,6 +8,11 @@ public class M_playerShopOpen : MonoBehaviour
     public TMPro.TMP_Text How;
     public GameObject HOW;
     public event UnityAction PlayerShoprng;
+<<<<<<< HEAD
+=======
+    float hight = 400.0f;
+    bool show = false;
+>>>>>>> parent of e1525bbf (.)
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,7 @@ public class M_playerShopOpen : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        show = true;
         PlayerShoprng?.Invoke();
         HOW.SetActive(true);
         How.text = "<#ff0000ff>E</color> <#000000ff>키를 진열대 열기";
@@ -28,6 +34,7 @@ public class M_playerShopOpen : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        show = false;
         PlayerShoprng?.Invoke();
         HOW.SetActive(false);
 
