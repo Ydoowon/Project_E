@@ -19,16 +19,12 @@ public class M_ShopOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        
-=======
         if (show)
         {
             Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
             pos.y = pos.y + hight;
             HOW.GetComponent<RectTransform>().anchoredPosition = pos;
         }
->>>>>>> parent of 7880600a (?¬ë¡¯ ?ì‹ê°„ì˜ ?„ì¹˜ë§?ë°”ê¾¸ë©??©ë‹ˆ??)
     }
     private void OnTriggerEnter(Collider other)
     {
