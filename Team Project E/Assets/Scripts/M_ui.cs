@@ -10,6 +10,13 @@ public class M_ui : MonoBehaviour
     bool Shopshow = true; // Shop이 열려 있는지 안열려있는지
     bool PlayerShoprng = false; // 플레이어 상점 범위에 있는지
     bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
+<<<<<<< HEAD
+=======
+
+    public GameObject Shoprang;
+    public GameObject Counter;
+    public GameObject PlaterShop;
+>>>>>>> parent of 7880600a (?щ’ ?먯떇媛꾩쓽 ?꾩튂留?諛붽씀硫??⑸땲??)
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +54,19 @@ public class M_ui : MonoBehaviour
             {
                 if (PlayerShopshow)
                 {
+<<<<<<< HEAD
+                    GameObject obj = Instantiate(Resources.Load("UI/M_PlayerShop"), this.transform) as GameObject;
+                    obj.transform.position = new Vector3(1370.0f, 540.0f, 0.0f);
+                    obj.name = "M_PlayerShop";
+                    
+                    PlayerShopshow = false;
+                    
+                }
+                else
+                {                 
+                        PlayerShopshow = true;
+                        this.GetComponentInChildren<M_PlayerShop>()?.Close();
+=======
                     PlaterShop.SetActive(true);
 
                       PlayerShopshow = false;
@@ -57,6 +77,7 @@ public class M_ui : MonoBehaviour
 
                     PlayerShopshow = true;
                     this.GetComponentInChildren<M_PlayerShop>()?.Close();
+>>>>>>> parent of 7880600a (?щ’ ?먯떇媛꾩쓽 ?꾩튂留?諛붽씀硫??⑸땲??)
                 }
 
             }           
