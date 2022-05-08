@@ -60,7 +60,7 @@ public class SNPCsummoner : MonoBehaviour
 
         while(SummonCnt > 0)
         {
-            GameObject obj = Instantiate(ConsumerList[Random.Range(0, ConsumerList.Length)], this.transform);
+            GameObject obj = Instantiate(ConsumerList[Random.Range(0, ConsumerList.Length)],this.transform);
             obj.transform.position = MovePosition[0].position;
             obj.GetComponent<SConsumer>().mySummoner = this;
             SummonCnt--;

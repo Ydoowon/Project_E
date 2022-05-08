@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &489488453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489488454}
+  m_Layer: 0
+  m_Name: Town - Dungeon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &489488454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489488453}
+  m_LocalRotation: {x: -0, y: 0.061745364, z: -0, w: 0.99809194}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4792060226576582926}
+  - {fileID: 1373705203767816999}
+  m_Father: {fileID: 628857955496275570}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 7.08, z: 0}
 --- !u!1 &628857955496275568
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +62,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 628857956044692022}
+  - {fileID: 489488454}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,6 +90,7 @@ MonoBehaviour:
   Message: {fileID: 0}
   DungeonSelectUI: {fileID: 0}
   MapUI: {fileID: 0}
+  AlarmMessage: {fileID: 0}
   Player: {fileID: 0}
 --- !u!114 &628857955496275571
 MonoBehaviour:
@@ -132,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WarpPos: {fileID: 628857957253644373}
-  Message: 
+  Message: "E\uD0A4\uB97C \uB20C\uB7EC \uC9D1\uC73C\uB85C \uC774\uB3D9"
 --- !u!1 &628857955766462618
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628857957044322464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.02, y: 0.5, z: -40.515633}
+  m_LocalPosition: {x: 38.5, y: 0.5, z: -38.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 628857956044692022}
@@ -255,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WarpPos: {fileID: 628857955766462619}
-  Message: 
+  Message: "E\uD0A4\uB97C \uB20C\uB7EC \uB9C8\uC744\uB85C \uC774\uB3D9"
 --- !u!1 &628857957253644372
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,9 +314,97 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628857957253644372}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -20, y: 0.5, z: -40.757458}
+  m_LocalPosition: {x: 41.46, y: 0.5, z: -38.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 628857956044692022}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1390399618552523407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4792060226576582926}
+  - component: {fileID: 3849966857088154949}
+  - component: {fileID: 2669504136639725064}
+  m_Layer: 0
+  m_Name: ToDungeon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4792060226576582926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390399618552523407}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 601.91, y: 128.83, z: 637.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 489488454}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 7.08, z: 0}
+--- !u!65 &3849966857088154949
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390399618552523407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 4, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2669504136639725064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390399618552523407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee3a5f033337844793670fc25efec7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: "E\uD0A4\uB97C \uB20C\uB7EC \uB358\uC804\uC73C\uB85C \uC774\uB3D9"
+--- !u!1 &3439956112598126538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373705203767816999}
+  m_Layer: 0
+  m_Name: FromDungeon
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373705203767816999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439956112598126538}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 605.64, y: 126.95, z: 637.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 489488454}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 7.08, z: 0}

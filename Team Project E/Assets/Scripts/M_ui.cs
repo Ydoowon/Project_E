@@ -16,7 +16,7 @@ public class M_ui : MonoBehaviour
     {
 
         GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;
-        GameObject.Find("Conter").GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
+       // GameObject.Find("Conter").GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
 
 
     }

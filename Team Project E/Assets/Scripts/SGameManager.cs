@@ -15,6 +15,10 @@ public class SGameManager : MonoBehaviour
     public TMPro.TMP_Text Message;
     public GameObject DungeonSelectUI;
     public UIManager_L MapUI;
+
+    [SerializeField]
+    TMPro.TMP_Text AlarmMessage;
+
     [SerializeField]
     SPlayer Player;
 
@@ -77,4 +81,10 @@ public class SGameManager : MonoBehaviour
         }
     }
 
+
+    public void ShowMessage(string Message)
+    {
+        AlarmMessage.text = Message;
+        AlarmMessage.GetComponent<Animator>().SetTrigger("ShowMessage");
+    }
 }

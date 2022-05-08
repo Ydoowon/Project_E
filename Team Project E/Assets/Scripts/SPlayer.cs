@@ -161,8 +161,7 @@ public class SPlayer : MonoBehaviour
     #endregion
 
     [SerializeField]
-    Map myMap;  // 플레이어 지도
-    public List<Map> myMapList;
+    public List<Map> myMapList; // 플레이어 지도 리스트
     int _usingMapNum;
     public int UsingMapNum
     {
@@ -220,8 +219,6 @@ public class SPlayer : MonoBehaviour
                     OnHide = false;
                 };
                 // 숨은 상태 해제되도록 하는 delegate 전달
-                //임시로 받은 맵 테스트
-                myMap = new Map(0,3,4);
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
                 break;
             case STATE.PLAY:
@@ -266,6 +263,7 @@ public class SPlayer : MonoBehaviour
                 break;
             case STATE.DEATH:
                 break;
+                
         }
     }
     public void Moving(Vector3 pos)
@@ -470,6 +468,12 @@ public class SPlayer : MonoBehaviour
 
     public void DrawMap()
     {
+        if(myMapList.Count == 0 )
+        {
+            SGameManager.instance.ShowMessage("던전에 들어가지 않아 지도를 생성할 수 없습니다");
+            return;
+        }
+
         int InkSlot = myUIManager.FindItem(MyItem[1].GetComponent<SItem>());
         int PaperSlot = myUIManager.FindItem(MyItem[2].GetComponent<SItem>());
 
@@ -481,7 +485,7 @@ public class SPlayer : MonoBehaviour
         }
         else
         {
-            Debug.Log("재료가 부족합니다.");
+            SGameManager.instance.ShowMessage("재료가 부족합니다");
         }
     }
     public void HealingHP(float value)
