@@ -8,6 +8,7 @@ public class M_playerShopOpen : MonoBehaviour
     public TMPro.TMP_Text How;
     public GameObject HOW;
     public event UnityAction PlayerShoprng;
+    public GameObject Shop;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +18,21 @@ public class M_playerShopOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+   
+
     }
     private void OnTriggerEnter(Collider other)
     {
         PlayerShoprng?.Invoke();
         HOW.SetActive(true);
-        How.text = "<#ff0000ff>E</color> <#000000ff>키를 진열대 열기";
+        How.text = "진열대 열기";
 
     }
     private void OnTriggerExit(Collider other)
     {
         PlayerShoprng?.Invoke();
         HOW.SetActive(false);
+        Shop.GetComponent<M_PlayerShop>().Close();
 
     }
 }

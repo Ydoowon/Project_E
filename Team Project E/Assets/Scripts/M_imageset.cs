@@ -8,8 +8,6 @@ public class M_imageset : MonoBehaviour,IDropHandler
 {
     public GameObject disapear;
     public SItem myItem;
-    public int gold = 0;
-    Sprite tempItem;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +20,15 @@ public class M_imageset : MonoBehaviour,IDropHandler
         SItemSlot Pastslot = DragedItem.GetCurParent().GetComponent<SItemSlot>();
         if (DragedItem.ItemData.ItemType == SItemData.Type.Map)
         {
+            if (this.transform.childCount == 4) return;
+
             Pastslot.myItem = null;
             DragedItem.ChangeParent(this.transform);
             DragedItem.transform.SetAsLastSibling();
             DragedItem.ableDrag = false;
             myItem = DragedItem;
             disapear.SetActive(true);
-            GameObject obj = Instantiate(Resources.Load("UI/M_GlodSet"), this.transform.parent.parent) as GameObject;
+            GameObject obj = Instantiate(Resources.Load("UI/M_GlodSet"), this.transform.parent.parent.parent) as GameObject;
             obj.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
             obj.GetComponent<M_Price>().myImageset = this;
         }

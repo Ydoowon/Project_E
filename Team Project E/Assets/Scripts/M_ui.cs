@@ -9,14 +9,18 @@ public class M_ui : MonoBehaviour
     bool Shoprng = false; // Shop을 열 범위에 있는지 없는지
     bool Shopshow = true; // Shop이 열려 있는지 안열려있는지
     bool PlayerShoprng = false; // 플레이어 상점 범위에 있는지
-    bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
+   public bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
+
+    public GameObject Shoprang;
+    public GameObject Counter;
+    public GameObject PlaterShop;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        GameObject.Find("Shoprnge").GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;
-       // GameObject.Find("Conter").GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
+        Shoprang.GetComponent<M_ShopOpen>().Shoping += () => Shoprng = !Shoprng;
+        Counter.GetComponent<M_playerShopOpen>().PlayerShoprng += () => PlayerShoprng = !PlayerShoprng;
 
 
     }
@@ -24,9 +28,9 @@ public class M_ui : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Shoprng)
         { // NPC 상점
-            if (Shoprng)
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (Shopshow)
                 {
@@ -41,28 +45,29 @@ public class M_ui : MonoBehaviour
                     this.GetComponentInChildren<M_shop>()?.Close();
                 }
             }
+        }
 
-            //Player 상점
-             if(PlayerShoprng)
+        //Player 상점
+        if (PlayerShoprng)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
             {
+
                 if (PlayerShopshow)
                 {
-                    GameObject obj = Instantiate(Resources.Load("UI/M_PlayerShop"), this.transform) as GameObject;
-                    obj.transform.position = new Vector3(1370.0f, 540.0f, 0.0f);
-                    obj.name = "M_PlayerShop";
-                    
+                    PlaterShop.SetActive(true);
                     PlayerShopshow = false;
-                    
+
                 }
                 else
-                {                 
-                        PlayerShopshow = true;
-                        this.GetComponentInChildren<M_PlayerShop>()?.Close();
+                {
+
+                    PlaterShop.GetComponent<M_PlayerShop>().Close();
                 }
-
-            }           
-
+            }
         }
+              
+
 
 
         if (Input.GetKeyDown(KeyCode.Escape))

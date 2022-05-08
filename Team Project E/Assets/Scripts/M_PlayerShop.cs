@@ -5,16 +5,12 @@ using UnityEngine.EventSystems;
 
 public class M_PlayerShop : MonoBehaviour
 {
-
+    public GameObject UI;
     public GameObject slae3;
     public GameObject slae4;
     public GameObject slae5;
     public GameObject slae6;
-    public GameObject slae7;
-    public GameObject slae8;
-    public static int tableMany = 3;
-
-    public int gold = 0;
+    public int tableMany = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,42 +20,28 @@ public class M_PlayerShop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Table();
+        /*Table();
         if (Input.GetKeyDown(KeyCode.A))
         {
             tableMany += 1;        
-        }
+        }*/
     }   
     public void Close()
     {
-        Destroy(this.gameObject);
+        UI.GetComponent<M_ui>().PlayerShopshow = true;
+        this.gameObject.SetActive(false);
     }
 
 
     void Table()
     {
-        if (tableMany >= 8)
+        if (tableMany >= 6)
         {
-            tableMany = 8;
+            tableMany = 6;
         }
 
         switch (tableMany)
         {
-            case 8:
-                slae8.SetActive(true);
-                slae7.SetActive(true);
-                slae6.SetActive(true);
-                slae5.SetActive(true);
-                slae4.SetActive(true);
-                slae3.SetActive(true);
-                break;
-            case 7:
-                slae7.SetActive(true);
-                slae6.SetActive(true);
-                slae5.SetActive(true);
-                slae4.SetActive(true);
-                slae3.SetActive(true);
-                break;
             case 6:
                 slae6.SetActive(true);
                 slae5.SetActive(true);
