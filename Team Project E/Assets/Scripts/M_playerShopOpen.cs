@@ -8,8 +8,7 @@ public class M_playerShopOpen : MonoBehaviour
     public TMPro.TMP_Text How;
     public GameObject HOW;
     public event UnityAction PlayerShoprng;
-    float hight = 400.0f;
-    bool show = false;
+    public GameObject Shop;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +23,6 @@ public class M_playerShopOpen : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        show = true;
         PlayerShoprng?.Invoke();
         HOW.SetActive(true);
         How.text = "진열대 열기";
@@ -32,9 +30,9 @@ public class M_playerShopOpen : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        show = false;
         PlayerShoprng?.Invoke();
         HOW.SetActive(false);
+        Shop.GetComponent<M_PlayerShop>().Close();
 
     }
 }

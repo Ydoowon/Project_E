@@ -28,9 +28,9 @@ public class M_ui : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Shoprng)
         { // NPC 상점
-            if (Shoprng)
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (Shopshow)
                 {
@@ -45,25 +45,29 @@ public class M_ui : MonoBehaviour
                     this.GetComponentInChildren<M_shop>()?.Close();
                 }
             }
+        }
 
-            //Player 상점
-             if(PlayerShoprng)
+        //Player 상점
+        if (PlayerShoprng)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
             {
+
                 if (PlayerShopshow)
                 {
                     PlaterShop.SetActive(true);
                     PlayerShopshow = false;
-                    
+
                 }
                 else
                 {
 
                     PlaterShop.GetComponent<M_PlayerShop>().Close();
                 }
-
-            }           
-
+            }
         }
+              
+
 
 
         if (Input.GetKeyDown(KeyCode.Escape))
