@@ -22,7 +22,13 @@ public class M_playerShopOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (show)
+        {
+            Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
+            pos.y = pos.y + hight;
+            HOW.GetComponent<RectTransform>().anchoredPosition = pos;
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {

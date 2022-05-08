@@ -47,17 +47,16 @@ public class M_ui : MonoBehaviour
             {
                 if (PlayerShopshow)
                 {
-                    GameObject obj = Instantiate(Resources.Load("UI/M_PlayerShop"), this.transform) as GameObject;
-                    obj.transform.position = new Vector3(1370.0f, 540.0f, 0.0f);
-                    obj.name = "M_PlayerShop";
-                    
-                    PlayerShopshow = false;
+                    PlaterShop.SetActive(true);
+
+                      PlayerShopshow = false;
                     
                 }
                 else
-                {                 
-                        PlayerShopshow = true;
-                        this.GetComponentInChildren<M_PlayerShop>()?.Close();
+                {
+
+                    PlayerShopshow = true;
+                    this.GetComponentInChildren<M_PlayerShop>()?.Close();
                 }
 
             }           

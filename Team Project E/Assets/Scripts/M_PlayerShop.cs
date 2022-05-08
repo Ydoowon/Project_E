@@ -12,13 +12,9 @@ public class M_PlayerShop : MonoBehaviour
     public GameObject slae6;
     public GameObject slae7;
     public GameObject slae8;
-<<<<<<< HEAD
     public static int tableMany = 3;
 
     public int gold = 0;
-=======
-    public static int tableMany = 2;
->>>>>>> parent of e1525bbf (.)
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +32,7 @@ public class M_PlayerShop : MonoBehaviour
     }   
     public void Close()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
 
