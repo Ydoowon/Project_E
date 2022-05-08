@@ -19,12 +19,7 @@ public class M_playerShopOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (show)
-        {
-            Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
-            pos.y = pos.y + hight;
-            HOW.GetComponent<RectTransform>().anchoredPosition = pos;
-        }
+   
 
     }
     private void OnTriggerEnter(Collider other)
@@ -32,7 +27,7 @@ public class M_playerShopOpen : MonoBehaviour
         show = true;
         PlayerShoprng?.Invoke();
         HOW.SetActive(true);
-        How.text = "<#ff0000ff>E</color> <#000000ff>키를 진열대 열기";
+        How.text = "진열대 열기";
 
     }
     private void OnTriggerExit(Collider other)

@@ -45,9 +45,9 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         this.transform.SetParent(curParent);
         this.transform.localPosition = Vector2.zero;
         this.GetComponent<Image>().raycastTarget = true;
-        if(ItemData.Countable)
+        if (ItemData.Countable)
         this.transform.SetAsFirstSibling();
-
+ 
         SItemSlot PastSlot = curParent.GetComponent<SItemSlot>();
         if (PastSlot  != null)
         curParent.GetComponent<SItemSlot>().Itemcnt.gameObject.SetActive(ItemData.Countable);

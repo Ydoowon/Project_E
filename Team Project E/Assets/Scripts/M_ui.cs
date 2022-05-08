@@ -9,7 +9,7 @@ public class M_ui : MonoBehaviour
     bool Shoprng = false; // Shop을 열 범위에 있는지 없는지
     bool Shopshow = true; // Shop이 열려 있는지 안열려있는지
     bool PlayerShoprng = false; // 플레이어 상점 범위에 있는지
-    bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
+   public bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
 
     public GameObject Shoprang;
     public GameObject Counter;
@@ -52,15 +52,13 @@ public class M_ui : MonoBehaviour
                 if (PlayerShopshow)
                 {
                     PlaterShop.SetActive(true);
-
-                      PlayerShopshow = false;
+                    PlayerShopshow = false;
                     
                 }
                 else
                 {
 
-                    PlayerShopshow = true;
-                    this.GetComponentInChildren<M_PlayerShop>()?.Close();
+                    PlaterShop.GetComponent<M_PlayerShop>().Close();
                 }
 
             }           
