@@ -10,6 +10,9 @@ public class SNPCsummoner : MonoBehaviour
     public Transform[] MovePosition;
     public Transform[] myStock;
     public int SummonCnt; // 소환할 NPC 수
+    Coroutine Summon;
+
+    public SPlayer myPlayer;
     public enum STATE
     {
         CLOSED,OPEN
@@ -18,7 +21,7 @@ public class SNPCsummoner : MonoBehaviour
 
     void Start()
     {
-        ChangeState(STATE.OPEN);
+        ChangeState(STATE.CLOSED);
     }
 
     // Update is called once per frame
@@ -37,7 +40,15 @@ public class SNPCsummoner : MonoBehaviour
             case STATE.CLOSED:
                 break;
             case STATE.OPEN:
-                StartCoroutine(SummonConsumer());
+                if (Summon == null)
+                {
+                    Summon = StartCoroutine(SummonConsumer());
+                }
+                else
+                {
+                    ChangeState(STATE.CLOSED);
+                }
+
                 break;
         }
     }
@@ -47,6 +58,11 @@ public class SNPCsummoner : MonoBehaviour
         switch (myState)
         {
             case STATE.CLOSED:
+                if(myPlayer != null)
+                {
+                    if(Input.GetKeyDown(KeyCode.E))
+                    ChangeState(STATE.OPEN);
+                }
                 break;
             case STATE.OPEN:
                 break;
@@ -67,7 +83,23 @@ public class SNPCsummoner : MonoBehaviour
 
             yield return new WaitForSeconds(Random.Range(8.0f, 10.0f));
         }
+        Summon = null;
         ChangeState(STATE.CLOSED);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            myPlayer = other.gameObject.GetComponent<SPlayer>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            myPlayer = null;
+        }
     }
 
 }

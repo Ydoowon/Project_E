@@ -22,6 +22,8 @@ public class SGameManager : MonoBehaviour
     [SerializeField]
     SPlayer Player;
 
+    //List<SaveData> PlayerData; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class SGameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        
     }
     public void MapSetting(Map UserMap) // 매개변수로 받은 유저 맵으로 UI맵을 새팅한다
     {
@@ -86,5 +89,55 @@ public class SGameManager : MonoBehaviour
     {
         AlarmMessage.text = Message;
         AlarmMessage.GetComponent<Animator>().SetTrigger("ShowMessage");
+    }
+
+
+    public void Save(int SaveSlotNum)
+    {
+
+        // 단편적인 정보 저장
+        SaveData PlayerData = new SaveData();
+        PlayerData.PlayerPos = Player.transform.position;  // 위치
+        PlayerData.PlayerRot = Player.myPlayer.rotation.eulerAngles;  // 회전값
+        PlayerData._level = Player.MyStatus.PlayerLevel;  // 레벨
+        PlayerData._exp = Player.MyStatus.Exp;  // 경험치
+        PlayerData._hp = Player.MyStatus.HP;  // hp상태
+        PlayerData._hidepoint = Player.MyStatus.Hidepoint;  // hidepoint 상태
+        PlayerData._gold = Player.MyStatus.Gold;   // 골드
+        PlayerData._usingMapNum = Player.UsingMapNum;  // 어떤 맵 사용하고 있었는지
+        
+        //플레이어가 가지고 있던 맵 데이터 저장
+        int cnt = Player.myMapList.Count;
+        PlayerData.PlayerMapList = Player.myMapList.ToArray();
+        
+        
+
+        //플레이어가 가지고 있던 아이템 저장
+        cnt = MapUI.myItemSlot.Length;
+        for(int i = 0; i < cnt; i++)
+        {
+            if (MapUI.myItemSlot[i].myItem == null)
+            {
+                Debug.Log(i);
+                //PlayerData.InventoryItem.Add(null);
+                continue;
+            }
+            else
+            {
+                SItemSlot Slot = MapUI.myItemSlot[i];
+                string Name = Slot.myItem.ItemData.Name;
+                int Count = Slot.ItemCount;
+
+                PlayerData.InvenItemName.Add(Name);
+                PlayerData.InvenItemCount.Add(Count);
+                PlayerData.ArrayNum.Add(i);
+                
+            }
+        }
+
+        //상점에 올려둔 아이템 저장
+        
+        string json = JsonUtility.ToJson(PlayerData);
+        Debug.Log(json);
     }
 }

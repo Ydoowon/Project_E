@@ -571,6 +571,10 @@ public class SPlayer : MonoBehaviour
         {
             DrawMap();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            SGameManager.instance.Save(1);
+        }
         if (Input.GetKeyDown(KeyCode.K))
         {
             foreach(SItemSlot slot in myUIManager.myItemSlot)

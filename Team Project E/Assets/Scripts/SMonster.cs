@@ -152,6 +152,7 @@ public class SMonster : MonoBehaviour
             {
                 myAnim.SetBool("AttPossible", false);
                 myPerception.myEnemyList.RemoveAt(0);
+                myNav.SetDestination(this.transform.position);
                 ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
             }
             else
@@ -249,7 +250,7 @@ public class SMonster : MonoBehaviour
         MissingTime -= Time.deltaTime;
         if (MissingTime <= 0.0f)
         {
-            myNav.SetDestination(this.gameObject.transform.position);
+            myNav.SetDestination(this.transform.position);
             ChangeState(STATE.IDLE);
             MissingTime = 5.0f;
         }
