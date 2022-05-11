@@ -64,10 +64,23 @@ public class UIManager_L : MonoBehaviour
             myButtons[(Row - 1) * 4 + Col - 1].gameObject.SetActive(true);
             SPlayer.instance.GetmyMap().myRooms[(Row - 1) * 4 + Col - 1].Checking = true;
             //this.GetComponent<PlayerstatManagement_L>().myPlayer.GetComponent<SPlayer>().GetmyMap().myRooms[(Row-1)*4+Col -1].Checking = true;
-
+            ActiveCompass(true);
             myCompass.transform.SetParent(myButtons[(Row - 1) * 4 + Col - 1].transform);
             myCompass.rectTransform.localPosition = new Vector3(0, 0, 0);
         }
+    }
+
+    public void ActiveCompass(bool Active)
+    {
+        if (myCompass.gameObject.activeSelf == Active) return;
+        myCompass.gameObject.SetActive(Active);
+    }
+
+    // ui상 맵 넘버, 이미지, 보일지 안보일지 매개변수로 받음
+    public void MapLoad(int num, int ImageNum, bool Checking)
+    {
+        myButtons[num].DrowMap(ImageNum);
+        myButtons[num].gameObject.SetActive(Checking);
     }
 
     public void SetCompass()
@@ -127,8 +140,6 @@ public class UIManager_L : MonoBehaviour
 
     }
 
-    // ?????? ???????? ???? ?????? ?????? ???????? ?????? ????????.
-    // ?????? ?????? ???? ?????? return ??????, ?????? -1?? ??????????.
     public int FindItem(SItem findItem)
     {
         for(int i = 0; i < myItemSlot.Length; i++)

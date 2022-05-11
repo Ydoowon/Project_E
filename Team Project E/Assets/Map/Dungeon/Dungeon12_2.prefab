@@ -114,24 +114,24 @@ Transform:
   - {fileID: 4293144260564208013}
   - {fileID: 4293144260315515211}
   - {fileID: 7265240313342673084}
-  - {fileID: 1301078808700283999}
-  - {fileID: 1301078808593621035}
+  - {fileID: 351435590149773471}
+  - {fileID: 4207586308594343224}
   - {fileID: 205981312170741145}
   - {fileID: 205981311854846586}
   - {fileID: 205981310336593327}
   - {fileID: 205981311173165380}
   - {fileID: 205981310063595815}
-  - {fileID: 1301078807372511455}
-  - {fileID: 1301078807453981610}
-  - {fileID: 1301078808005728121}
-  - {fileID: 1301078807349871399}
-  - {fileID: 1301078807741175351}
+  - {fileID: 4207586308579107044}
+  - {fileID: 4207586308752354448}
+  - {fileID: 4207586307823032056}
+  - {fileID: 4207586307836024758}
+  - {fileID: 4207586307304594277}
   - {fileID: 205981311184744730}
   - {fileID: 205981310645513073}
-  - {fileID: 1301078808580152823}
+  - {fileID: 4207586307387389968}
   - {fileID: 205981310052562252}
-  - {fileID: 1301078807129105819}
-  - {fileID: 1301078806733022993}
+  - {fileID: 4207586307415049192}
+  - {fileID: 4207586307093652820}
   - {fileID: 205981311367673875}
   - {fileID: 1062178715440258014}
   - {fileID: 8452778344874044711}
@@ -140,7 +140,7 @@ Transform:
   - {fileID: 3140556649318108863}
   - {fileID: 7912071775783641853}
   - {fileID: 3250379371669413335}
-  - {fileID: 3209529359881459792}
+  - {fileID: 4207586306684430302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -3746,6 +3746,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5538670736820462329}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (10)
@@ -4124,6 +4128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (10)
@@ -4174,9 +4182,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &3209529359881459792 stripped
+--- !u!4 &351435590149773471 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 6600980112548447262}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6651555809400566384
@@ -4576,6 +4584,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5538670736820462329}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (9)
@@ -4780,6 +4792,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (2)
@@ -4830,9 +4846,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078808580152823 stripped
+--- !u!4 &4207586308594343224 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738205464904121}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738205483410750
@@ -5131,6 +5147,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (4)
@@ -5181,9 +5201,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078808593621035 stripped
+--- !u!4 &4207586308579107044 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738205485268069}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738205522588019
@@ -5212,6 +5232,10 @@ PrefabInstance:
     - target: {fileID: 681664294503197032, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941380836718895119, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: Message
+      value: "E\uD0A4\uB97C \uB20C\uB7EC \uB9C8\uC744\uB85C \uC774\uB3D9"
       objectReference: {fileID: 0}
     - target: {fileID: 2895744784527378711, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5333,6 +5357,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4518260087580631771, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_Name
+      value: Dungeon2_pos
+      objectReference: {fileID: 0}
     - target: {fileID: 6478932215855199616, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -5441,20 +5469,28 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7703221488317279816, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 71
+      objectReference: {fileID: 0}
     - target: {fileID: 7880283471955514229, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_LocalPosition.z
       value: 23.07
       objectReference: {fileID: 0}
+    - target: {fileID: 8024097912157088098, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 72
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a835f1d6256432b419473b1612863b61, type: 3}
---- !u!1 &5538670737527111349 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3009247302206853062, guid: a835f1d6256432b419473b1612863b61, type: 3}
-  m_PrefabInstance: {fileID: 7286738205522588019}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5538670737527111355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3009247302206853064, guid: a835f1d6256432b419473b1612863b61, type: 3}
+  m_PrefabInstance: {fileID: 7286738205522588019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5538670737527111349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3009247302206853062, guid: a835f1d6256432b419473b1612863b61, type: 3}
   m_PrefabInstance: {fileID: 7286738205522588019}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7286738207413442441
@@ -6910,6 +6946,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7703221488317279816, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 71
+      objectReference: {fileID: 0}
     - target: {fileID: 7880283470440478452, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.7
@@ -6934,9 +6974,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 22.63
       objectReference: {fileID: 0}
+    - target: {fileID: 8024097912157088098, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 72
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3009247302206853065, guid: a835f1d6256432b419473b1612863b61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a835f1d6256432b419473b1612863b61, type: 3}
+--- !u!1 &4392834056707838628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6478932217693427450, guid: a835f1d6256432b419473b1612863b61, type: 3}
+  m_PrefabInstance: {fileID: 7286738205603021918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5538670737380592536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3009247302206853062, guid: a835f1d6256432b419473b1612863b61, type: 3}
@@ -6947,38 +6996,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3009247302206853064, guid: a835f1d6256432b419473b1612863b61, type: 3}
   m_PrefabInstance: {fileID: 7286738205603021918}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4392834056707838628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6478932217693427450, guid: a835f1d6256432b419473b1612863b61, type: 3}
-  m_PrefabInstance: {fileID: 7286738205603021918}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &7286738206611232068
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5538670737380592536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 111, y: 50, z: 100}
-  m_Center: {x: -24.56572, y: 0, z: 1.0564737e-13}
---- !u!114 &7286738206611232069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5538670737380592536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ff0000f9b63c6488afd1bf17b0df55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Row: 2
-  Col: 1
 --- !u!218 &2416565954970933825
 Terrain:
   m_ObjectHideFlags: 0
@@ -7012,6 +7029,20 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 0
+--- !u!114 &7286738206611232069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538670737380592536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ff0000f9b63c6488afd1bf17b0df55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Row: 2
+  Col: 1
 --- !u!1001 &7286738205618461445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7019,6 +7050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2028888646784140555}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (10)
@@ -7142,6 +7177,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (3)
@@ -7192,9 +7231,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078808700283999 stripped
+--- !u!4 &4207586308752354448 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738205656477713}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738205706526968
@@ -7352,6 +7391,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8251870790692730920}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (1)
@@ -7470,6 +7513,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9098584004918952085}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (6)
@@ -8031,6 +8078,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544802948800607616}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate
@@ -8212,6 +8263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (5)
@@ -8262,9 +8317,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078807741175351 stripped
+--- !u!4 &4207586307823032056 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738206304111225}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738206320201092
@@ -8360,6 +8415,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (8)
@@ -8410,9 +8469,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078808005728121 stripped
+--- !u!4 &4207586307836024758 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738206367533879}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738206414358832
@@ -8422,6 +8481,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544802948800607616}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (5)
@@ -10372,6 +10435,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7703221488317279816, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024097912157088098, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a835f1d6256432b419473b1612863b61, type: 3}
 --- !u!1 &5538670736315965857 stripped
@@ -10405,6 +10476,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8624775728270512304}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (4)
@@ -10642,6 +10717,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (7)
@@ -10692,9 +10771,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078807453981610 stripped
+--- !u!4 &4207586307304594277 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738206893066212}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738206914535211
@@ -10704,6 +10783,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5538670736315965871}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (2)
@@ -10765,6 +10848,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (6)
@@ -10815,9 +10902,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078807372511455 stripped
+--- !u!4 &4207586307387389968 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738206942274705}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738206948648246
@@ -10941,6 +11028,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (9)
@@ -10991,9 +11082,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078807349871399 stripped
+--- !u!4 &4207586307415049192 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738206988787561}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738207059685057
@@ -11147,14 +11238,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d04d3662342f164592c8de8c02c2f0d, type: 3}
---- !u!1 &8251870790692730921 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1701015996829377309, guid: 9d04d3662342f164592c8de8c02c2f0d, type: 3}
-  m_PrefabInstance: {fileID: 7286738207074212660}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8251870790692730920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1701015996829377308, guid: 9d04d3662342f164592c8de8c02c2f0d, type: 3}
+  m_PrefabInstance: {fileID: 7286738207074212660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8251870790692730921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1701015996829377309, guid: 9d04d3662342f164592c8de8c02c2f0d, type: 3}
   m_PrefabInstance: {fileID: 7286738207074212660}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7286738206551380886
@@ -14699,6 +14790,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7703221488317279816, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 7880283471304375247, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.8
@@ -14710,6 +14805,10 @@ PrefabInstance:
     - target: {fileID: 7880283471304375247, guid: a835f1d6256432b419473b1612863b61, type: 3}
       propertyPath: m_LocalPosition.z
       value: -37.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024097912157088098, guid: a835f1d6256432b419473b1612863b61, type: 3}
+      propertyPath: m_RootOrder
+      value: 73
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a835f1d6256432b419473b1612863b61, type: 3}
@@ -14744,6 +14843,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 44
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle (1)
@@ -14794,9 +14897,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078807129105819 stripped
+--- !u!4 &4207586307093652820 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738207235750357}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738207297093801
@@ -15123,6 +15226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5015556738279401916}
     m_Modifications:
+    - target: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+      propertyPath: m_RootOrder
+      value: 53
+      objectReference: {fileID: 0}
     - target: {fileID: 8579899911849508974, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
       propertyPath: m_Name
       value: Trap_Needle
@@ -15173,9 +15280,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
---- !u!4 &1301078806733022993 stripped
+--- !u!4 &4207586306684430302 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8579899911849745486, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6880348762532797569, guid: e773c26a4f9eff84f8a665d3b60e186a, type: 3}
   m_PrefabInstance: {fileID: 7286738207313099615}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7286738207327431302
@@ -17528,6 +17635,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8624775728270512304}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (8)
@@ -18627,6 +18738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8251870791262631759}
     m_Modifications:
+    - target: {fileID: 1834484176863956323, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
+      propertyPath: orbLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1834484177695573460, guid: 5b6fc1fd848869e41b175739f99d5382, type: 3}
       propertyPath: m_Name
       value: Gate (3)

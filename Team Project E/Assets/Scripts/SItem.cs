@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
 public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerEnterHandler, IPointerExitHandler
 {
     public SItemData ItemData;
@@ -12,7 +13,7 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     public int Price;
     public float CanvasSF;
     Vector2 TooltipSize;
-   public bool ableDrag = true;
+    public bool ableDrag = true;
 
     void Start()
     {

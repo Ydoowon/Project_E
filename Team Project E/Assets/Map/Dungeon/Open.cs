@@ -65,6 +65,7 @@ public class Open : MonoBehaviour
             Lockgauge = 0.0f;
             myani.SetTrigger("Open");
             DoorOpen = true;
+            Invoke("Invisible", 3.0f);
         }
     }
     public float GetLockgauge()
@@ -72,4 +73,36 @@ public class Open : MonoBehaviour
         return Lockgauge;
     }
 
+    void Invisible()
+    {
+        this.gameObject.SetActive(false);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!DoorOpen && other.gameObject.layer == LayerMask.NameToLayer("Player")) // 문이 열리지 않았을때만 작동
+        {
+
+            if(!OrbLocked)  // 퍼즐을 풀었을때
+            {
+                other.GetComponent<SPlayer>().Door = this;
+                SGameManager.instance.Message.text = "키를 꾹 눌러 문 열기";
+                SGameManager.instance.PressE.SetActive(true);
+            }
+            else  // 풀지 않고 문에 접근했을 때
+            {
+                SGameManager.instance.Message.text = "먼저 오브를 활성화 하십시오";
+                SGameManager.instance.PressE.SetActive(true);
+                SGameManager.instance.Interaction.SetActive(false);
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            other.GetComponent<SPlayer>().Orb = null;
+            SGameManager.instance.Interaction.SetActive(true);
+            SGameManager.instance.PressE.SetActive(false); // press E만 비활성화 됐을 경우도 있으므로 함께 처리
+        }
+    }
 }
