@@ -15,4 +15,6 @@ public class SItemData : ScriptableObject
     public Type ItemType;
     public Sprite Image;
     public bool Countable = false;
+
+    public int ItemIndex;
 }

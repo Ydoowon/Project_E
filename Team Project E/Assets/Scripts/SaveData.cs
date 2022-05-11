@@ -3,6 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class InventoryData
+{
+    public InventoryData(int _slotindex, int _itemindex, int _itemcount)
+    {
+        SlotIndex = _slotindex;
+        ItemIndex = _itemindex;
+        ItemCount = _itemcount;
+    }
+    public int SlotIndex;
+    public int ItemIndex;
+    public int ItemCount;
+}
+
+
+[System.Serializable]
 public class SaveData
 {
     public Vector3 PlayerPos;
@@ -17,11 +32,8 @@ public class SaveData
     //Map info
     public Map[] PlayerMapList;
     public int _usingMapNum;
-
-    //Item info
-    public List<string> InvenItemName = new List<string>();
-    public List<int> InvenItemCount = new List<int>();
-    public List<int> ArrayNum = new List<int>();
+    public InventoryData[] Inventory;
+    
     
     //Stock info
     public List<SItem> StockItem = new List<SItem>();

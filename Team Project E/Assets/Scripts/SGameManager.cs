@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -107,37 +108,30 @@ public class SGameManager : MonoBehaviour
         PlayerData._usingMapNum = Player.UsingMapNum;  // 어떤 맵 사용하고 있었는지
         
         //플레이어가 가지고 있던 맵 데이터 저장
-        int cnt = Player.myMapList.Count;
         PlayerData.PlayerMapList = Player.myMapList.ToArray();
-        
-        
 
-        //플레이어가 가지고 있던 아이템 저장
-        cnt = MapUI.myItemSlot.Length;
-        for(int i = 0; i < cnt; i++)
+        int cnt = MapUI.myItemSlot.Length;
+        List<InventoryData> InvenData = new List<InventoryData>();
+        for (int i = 0; i < cnt; i++)
         {
-            if (MapUI.myItemSlot[i].myItem == null)
-            {
-                Debug.Log(i);
-                //PlayerData.InventoryItem.Add(null);
-                continue;
-            }
+            if (MapUI.myItemSlot[i].myItem == null) continue;
             else
             {
                 SItemSlot Slot = MapUI.myItemSlot[i];
-                string Name = Slot.myItem.ItemData.Name;
+                int index = Slot.myItem.ItemData.ItemIndex;
                 int Count = Slot.ItemCount;
 
-                PlayerData.InvenItemName.Add(Name);
-                PlayerData.InvenItemCount.Add(Count);
-                PlayerData.ArrayNum.Add(i);
-                
+                InvenData.Add(new InventoryData(i, index, Count));
             }
         }
+        PlayerData.Inventory = InvenData.ToArray();
 
         //상점에 올려둔 아이템 저장
-        
+        ShowMessage("저장됐습니다");
         string json = JsonUtility.ToJson(PlayerData);
-        Debug.Log(json);
+
+        string filename = "savedata";
+        string path = Application.dataPath + "/" + filename + ".Json";
+        File.WriteAllText(path, json);
     }
 }
