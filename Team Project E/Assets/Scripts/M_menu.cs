@@ -18,6 +18,9 @@ public class M_menu : MonoBehaviour
     bool IsGameEtcSlot = false;
     public GameObject GameEtcSlot;
 
+    bool IsGameTip = false;
+    public GameObject GameEtcTip;
+
     public GameObject MenuSelectText;
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,12 @@ public class M_menu : MonoBehaviour
             IsGameEtcSlot = false;
         }
 
+        if (IsGameTip)
+        {
+            GameEtcTip.SetActive(false);
+            IsGameTip = false;
+        }
+
         IsGameSaveSlot = !IsGameSaveSlot;
         GameSaveSlot.SetActive(IsGameSaveSlot);
         OnOffSelectMeue();
@@ -74,6 +83,12 @@ public class M_menu : MonoBehaviour
         {
             GameEtcSlot.SetActive(false);
             IsGameEtcSlot = false;
+        }
+
+        if (IsGameTip)
+        {
+            GameEtcTip.SetActive(false);
+            IsGameTip = false;
         }
         IsGameLoadSlot = !IsGameLoadSlot;
         GameLoadSlot.SetActive(IsGameLoadSlot);
@@ -93,14 +108,44 @@ public class M_menu : MonoBehaviour
             GameLoadSlot.SetActive(false);
             IsGameLoadSlot = false;
         }
+
+        if (IsGameTip)
+        {
+            GameEtcTip.SetActive(false);
+            IsGameTip = false;
+        }
         IsGameEtcSlot = !IsGameEtcSlot;
         GameEtcSlot.SetActive(IsGameEtcSlot);
         OnOffSelectMeue();
     }
 
+    public void OnOffGameTip()
+    {
+        if (IsGameSaveSlot)
+        {
+            GameSaveSlot.SetActive(false);
+            IsGameSaveSlot = false;
+        }
+
+        if (IsGameEtcSlot)
+        {
+            GameEtcSlot.SetActive(false);
+            IsGameEtcSlot = false;
+        }
+
+        if (IsGameLoadSlot)
+        {
+            GameLoadSlot.SetActive(false);
+            IsGameLoadSlot = false;
+        }
+        IsGameTip = !IsGameTip;
+        GameEtcTip.SetActive(IsGameTip);
+        OnOffSelectMeue();
+    }
+
     public void OnOffSelectMeue()
     {
-        if (!IsGameSaveSlot && !IsGameLoadSlot && !IsGameEtcSlot)
+        if (!IsGameSaveSlot && !IsGameLoadSlot && !IsGameEtcSlot && !IsGameTip)
         {
             MenuSelectText.SetActive(true);
         }

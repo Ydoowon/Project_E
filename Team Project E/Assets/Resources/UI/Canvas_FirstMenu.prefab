@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: 5112995875050671010}
   - component: {fileID: 5112995875050671011}
   - component: {fileID: 5112995875050671008}
-  - component: {fileID: 3236038362904603027}
   m_Layer: 5
   m_Name: Button_new
   m_TagString: Untagged
@@ -331,7 +330,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5112995875050671010}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2998771086949808466}
+        m_TargetAssemblyTypeName: FirstMenuManager_L, Assembly-CSharp
+        m_MethodName: TitleNewStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &5112995875050671008
 Animator:
   serializedVersion: 3
@@ -351,19 +362,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3236038362904603027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5112995875050671037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a36c307c2e48f48ae861cc834aa3281b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FadeImage: {fileID: 5454065356110566201}
 --- !u!1 &5112995875071665975
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +614,6 @@ GameObject:
   - component: {fileID: 5112995875686964861}
   - component: {fileID: 5112995875686964862}
   - component: {fileID: 5112995875686964835}
-  - component: {fileID: 7398863496626160349}
   m_Layer: 5
   m_Name: Button_Option
   m_TagString: Untagged
@@ -725,7 +722,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5112995875686964861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2998771086949808466}
+        m_TargetAssemblyTypeName: FirstMenuManager_L, Assembly-CSharp
+        m_MethodName: TitleOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &5112995875686964835
 Animator:
   serializedVersion: 3
@@ -745,19 +754,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7398863496626160349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5112995875686964856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81be2690e3acf4d35ab11145eb72dabc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FirstMenu: {fileID: 5112995875071665975}
 --- !u!1 &5112995875741801955
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +881,6 @@ GameObject:
   - component: {fileID: 5112995875779354396}
   - component: {fileID: 5112995875779354397}
   - component: {fileID: 5112995875779354370}
-  - component: {fileID: 3305962243359574449}
   m_Layer: 5
   m_Name: Button_End
   m_TagString: Untagged
@@ -994,7 +989,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5112995875779354396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2998771086949808466}
+        m_TargetAssemblyTypeName: FirstMenuManager_L, Assembly-CSharp
+        m_MethodName: TitleEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &5112995875779354370
 Animator:
   serializedVersion: 3
@@ -1014,18 +1021,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3305962243359574449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5112995875779354399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a435197e8ce4788903e4e9bdaa36c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5112995876084370473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5112995876496823895}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2998771086949808466}
+        m_TargetAssemblyTypeName: FirstMenuManager_L, Assembly-CSharp
+        m_MethodName: TitleContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &5112995876496823893
 Animator:
   serializedVersion: 3
@@ -1707,3 +1714,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cf28dd463074d9e8cb4a5a1dd219b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FirstMenu: {fileID: 5112995875071665975}
+  FadeImage: {fileID: 5454065356110566201}
