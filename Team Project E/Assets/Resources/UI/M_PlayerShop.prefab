@@ -545,20 +545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d58f06af50092a4e9681723bc3fc2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BT:
-  - {fileID: 2939242272236533371}
-  - {fileID: 3143234945055802914}
-  - {fileID: 2635293830746560038}
-  - {fileID: 4922056721094519723}
-  - {fileID: 5642020539703545958}
-  - {fileID: 8483929047230203826}
-  Goldtext:
-  - {fileID: 7962216322097681676}
-  - {fileID: 8775817564964696841}
-  - {fileID: 8647237896545271076}
-  - {fileID: 8243242225275015817}
-  - {fileID: 6868922736239386114}
-  - {fileID: 1202462167264035062}
+  BT: []
+  Goldtext: []
 --- !u!1 &645086643625366237
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +556,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8650807374183363090}
-  - component: {fileID: 2984068149525202830}
   m_Layer: 5
   m_Name: Sales2
   m_TagString: Untagged
@@ -598,20 +585,6 @@ RectTransform:
   m_AnchoredPosition: {x: 546.57, y: -176}
   m_SizeDelta: {x: 178.63, y: 133.2171}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2984068149525202830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 645086643625366237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4374b6be622a4c4d8b877d89389ae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disapear: {fileID: 3143234945055802914}
-  myItem: {fileID: 0}
 --- !u!1 &803105807852529796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1160,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3062200426311747944}
-  - component: {fileID: 217249263056896978}
   m_Layer: 5
   m_Name: Sales3
   m_TagString: Untagged
@@ -1217,20 +1189,6 @@ RectTransform:
   m_AnchoredPosition: {x: 140.99994, y: -445}
   m_SizeDelta: {x: 178.63, y: 133.2171}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &217249263056896978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470271434412400950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4374b6be622a4c4d8b877d89389ae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disapear: {fileID: 2635293830746560038}
-  myItem: {fileID: 0}
 --- !u!1 &1576762601618358027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,11 +1614,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b59d75049db4f47963f980ca1e62ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
   slae3: {fileID: 1470271434412400950}
   slae4: {fileID: 8479988744388637141}
   slae5: {fileID: 4439495912603012211}
   slae6: {fileID: 9164010455872479530}
-  tableMany: 2
+  slae7: {fileID: 0}
+  slae8: {fileID: 0}
 --- !u!1 &2374452911175176798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,7 +1807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7063733230771576332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2302,7 +2262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5684581612737118784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2415,7 +2375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &565722067923662270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3279,7 +3239,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3437664190795460098}
-  - component: {fileID: 1163160554408694254}
   m_Layer: 5
   m_Name: Sales5
   m_TagString: Untagged
@@ -3309,20 +3268,6 @@ RectTransform:
   m_AnchoredPosition: {x: 140.99994, y: -734}
   m_SizeDelta: {x: 178.63, y: 133.2171}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1163160554408694254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4439495912603012211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4374b6be622a4c4d8b877d89389ae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disapear: {fileID: 5642020539703545958}
-  myItem: {fileID: 0}
 --- !u!1 &4922056721094519723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,7 +3283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8964930829641986652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3521,7 +3466,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3297846320920521258}
-  - component: {fileID: 870563902765672889}
   m_Layer: 5
   m_Name: Sales1
   m_TagString: Untagged
@@ -3551,20 +3495,6 @@ RectTransform:
   m_AnchoredPosition: {x: 141, y: -176}
   m_SizeDelta: {x: 178.63, y: 133.2171}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &870563902765672889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219319410533346082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4374b6be622a4c4d8b877d89389ae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disapear: {fileID: 2939242272236533371}
-  myItem: {fileID: 0}
 --- !u!1 &5271790928622499695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,7 +3886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8325907044399283178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6694,7 +6624,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5665616732628071186}
-  - component: {fileID: 8123311272801428936}
   m_Layer: 5
   m_Name: Sales4
   m_TagString: Untagged
@@ -6724,20 +6653,6 @@ RectTransform:
   m_AnchoredPosition: {x: 546.57, y: -444.99997}
   m_SizeDelta: {x: 178.63, y: 133.2171}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8123311272801428936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8479988744388637141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4374b6be622a4c4d8b877d89389ae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disapear: {fileID: 4922056721094519723}
-  myItem: {fileID: 0}
 --- !u!1 &8483929047230203826
 GameObject:
   m_ObjectHideFlags: 0
@@ -6753,7 +6668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1940016455501581069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6919,7 +6834,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6161984341036909547}
-  - component: {fileID: 3047248288458113550}
   m_Layer: 5
   m_Name: Sales6
   m_TagString: Untagged
@@ -6949,17 +6863,3 @@ RectTransform:
   m_AnchoredPosition: {x: 546.57, y: -734}
   m_SizeDelta: {x: 178.63, y: 133.2171}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3047248288458113550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9164010455872479530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4374b6be622a4c4d8b877d89389ae57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disapear: {fileID: 8483929047230203826}
-  myItem: {fileID: 0}

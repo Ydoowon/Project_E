@@ -1,50 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class M_playerShopOpen : MonoBehaviour
 {
     public TMPro.TMP_Text How;
     public GameObject HOW;
+    public event UnityAction PlayerShoprng;
     public GameObject Shop;
-    public bool PlayerShopshow = false;
     // Start is called before the first frame update
     void Start()
     {
-        Shop.GetComponent<M_PlayerShop>().Shopshow += () =>
-        {
-            HOW.SetActive(true);
-            PlayerShopshow = false;
-        };   
+        
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+   
+
+    }
     private void OnTriggerEnter(Collider other)
     {
+        PlayerShoprng?.Invoke();
         HOW.SetActive(true);
         How.text = "진열대 열기";
 
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (!PlayerShopshow)
-            {
-                PlayerShopshow = true;
-                HOW.SetActive(false);
-                Shop.SetActive(true);
-
-            }
-            else
-            {               
-                Shop.GetComponent<M_PlayerShop>().Close();
-            }
-        }
-    }
     private void OnTriggerExit(Collider other)
     {
-        Shop.GetComponent<M_PlayerShop>().Close();
+        PlayerShoprng?.Invoke();
         HOW.SetActive(false);
+        Shop.GetComponent<M_PlayerShop>().Close();
 
     }
 }

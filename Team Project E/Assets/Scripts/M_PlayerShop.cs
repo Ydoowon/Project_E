@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
 
 public class M_PlayerShop : MonoBehaviour
 {
-    public event UnityAction Shopshow;
+    public GameObject UI;
     public GameObject slae3;
     public GameObject slae4;
     public GameObject slae5;
@@ -29,7 +28,7 @@ public class M_PlayerShop : MonoBehaviour
     }   
     public void Close()
     {
-        Shopshow?.Invoke();
+        UI.GetComponent<M_ui>().PlayerShopshow = true;
         this.gameObject.SetActive(false);
     }
 
