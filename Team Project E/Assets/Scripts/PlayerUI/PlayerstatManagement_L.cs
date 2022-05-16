@@ -22,7 +22,7 @@ public class PlayerstatManagement_L : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -31,31 +31,26 @@ public class PlayerstatManagement_L : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         HPtext();
         Hidetext();
         LevelandExpText();
-
     }
+
 
     public void HPtext()
     {
-        float TextHP = myPlayer.GetComponent<SPlayer>().MyStatus.HP;
-        playerHP.text = (int)TextHP + " / " + "100";
-        HPSlider.value = TextHP / 100;
-
+        float HP = myPlayer.GetComponent<SPlayer>().MyStatus.HP;
+        float MaxHP = myPlayer.GetComponent<SPlayer>().MyStatus.MaxHP;
+        playerHP.text = (int)HP + " / " + (int)MaxHP;
+        HPSlider.value = HP / MaxHP;
     }
 
     public void Hidetext()
     {
-        float TextHide = myPlayer.GetComponent<SPlayer>().MyStatus.Hidepoint;
-        playerHide.text = (int)TextHide + " / " + "100";
-        HideSlider.value = TextHide / 100;
-
+        float Hide = myPlayer.GetComponent<SPlayer>().MyStatus.Hidepoint;
+        float MaxHide = myPlayer.GetComponent<SPlayer>().MyStatus.Max_hdPoint;
+        playerHide.text = (int)Hide + " / " + MaxHide;
+        HideSlider.value = Hide / MaxHide;
     }
 
     public void LevelandExpText()
@@ -71,7 +66,7 @@ public class PlayerstatManagement_L : MonoBehaviour
     public void Unlocking(float point)
     {
         UnlockGauge.GetComponent<SGauge>().mySlider.value = (100.0f - point) / 100.0f;
-        if(point <= 0)
+        if (point <= 0)
         {
             UnlockSet(false);
         }

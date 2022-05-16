@@ -19,7 +19,7 @@ public class SMonster : MonoBehaviour
     float AttackDelay = 0.0f;
     [SerializeField]
     float MissingTime = 5.0f;
-    
+
     public List<Transform> DestList = new List<Transform>();
     //순찰중 이동할 위치에 대한 리스트
     int ListCnt = 0;
@@ -68,7 +68,8 @@ public class SMonster : MonoBehaviour
 
     public void Attack()
     {
-        if(myPerception.myEnemyList[0] !=null)
+        if (myPerception.myEnemyList.Count == 0) return;
+        if (myPerception.myEnemyList[0] != null)
         {
             myPerception.myEnemyList[0].GetComponent<SPlayer>().Ondamage(Damage);
         }
@@ -93,6 +94,10 @@ public class SMonster : MonoBehaviour
                 break;
             case STATE.MOVE:
                 myNav.speed = MoveSpeed;
+                if (DestList.Count != 0)
+                {
+                    myNav.SetDestination(DestList[ListCnt].position);
+                }
                 myNav.stoppingDistance = 1.0f;
                 myAnim.SetBool("IsWalk", true);
                 myAnim.SetBool("IsRun", false);
@@ -121,16 +126,17 @@ public class SMonster : MonoBehaviour
             case STATE.MOVE:
                 if (myPerception.myEnemyList.Count > 0)
                     FindTarget(myPerception.myEnemyList[0]);
-                
+
                 MoveToDestination();
                 break;
             case STATE.FOLLOW:
                 if (myPerception.myEnemyList.Count == 0)
                 {
-                    myNav.SetDestination(this.gameObject.transform.position);
+                    myNav.SetDestination(this.transform.position);
+                    myNav.velocity = Vector3.zero;
                     ChangeState(STATE.IDLE);
                 }
-                else 
+                else
                 {
                     //플레이어 공격 & 추적
                     FindTarget(myPerception.myEnemyList[0]);
@@ -152,6 +158,7 @@ public class SMonster : MonoBehaviour
             {
                 myAnim.SetBool("AttPossible", false);
                 myPerception.myEnemyList.RemoveAt(0);
+                myNav.velocity = Vector3.zero;
                 myNav.SetDestination(this.transform.position);
                 ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
             }
@@ -182,15 +189,15 @@ public class SMonster : MonoBehaviour
     {
         if (DestList.Count == 0) return;
 
-        myNav.SetDestination(DestList[ListCnt].position);
         float Dist = (DestList[ListCnt].position - this.transform.position).magnitude;
-        if(Dist <= myNav.stoppingDistance) // 목적지에 도착했을 경우
+        if (Dist <= myNav.stoppingDistance) // 목적지에 도착했을 경우
         {
+            myNav.velocity = Vector3.zero;
             if (ListCnt < DestList.Count - 1)
             {
                 ListCnt++;  // 다음 목적지로 
             }
-            else if(ListCnt >= DestList.Count - 1)
+            else if (ListCnt >= DestList.Count - 1)
             {
                 ListCnt = 0; // 첫 목적지로 초기화
             }
@@ -220,10 +227,10 @@ public class SMonster : MonoBehaviour
         // 플레이어와 몬스터 사이 방향 벡터와 몬스터의 forward 백터사이의 각을 구함
 
         // 앵글이 -45 ~ 45도 사이일 때, 플레이어가 숨지않았을 때
-        if (Angle < 45.0f && !Target.GetComponent<SPlayer>().OnHide)  
+        if (Angle < 45.0f && !Target.GetComponent<SPlayer>().OnHide)
         {
-            
-            Ray ray = new Ray(this.transform.position + new Vector3(0,2,0), pos);  // 자신에서 플레이어로 향하는 Ray 생성
+
+            Ray ray = new Ray(this.transform.position + new Vector3(0, 2, 0), pos);  // 자신에서 플레이어로 향하는 Ray 생성
             if (Physics.Raycast(ray, out RaycastHit hit, 30.0f, CrashMask))
             {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -241,7 +248,7 @@ public class SMonster : MonoBehaviour
         {
             Missing();
         }
-        
+
     }
     public void Missing()
     {
@@ -251,99 +258,11 @@ public class SMonster : MonoBehaviour
         if (MissingTime <= 0.0f)
         {
             myNav.SetDestination(this.transform.position);
+            myNav.velocity = Vector3.zero;
             ChangeState(STATE.IDLE);
-            MissingTime = 5.0f;
+            MissingTime = 8.0f;
         }
     }
 
-   
-}
-
-/*
-public void FollowTarget()
-{
-    if(MoveRoutine != null) StopCoroutine(MoveRoutine);
-    MoveRoutine = StartCoroutine(Following());
-
-    if(RotRoutine != null) StopCoroutine(RotRoutine);
-    RotRoutine = StartCoroutine(Rotating());
 
 }
-
-
-IEnumerator Following()
-{
-    while (myState == STATE.FOLLOW)  // FOLLOW 상태일 때 계속 진행
-    {
-        if (myPerception.myEnemyList.Count == 0) break;
-
-        float delta = MoveSpeed * Time.deltaTime;
-        this.transform.position += this.transform.forward * delta;
-        yield return null;
-    }
-
-    MoveRoutine = null;
-}*/
-/*
- public void MoveAround(float Dist)   // 주위를 랜덤으로 배회한다
- {
-     if (RotRoutine == null && MoveRoutine == null)
-         RotRoutine = StartCoroutine(Rotating());
-
-     if (MoveRoutine != null) return;
-     MoveRoutine = StartCoroutine(Moving(Dist));
- }
-*/
-/*
-IEnumerator Rotating()
-{
-
-    float RotAngle = Random.Range(0.0f, 180.0f);
-    float Dir = 1.0f;
-    if (RotAngle > 180.0f)
-        Dir = -1.0f;
-
-    while (RotAngle > 0)  //  돌아야 할 각도가 남아 있을 때
-    {
-        if (myState == STATE.FOLLOW) break;
-
-        float delta = RotSpeed * Time.deltaTime;
-
-        if (RotAngle < delta)
-        {
-            delta = RotAngle;
-        }
-
-        this.transform.Rotate(Vector3.up, delta * Dir, Space.World);
-        RotAngle -= delta;
-
-        yield return null;
-    }
-    RotRoutine = null;
-}
-*/
-/*
-IEnumerator Moving(float Dist)
-{
-
-    while (Dist > 0.0f)   //move상태일때 계속 와리가리 하면서 이동
-    {
-        if (myState == STATE.FOLLOW) break;
-
-        float delta = MoveSpeed * Time.deltaTime;
-        if (delta > Dist)
-            delta = Dist;
-
-        this.transform.position += this.transform.forward * delta;
-        Dist -= delta;
-        yield return null;
-    }
-    yield return StartCoroutine(Wait(3.0f));
-
-    ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE);
-
-    MoveRoutine = null;
-
-    // 루틴이 끝나면 3초 대기
-}
-*/

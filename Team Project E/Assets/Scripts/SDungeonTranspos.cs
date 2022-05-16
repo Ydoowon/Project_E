@@ -13,7 +13,7 @@ public class SDungeonTranspos : MonoBehaviour
     SPlayer Player;
     bool IsActive = false;
 
-    private void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
@@ -37,7 +37,7 @@ public class SDungeonTranspos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player != null && Input.GetKeyDown(KeyCode.E))
+        if (Player != null && Input.GetKeyDown(KeyCode.E))
         {
             IsActive = !IsActive;
             SGameManager.instance.PressE.SetActive(!IsActive);
@@ -47,23 +47,21 @@ public class SDungeonTranspos : MonoBehaviour
 
     public void MoveToDungeon()
     {
-        if(Player!=null && DestPos != null)
+        if (Player != null && DestPos != null)
         {
             SGameManager.instance.PressE.SetActive(false);
             SGameManager.instance.DungeonSelectUI.SetActive(false);
             StartCoroutine(FadeInFadeOut(Player.gameObject));
         }
-        
+
     }
     IEnumerator FadeInFadeOut(GameObject Player)
     {
-        SGameManager.instance.FadeAnim.SetTrigger("FadeOut");
+        SGameManager.instance.FadeInOut();
         yield return new WaitForSeconds(1.0f);
         Player.GetComponent<NavMeshAgent>().Warp(DestPos.position);
         Player.GetComponent<SPlayer>().myPlayer.rotation = DestPos.rotation;
-        SGameManager.instance.FadeAnim.SetTrigger("FadeIn");
     }
-
     public void SetDestPos(Transform Dest)
     {
         DestPos = Dest;

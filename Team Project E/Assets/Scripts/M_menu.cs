@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class M_menu : MonoBehaviour
 {
     public GameObject layout;
-    public event UnityAction MenuShow = null;
+    //public event UnityAction MenuShow = null;
 
     bool IsGameSaveSlot = false;
     public GameObject GameSaveSlot;
@@ -18,32 +19,18 @@ public class M_menu : MonoBehaviour
     bool IsGameEtcSlot = false;
     public GameObject GameEtcSlot;
 
-    bool IsGameTip = false;
-    public GameObject GameEtcTip;
-
     public GameObject MenuSelectText;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Open()
     {
         Time.timeScale = 0;
         layout.SetActive(true);
-
     }
     public void Close()
     {
         Time.timeScale = 1;
-        MenuShow?.Invoke();
         layout.SetActive(false);
-        Destroy(this.gameObject);
     }
 
     public void OnOffGameSave()
@@ -58,12 +45,6 @@ public class M_menu : MonoBehaviour
         {
             GameEtcSlot.SetActive(false);
             IsGameEtcSlot = false;
-        }
-
-        if (IsGameTip)
-        {
-            GameEtcTip.SetActive(false);
-            IsGameTip = false;
         }
 
         IsGameSaveSlot = !IsGameSaveSlot;
@@ -84,12 +65,6 @@ public class M_menu : MonoBehaviour
             GameEtcSlot.SetActive(false);
             IsGameEtcSlot = false;
         }
-
-        if (IsGameTip)
-        {
-            GameEtcTip.SetActive(false);
-            IsGameTip = false;
-        }
         IsGameLoadSlot = !IsGameLoadSlot;
         GameLoadSlot.SetActive(IsGameLoadSlot);
         OnOffSelectMeue();
@@ -108,44 +83,14 @@ public class M_menu : MonoBehaviour
             GameLoadSlot.SetActive(false);
             IsGameLoadSlot = false;
         }
-
-        if (IsGameTip)
-        {
-            GameEtcTip.SetActive(false);
-            IsGameTip = false;
-        }
         IsGameEtcSlot = !IsGameEtcSlot;
         GameEtcSlot.SetActive(IsGameEtcSlot);
         OnOffSelectMeue();
     }
 
-    public void OnOffGameTip()
-    {
-        if (IsGameSaveSlot)
-        {
-            GameSaveSlot.SetActive(false);
-            IsGameSaveSlot = false;
-        }
-
-        if (IsGameEtcSlot)
-        {
-            GameEtcSlot.SetActive(false);
-            IsGameEtcSlot = false;
-        }
-
-        if (IsGameLoadSlot)
-        {
-            GameLoadSlot.SetActive(false);
-            IsGameLoadSlot = false;
-        }
-        IsGameTip = !IsGameTip;
-        GameEtcTip.SetActive(IsGameTip);
-        OnOffSelectMeue();
-    }
-
     public void OnOffSelectMeue()
     {
-        if (!IsGameSaveSlot && !IsGameLoadSlot && !IsGameEtcSlot && !IsGameTip)
+        if (!IsGameSaveSlot && !IsGameLoadSlot && !IsGameEtcSlot)
         {
             MenuSelectText.SetActive(true);
         }
