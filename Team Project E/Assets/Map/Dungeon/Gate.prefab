@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1834484176863956333}
   - component: {fileID: 7375066427852798531}
   - component: {fileID: 8569438467884614432}
-  - component: {fileID: 7903752262045569872}
   m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
@@ -100,11 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602101138f894804483bf33ed36fe526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  order: 
-  myOrblist: []
-  OrderCnt: 0
   Lockgauge: 100
-  orbLocked: 1
   DoorOpen: 0
 --- !u!95 &1834484176863956333
 Animator:
@@ -154,19 +149,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 9.6, z: 26.00001}
   m_Center: {x: 0.00000047683716, y: 1.0000001, z: -0.000003814698}
---- !u!65 &7903752262045569872
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834484176863956335}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10.00001, y: 2, z: 26.00001}
-  m_Center: {x: 0.0000004768374, y: 1.0000235, z: -0.000003337861}
 --- !u!1 &1834484176974666346
 GameObject:
   m_ObjectHideFlags: 0

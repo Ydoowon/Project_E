@@ -57,11 +57,13 @@ public class SDungeonTranspos : MonoBehaviour
     }
     IEnumerator FadeInFadeOut(GameObject Player)
     {
-        SGameManager.instance.FadeInOut();
+        SGameManager.instance.FadeAnim.SetTrigger("FadeOut");
         yield return new WaitForSeconds(1.0f);
         Player.GetComponent<NavMeshAgent>().Warp(DestPos.position);
         Player.GetComponent<SPlayer>().myPlayer.rotation = DestPos.rotation;
+        SGameManager.instance.FadeAnim.SetTrigger("FadeIn");
     }
+
     public void SetDestPos(Transform Dest)
     {
         DestPos = Dest;

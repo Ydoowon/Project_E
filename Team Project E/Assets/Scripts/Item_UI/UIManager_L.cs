@@ -12,15 +12,10 @@ public class UIManager_L : MonoBehaviour
     RoomButton_L[] myButtons;
     public Canvas myCanvas;
 
-    public GameObject Menu;
-
     bool ActiveInven = false;
     bool ActiveMap = false;
-    bool ActiveMenu = false;
 
     public Transform myPlayer;
-    [SerializeField]
-    SPlayer player;
     public Image myCompass;
 
     void Start()
@@ -37,50 +32,29 @@ public class UIManager_L : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InvenOnOff();
-        }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            MapOnOff();
-        }
-        if(myCompass.gameObject.activeSelf)
-        {
-            SetCompass();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            MenuOnOff();
-        }   
+        InvenOnOff(); // Ieven On,Off
+        MapOnOff();
+        SetCompass();
+        //Pause();      // Game Pause
     }
     void InvenOnOff()
     {
-        ActiveInven = !ActiveInven;
-        myInven.SetActive(ActiveInven);
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ActiveInven = !ActiveInven;
+            myInven.SetActive(ActiveInven);
+        }
     }
 
     void MapOnOff()
     {
-        ActiveMap = !ActiveMap;
-        myMap.SetActive(ActiveMap);
-    }
-    public void MenuOnOff()
-    {
-        ActiveMenu = !ActiveMenu;
-        Menu.SetActive(ActiveMenu);
-
-        if(ActiveMenu)
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            Menu.GetComponent<M_menu>().Open();
-        }
-        else
-        {
-            Menu.GetComponent<M_menu>().Close();
+            ActiveMap = !ActiveMap;
+            myMap.SetActive(ActiveMap);
         }
     }
-
+    
 
     public void SetMyButton(int Row, int Col)
     {
@@ -88,7 +62,8 @@ public class UIManager_L : MonoBehaviour
         if (myButtons != null)
         {
             myButtons[(Row - 1) * 4 + Col - 1].gameObject.SetActive(true);
-            player.GetmyMap().myRooms[(Row-1)*4+Col -1].Checking = true;
+            SPlayer.instance.GetmyMap().myRooms[(Row - 1) * 4 + Col - 1].Checking = true;
+            //this.GetComponent<PlayerstatManagement_L>().myPlayer.GetComponent<SPlayer>().GetmyMap().myRooms[(Row-1)*4+Col -1].Checking = true;
             ActiveCompass(true);
             myCompass.transform.SetParent(myButtons[(Row - 1) * 4 + Col - 1].transform);
             myCompass.rectTransform.localPosition = new Vector3(0, 0, 0);
@@ -110,7 +85,6 @@ public class UIManager_L : MonoBehaviour
 
     public void SetCompass()
     {
-        if(myCompass != null)
         myCompass.rectTransform.localRotation = Quaternion.Euler(0, 0, -myPlayer.transform.localRotation.eulerAngles.y);
     }
     public void AddItem(SItem _additem, int count = 1, int price = 0)
@@ -179,7 +153,6 @@ public class UIManager_L : MonoBehaviour
         }
         return -1;
     }
-
 
     
 }

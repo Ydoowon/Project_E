@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -8,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class M_menu : MonoBehaviour
 {
     public GameObject layout;
-    //public event UnityAction MenuShow = null;
+    public event UnityAction MenuShow = null;
 
     bool IsGameSaveSlot = false;
     public GameObject GameSaveSlot;
@@ -23,17 +22,28 @@ public class M_menu : MonoBehaviour
     public GameObject GameEtcTip;
 
     public GameObject MenuSelectText;
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
 
     // Update is called once per frame
+    void Update()
+    {
+
+    }
     public void Open()
     {
         Time.timeScale = 0;
         layout.SetActive(true);
+
     }
     public void Close()
     {
         Time.timeScale = 1;
+        MenuShow?.Invoke();
         layout.SetActive(false);
+        Destroy(this.gameObject);
     }
 
     public void OnOffGameSave()

@@ -177,7 +177,6 @@ public class SConsumer : MonoBehaviour
                 Dist = (mySummoner.MovePosition[EntranceNum].position- this.transform.position).magnitude;
                 if(Dist <= myNav.stoppingDistance + 0.1f)
                 {
-                    myNav.velocity = Vector3.zero;
                     ChangeState(STATE.IDLE);
                     NextState = 4;
                 }
@@ -230,7 +229,6 @@ public class SConsumer : MonoBehaviour
                 if (ToItemDist <= myNav.stoppingDistance + 0.1f)
                 {
                     myAnim.SetBool("IsWalk", false);
-                    myNav.velocity = Vector3.zero;
                     price = BuyingItem.GetComponent<SStock_Shelves>().price;
                     if (price < 1000) //1000은 시세를 임의로 정해준 값
                     {
@@ -254,7 +252,6 @@ public class SConsumer : MonoBehaviour
                 if(RegDist <= myNav.stoppingDistance )
                 {
                     myAnim.SetBool("IsWalk", false);
-                    myNav.velocity = Vector3.zero;
                     myNav.ResetPath();
                     myNav.isStopped = true;
                     
@@ -279,7 +276,6 @@ public class SConsumer : MonoBehaviour
                 float outDist = (mySummoner.MovePosition[0].transform.position - this.transform.position).magnitude;
                 if (outDist <= myNav.stoppingDistance + 0.1f)
                 {
-                    myNav.velocity = Vector3.zero;
                     myAnim.SetBool("IsWalk", false);
                     Destroy(this.gameObject,3.0f);
                 }

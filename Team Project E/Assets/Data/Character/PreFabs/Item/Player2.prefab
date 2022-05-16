@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6614982212294131651}
   - component: {fileID: 6095238845502997970}
   - component: {fileID: 3259359750556917679}
-  - component: {fileID: 3143188227115578116}
+  - component: {fileID: 9100326786131521585}
   m_Layer: 6
   m_Name: Player2
   m_TagString: Untagged
@@ -94,20 +94,24 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!136 &3143188227115578116
-CapsuleCollider:
+--- !u!143 &9100326786131521585
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8237998448322670528}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3.98
   m_Radius: 0.5
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.97, z: 0}
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 1
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &6986199640051869443
 PrefabInstance:
   m_ObjectHideFlags: 0

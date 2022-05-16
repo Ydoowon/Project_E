@@ -10,6 +10,15 @@ public class SStock_Shelves : MonoBehaviour
     bool InUse = false;
     public bool DisplayItem = false;
     // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     public bool GetInUse()
     {
         return InUse;

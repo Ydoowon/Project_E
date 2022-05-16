@@ -8,7 +8,7 @@ public class SGameManager : MonoBehaviour
 {
     static public SGameManager instance;
 
-    public GameObject LoadingImage;
+    public Animator FadeAnim;
     public GameObject ItemToolTip;
     public SItem[] Itemlist = null;
     public GameObject PressE;
@@ -19,14 +19,11 @@ public class SGameManager : MonoBehaviour
 
     [SerializeField]
     TMPro.TMP_Text AlarmMessage;
-    Coroutine MessageAnim;
 
     [SerializeField]
     SPlayer Player;
 
-    [SerializeField]
-    SaveSlot[] Saveslots;
-
+    //List<SaveData> PlayerData; 
 
     // Start is called before the first frame update
     void Start()
@@ -40,36 +37,7 @@ public class SGameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        for(int i =0; i< Saveslots.Length; i++)
-        {
-
-            string filename = "savedata" + (i+1);
-            string path = Application.dataPath + "/" + filename + ".Json";
-            string json;
-            try
-            {
-                json = File.ReadAllText(path);
-            }
-            catch
-            {
-                json = string.Empty;
-            }
-            if (json != string.Empty)
-            {
-                SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-                if (saveData != null)
-                {
-                    Saveslots[i].isSaved = true;
-                    Saveslots[i].Date.text = "DATE : " + saveData.SavingTime;
-                    Saveslots[i].Status.text = "<color=yellow>SaveData " + (i + 1) + "</color>" + "\n"
-                        + "Level : " + saveData._level + "\n"
-                        + "Gold : " + saveData._gold;
-                    Saveslots[i].noData.SetActive(false);
-                    Saveslots[i].SaveDataImage.SetActive(true);
-                }
-            }
-        }
+        
     }
     public void MapSetting(Map UserMap) // 매개변수로 받은 유저 맵으로 UI맵을 새팅한다
     {
@@ -121,32 +89,7 @@ public class SGameManager : MonoBehaviour
     public void ShowMessage(string Message)
     {
         AlarmMessage.text = Message;
-
-        if (MessageAnim != null) StopCoroutine(MessageAnim);
-        MessageAnim = StartCoroutine(ShowingMessage());
-        
-    }
-
-    IEnumerator ShowingMessage()
-    {
-        Color fontColor = AlarmMessage.color;
-        fontColor.a = 0;
-        AlarmMessage.color = fontColor;
-        while(fontColor.a < 1)
-        {
-            fontColor.a += Time.deltaTime;
-            AlarmMessage.color = fontColor;
-            yield return null;
-        }
-        fontColor.a = 1;
-        yield return new WaitForSeconds(0.5f);
-        while(fontColor.a > 0)
-        {
-            fontColor.a -= Time.deltaTime;
-            AlarmMessage.color = fontColor;
-            yield return null;
-        }
-        MessageAnim = null;
+        AlarmMessage.GetComponent<Animator>().SetTrigger("ShowMessage");
     }
 
 
@@ -167,7 +110,6 @@ public class SGameManager : MonoBehaviour
         //플레이어가 가지고 있던 맵 데이터 저장
         PlayerData.PlayerMapList = Player.myMapList.ToArray();
 
-        //상점에 올려둔 아이템 저장
         int cnt = MapUI.myItemSlot.Length;
         List<InventoryData> InvenData = new List<InventoryData>();
         for (int i = 0; i < cnt; i++)
@@ -183,67 +125,13 @@ public class SGameManager : MonoBehaviour
             }
         }
         PlayerData.Inventory = InvenData.ToArray();
-        PlayerData.SavingTime = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
 
-        
+        //상점에 올려둔 아이템 저장
         ShowMessage("저장됐습니다");
         string json = JsonUtility.ToJson(PlayerData);
 
-        string filename = "savedata" + (SaveSlotNum+1);
+        string filename = "savedata";
         string path = Application.dataPath + "/" + filename + ".Json";
         File.WriteAllText(path, json);
-
-        Saving(SaveSlotNum);
-    }
-
-
-    public void Saving(int slotnum)
-    {
-        if (slotnum > Saveslots.Length) return;
-        
-
-        Saveslots[slotnum].isSaved = true;
-
-        System.DateTime dateTime = System.DateTime.Now;
-        Saveslots[slotnum].Date.text = "DATE : " + dateTime.ToString("yyyy-MM-dd hh:mm:ss");
-        Saveslots[slotnum].Status.text = "<color=yellow>SaveData " + (slotnum + 1) + "</color>" + "\n"
-            + "Level : " + Player.MyStatus.PlayerLevel + "\n"
-            + "Gold : " + Player.MyStatus.Gold;
-    }
-
-
-    IEnumerator ScreenWhite(Image FadeImage, Color FadeColor)
-    {
-        FadeColor.a = 1.0f;
-        while(FadeColor.a > 0)
-        {
-            float delta = Time.deltaTime;
-            FadeColor.a -= delta;
-            FadeImage.color = FadeColor;
-            yield return null;
-        }
-        FadeColor.a = 0;
-        FadeImage.color = FadeColor;
-        LoadingImage.SetActive(false);
-    }
-    IEnumerator ScreenBlack(Image FadeImage, Color FadeColor)
-    {
-        FadeImage.color = FadeColor;
-        while (FadeColor.a < 1.0f)
-        {
-            float delta = Time.deltaTime; 
-            FadeColor.a += delta;
-            FadeImage.color = FadeColor;
-            yield return null;
-        }
-        yield return new WaitForSeconds(1.0f);
-        StartCoroutine(ScreenWhite(FadeImage, FadeColor));
-    }
-    public void FadeInOut()
-    {
-        LoadingImage.SetActive(true);
-        Color FadeColor = new Color(0, 0, 0, 0);
-        Image FadeImage = LoadingImage.GetComponent<Image>();
-        StartCoroutine(ScreenBlack(FadeImage, FadeColor));
     }
 }
