@@ -12,14 +12,19 @@ public class UIManager_L : MonoBehaviour
     RoomButton_L[] myButtons;
     public Canvas myCanvas;
 
+    public GameObject Menu;
+
     bool ActiveInven = false;
     bool ActiveMap = false;
+    bool ActiveMenu = false;
 
     public Transform myPlayer;
+    [SerializeField]
+    SPlayer player;
     public Image myCompass;
 
     void Start()
-{
+    {
         myInven.SetActive(ActiveInven);
         myMap.SetActive(ActiveMap);
         myItemSlot = myInven.GetComponentsInChildren<SItemSlot>();
@@ -32,29 +37,50 @@ public class UIManager_L : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InvenOnOff(); // Ieven On,Off
-        MapOnOff();
-        SetCompass();
-        //Pause();      // Game Pause
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            InvenOnOff();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            MapOnOff();
+        }
+        if (myCompass.gameObject.activeSelf)
+        {
+            SetCompass();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuOnOff();
+        }
     }
     void InvenOnOff()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ActiveInven = !ActiveInven;
-            myInven.SetActive(ActiveInven);
-        }
+        ActiveInven = !ActiveInven;
+        myInven.SetActive(ActiveInven);
     }
 
     void MapOnOff()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        ActiveMap = !ActiveMap;
+        myMap.SetActive(ActiveMap);
+    }
+    public void MenuOnOff()
+    {
+        ActiveMenu = !ActiveMenu;
+        Menu.SetActive(ActiveMenu);
+
+        if (ActiveMenu)
         {
-            ActiveMap = !ActiveMap;
-            myMap.SetActive(ActiveMap);
+            Menu.GetComponent<M_menu>().Open();
+        }
+        else
+        {
+            Menu.GetComponent<M_menu>().Close();
         }
     }
-    
+
 
     public void SetMyButton(int Row, int Col)
     {
@@ -62,8 +88,7 @@ public class UIManager_L : MonoBehaviour
         if (myButtons != null)
         {
             myButtons[(Row - 1) * 4 + Col - 1].gameObject.SetActive(true);
-            SPlayer.instance.GetmyMap().myRooms[(Row - 1) * 4 + Col - 1].Checking = true;
-            //this.GetComponent<PlayerstatManagement_L>().myPlayer.GetComponent<SPlayer>().GetmyMap().myRooms[(Row-1)*4+Col -1].Checking = true;
+            player.GetmyMap().myRooms[(Row - 1) * 4 + Col - 1].Checking = true;
             ActiveCompass(true);
             myCompass.transform.SetParent(myButtons[(Row - 1) * 4 + Col - 1].transform);
             myCompass.rectTransform.localPosition = new Vector3(0, 0, 0);
@@ -85,13 +110,14 @@ public class UIManager_L : MonoBehaviour
 
     public void SetCompass()
     {
-        myCompass.rectTransform.localRotation = Quaternion.Euler(0, 0, -myPlayer.transform.localRotation.eulerAngles.y);
+        if (myCompass != null)
+            myCompass.rectTransform.localRotation = Quaternion.Euler(0, 0, -myPlayer.transform.localRotation.eulerAngles.y);
     }
     public void AddItem(SItem _additem, int count = 1, int price = 0)
     {
-        if(_additem.ItemData.Countable)  // ?? ?? ???? ???????? ?????? ??
+        if (_additem.ItemData.Countable)  // ?? ?? ???? ???????? ?????? ??
         {
-            for(int i = 0; i < myItemSlot.Length; i++)
+            for (int i = 0; i < myItemSlot.Length; i++)
             {
                 if (myItemSlot[i].myItem == null) continue; // ?????? ???????? ?????? ????
                 //?????????? ???????? ???????? ???????? ???? ???? && ?????? ?????? ?????? ???? ??
@@ -103,9 +129,9 @@ public class UIManager_L : MonoBehaviour
                 }
             }
             // ?? ???? ?????? ???????? ???? ????
-            for(int i = 0; i < myItemSlot.Length; i++)
+            for (int i = 0; i < myItemSlot.Length; i++)
             {
-                if(myItemSlot[i].myItem == null)
+                if (myItemSlot[i].myItem == null)
                 {
                     InstItem(_additem, i, count, price);
                     myItemSlot[i].UpdateItem(_additem, count, true);
@@ -133,7 +159,7 @@ public class UIManager_L : MonoBehaviour
         GameObject obj = Instantiate(_additem.gameObject, myItemSlot[index].gameObject.transform);
         obj.GetComponent<Image>().sprite = obj.GetComponent<SItem>().ItemData.Image;
         obj.GetComponent<RectTransform>().localScale = Vector3.one;
-        
+
         obj.transform.SetAsFirstSibling();
         obj.GetComponent<SItem>().Price = price;
         obj.GetComponent<SItem>().CanvasSF = myCanvas.scaleFactor;
@@ -142,11 +168,11 @@ public class UIManager_L : MonoBehaviour
 
     public int FindItem(SItem findItem)
     {
-        for(int i = 0; i < myItemSlot.Length; i++)
+        for (int i = 0; i < myItemSlot.Length; i++)
         {
             if (myItemSlot[i].myItem == null) continue;
 
-            if(myItemSlot[i].myItem.name == findItem.name)
+            if (myItemSlot[i].myItem.name == findItem.name)
             {
                 return i;
             }
@@ -154,5 +180,6 @@ public class UIManager_L : MonoBehaviour
         return -1;
     }
 
-    
+
+
 }
