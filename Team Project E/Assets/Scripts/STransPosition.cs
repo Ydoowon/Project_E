@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class STransPosition : MonoBehaviour
 {
     public Transform WarpPos;
-
     [SerializeField]
     [TextArea]
     string Message;
@@ -42,10 +41,9 @@ public class STransPosition : MonoBehaviour
 
     IEnumerator FadeInFadeOut(GameObject Player)
     {
-        SGameManager.instance.FadeAnim.SetTrigger("FadeOut");
+        SGameManager.instance.FadeInOut();
         yield return new WaitForSeconds(1.0f);
         Player.GetComponent<NavMeshAgent>().Warp(WarpPos.position);
         Player.GetComponent<SPlayer>().myPlayer.rotation = WarpPos.rotation;
-        SGameManager.instance.FadeAnim.SetTrigger("FadeIn");
     }
 }

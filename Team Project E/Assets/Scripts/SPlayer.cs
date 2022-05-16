@@ -11,7 +11,11 @@ public class PlayerStatus
     public int PlayerLevel
     {
         get { return _level; }
-        set { _level = value; }
+        set 
+        {
+            _level = value;
+            PlayerstatManagement_L.instance.LevelandExpText();
+        }
     }
     [SerializeField]
     float _Exp = 0;
@@ -22,27 +26,75 @@ public class PlayerStatus
         set 
         {
             _Exp += value;
+            PlayerstatManagement_L.instance.LevelandExpText();
             // 요구 경험치는 플레이어 레벨^2 * 10 >> 레벨이 2면 경험치 요구량 40 (임시)
             while (_Exp >= PlayerLevel * PlayerLevel * 10)                         
             {
                 _Exp -= PlayerLevel * PlayerLevel * 10;
                 PlayerLevel++;
+                LevelUp();
             }
         }
     }
+    [SerializeField]
+    float _Max_HP = 100.0f;
+    public float MaxHP
+    {
+        get { return _Max_HP; }
+        set 
+        {
+            _Max_HP = value;
+            PlayerstatManagement_L.instance.HPtext();
+        }
+    }
+
     [SerializeField]
     float _HP = 100.0f;
     public float HP
     {
         get { return _HP; }
-        set { _HP = value; }
+        set 
+        {
+            if ((int)(value) != (int)(_HP))
+            {
+                _HP = value;
+                PlayerstatManagement_L.instance.HPtext();
+            }
+            else
+            {
+                _HP = value;
+            }
+            
+        }
+    }
+    [SerializeField]
+    float _Max_hdPoint = 100.0f;
+    public float Max_hdPoint
+    {
+        get { return _Max_hdPoint; }
+        set 
+        { 
+            _Max_hdPoint = value;
+            PlayerstatManagement_L.instance.Hidetext();
+        }
     }
     [SerializeField]
     float _hidepoint = 100.0f;
     public float Hidepoint
     {
         get { return _hidepoint; }
-        set { _hidepoint = value; }
+        set 
+        {
+            if ((int)(value) != (int)(_hidepoint))
+            {
+                _hidepoint = value;
+                PlayerstatManagement_L.instance.Hidetext();
+            }
+            else 
+            {
+                _hidepoint = value;
+            }
+        }
     }
     [SerializeField]
     int _gold = 0;
@@ -57,18 +109,19 @@ public class PlayerStatus
         TOWN, DUNGEON
     }
     public LOCATION myLocation = LOCATION.TOWN;
-
-    float _MoveSpeed = 5.0f;
+    [SerializeField]
+    float _MoveSpeed;
     public float MoveSpeed
     {
         get { return _MoveSpeed; }
         set { _MoveSpeed = value; }
     }
-    float _OriginMoveSpeed = 10.0f;
+    [SerializeField]
+    float _OriginMoveSpeed = 7.0f;
     public float OriginMoveSpeed
     {
         get { return _OriginMoveSpeed; }
-        set { OriginMoveSpeed = value; }
+        set { _OriginMoveSpeed = value; }
     }
     float _UnlockingSpeed = 10.0f;
     public float UnlockingSpeed
@@ -77,11 +130,17 @@ public class PlayerStatus
         set { _UnlockingSpeed = value; }
     }
 
+    public void LevelUp()
+    {
+        OriginMoveSpeed += PlayerLevel * 0.2f;
+        MaxHP += PlayerLevel * 2.0f;
+        Max_hdPoint += PlayerLevel * 1.0f;
+    }
+
 }
 
 public class SPlayer : MonoBehaviour
 {
-    static public SPlayer instance;
 
     float hAxis;
     float vAxis;
@@ -187,23 +246,17 @@ public class SPlayer : MonoBehaviour
 
     void Start()
     {
-        if(instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            ChangeState(STATE.CREATE);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        ChangeState(STATE.CREATE);
     }
 
     // Update is called once per frame
     void Update()
     {
         StateProcess();
-
+    }
+    private void FixedUpdate()
+    {
+        FixedStateProcess();
     }
 
     public void ChangeState(STATE s)
@@ -216,7 +269,7 @@ public class SPlayer : MonoBehaviour
             case STATE.CREATE:
                 myAnimEvent.StandUp += () =>
                 {
-                    OnHide = false;
+                    Down = false;
                 };
                 // 숨은 상태 해제되도록 하는 delegate 전달
                 ChangeState(STATE.PLAY); // 생성후 Play STATE로 변경
@@ -228,6 +281,7 @@ public class SPlayer : MonoBehaviour
         }
     }
 
+    
     public void StateProcess()
     {
 
@@ -236,34 +290,45 @@ public class SPlayer : MonoBehaviour
             case STATE.CREATE:
                 break;
             case STATE.PLAY:
-
-                if (!OnHide)  // 엎드린 상태가 아닐때만 이동 가능
-                {
-                    hAxis = Input.GetAxis("Horizontal");
-                    vAxis = Input.GetAxis("Vertical");
-                    Running = Input.GetButton("Run");
-                  
-                    Vector3 pos = new Vector3(hAxis, 0, vAxis).normalized;
-                    Vector3 CompVec = Quaternion.AngleAxis(mySpringArm.rotation.eulerAngles.y, Vector3.up) * pos;
-
-                    Moving(CompVec);
-                }
-
                 if (Input.GetKeyDown(KeyCode.Space) && !myAnim.GetBool("IsWalk") && MyStatus.Hidepoint > 5.0f)
                     Hiding();
-
+                
                 HideSystem();
 
                 if (myDoor != null)
                     Unlocking();
                 if (myOrb != null)
                     OrbSetting();
-
                 CreateItem();
                 break;
             case STATE.DEATH:
                 break;
                 
+        }
+    }
+    public void FixedStateProcess()
+    {
+
+        switch (myState)
+        {
+            case STATE.CREATE:
+                break;
+            case STATE.PLAY:
+                if (!Down)  // 엎드린 상태가 아닐때만 이동 가능
+                {
+                    hAxis = Input.GetAxis("Horizontal");
+                    vAxis = Input.GetAxis("Vertical");
+                    Running = Input.GetButton("Run");
+
+                    Vector3 pos = new Vector3(hAxis, 0, vAxis).normalized;
+                    Vector3 CompVec = Quaternion.AngleAxis(mySpringArm.rotation.eulerAngles.y, Vector3.up) * pos;
+
+                    Moving(CompVec);
+                }
+                break;
+            case STATE.DEATH:
+                break;
+
         }
     }
     public void Moving(Vector3 pos)
@@ -292,7 +357,7 @@ public class SPlayer : MonoBehaviour
 
     public void Hiding()
     {
-        if (Down == false)  // 숨지 않은 경우 숨는다
+        if (OnHide == false)  // 숨지 않은 경우 숨는다
         {
             myAnim.SetTrigger("Hiding");  // Hiding 애니메이션 실행
             Down = true;
@@ -304,7 +369,7 @@ public class SPlayer : MonoBehaviour
         else
         {
             myAnim.SetTrigger("StandUp");
-            Down = false;
+            OnHide = false;
             if (Cloaking != null) StopCoroutine(Cloaking);
             Cloaking = StartCoroutine(Reveal());
 
@@ -313,14 +378,13 @@ public class SPlayer : MonoBehaviour
 
     void HideSystem()
     {
-        if (Down)
+        if (OnHide)
         {
             MyStatus.Hidepoint -= Time.deltaTime * 5.0f;
         }
 
         if (MyStatus.Hidepoint <= 0 && Down)  // Hidepoint가 0이고, 숨은 상태일 때
         {
-            Down = false;
             OnHide = false;
             myAnim.SetTrigger("StandUp"); // 게이지 없으니 일어나게 만듬
 
@@ -328,10 +392,9 @@ public class SPlayer : MonoBehaviour
             Cloaking = StartCoroutine(Reveal());
         }
 
-        if (!Down && MyStatus.Hidepoint < 100.0f)
+        if (!OnHide && MyStatus.Hidepoint < 100.0f)
         {
             MyStatus.Hidepoint += Time.deltaTime; // 숨은 상태가 아니라면 hidepoint 최대치까지 회복
-
         }
         MyStatus.Hidepoint = Mathf.Clamp(MyStatus.Hidepoint, 0.0f, 100.0f);
     }
@@ -396,16 +459,6 @@ public class SPlayer : MonoBehaviour
         */
         
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if(myStock != null)
-        {
-            if(Input.GetKeyDown(KeyCode.E) && !other.gameObject.GetComponent<SStock_Shelves>().DisplayItem)
-            {
-                //DisplayingMyMap(other.transform);
-            }
-        }
-    }
     private void OnTriggerExit(Collider other)
     {
         if ((InterMask & 1 << other.gameObject.layer) != 0)
@@ -432,6 +485,7 @@ public class SPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !myAnim.GetBool("IsWalk"))
         {
+            Down = true;
             PlayerstatManagement_L.instance.UnlockSet(true);
             myUIManager.GetComponent<PlayerstatManagement_L>().UnlockGauge.GetComponent<SGauge>().myText.text = "문 여는중...";
             myAnim.SetBool("Unlocking", true);
@@ -445,12 +499,14 @@ public class SPlayer : MonoBehaviour
             if (myDoor.DoorOpen)
             {
                 myAnim.SetBool("Unlocking", false);
+                Down = false;
                 myDoor = null;
             }
 
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
+            Down = false;
             myUIManager.GetComponent<PlayerstatManagement_L>().UnlockSet(false);
             myAnim.SetBool("Unlocking", false);
         }
@@ -492,11 +548,13 @@ public class SPlayer : MonoBehaviour
     {
         MyStatus.HP += value;
         if (MyStatus.HP > 100.0f) MyStatus.HP = 100.0f;
+
     }
     public void HealingHidePoint(float value)
     {
         MyStatus.Hidepoint += value;
         if (MyStatus.Hidepoint > 100.0f) MyStatus.Hidepoint = 100.0f;
+
     }
 
     IEnumerator Clock()
@@ -573,7 +631,7 @@ public class SPlayer : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            SGameManager.instance.Save(1);
+            Debug.Log(Time.realtimeSinceStartup);
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -588,6 +646,10 @@ public class SPlayer : MonoBehaviour
         }
     }
 
-
+    //지도 판매했을 때 동작하는 함수
+    public void SaleMap(SMap _map)
+    {
+        MyStatus.Exp = _map.Price; // 지도의 가격만큼 경험치를 얻도록 한다(임시)
+    }
 
 }

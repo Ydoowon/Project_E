@@ -68,6 +68,7 @@ public class SMonster : MonoBehaviour
 
     public void Attack()
     {
+        if (myPerception.myEnemyList.Count == 0) return;
         if(myPerception.myEnemyList[0] !=null)
         {
             myPerception.myEnemyList[0].GetComponent<SPlayer>().Ondamage(Damage);
@@ -93,6 +94,10 @@ public class SMonster : MonoBehaviour
                 break;
             case STATE.MOVE:
                 myNav.speed = MoveSpeed;
+                if (DestList.Count != 0)
+                { 
+                myNav.SetDestination(DestList[ListCnt].position);
+                }
                 myNav.stoppingDistance = 1.0f;
                 myAnim.SetBool("IsWalk", true);
                 myAnim.SetBool("IsRun", false);
@@ -127,7 +132,8 @@ public class SMonster : MonoBehaviour
             case STATE.FOLLOW:
                 if (myPerception.myEnemyList.Count == 0)
                 {
-                    myNav.SetDestination(this.gameObject.transform.position);
+                    myNav.SetDestination(this.transform.position);
+                    myNav.velocity = Vector3.zero;
                     ChangeState(STATE.IDLE);
                 }
                 else 
@@ -152,6 +158,7 @@ public class SMonster : MonoBehaviour
             {
                 myAnim.SetBool("AttPossible", false);
                 myPerception.myEnemyList.RemoveAt(0);
+                myNav.velocity = Vector3.zero;
                 myNav.SetDestination(this.transform.position);
                 ChangeState(myAnim.GetBool("IsWalk") ? STATE.MOVE : STATE.IDLE); // 이전 상태로 복귀
             }
@@ -182,10 +189,10 @@ public class SMonster : MonoBehaviour
     {
         if (DestList.Count == 0) return;
 
-        myNav.SetDestination(DestList[ListCnt].position);
         float Dist = (DestList[ListCnt].position - this.transform.position).magnitude;
         if(Dist <= myNav.stoppingDistance) // 목적지에 도착했을 경우
         {
+            myNav.velocity = Vector3.zero;
             if (ListCnt < DestList.Count - 1)
             {
                 ListCnt++;  // 다음 목적지로 
@@ -251,8 +258,9 @@ public class SMonster : MonoBehaviour
         if (MissingTime <= 0.0f)
         {
             myNav.SetDestination(this.transform.position);
+            myNav.velocity = Vector3.zero;
             ChangeState(STATE.IDLE);
-            MissingTime = 5.0f;
+            MissingTime = 8.0f;
         }
     }
 

@@ -22,7 +22,6 @@ public class SaveData
 {
     public Vector3 PlayerPos;
     public Vector3 PlayerRot;
-    // Start is called before the first frame update
     public int _level;
     public float _exp;
     public float _hp;
@@ -37,5 +36,9 @@ public class SaveData
     
     //Stock info
     public List<SItem> StockItem = new List<SItem>();
+
+    //time info
+    public string SavingTime;
+
 
 }

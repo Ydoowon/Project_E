@@ -5,11 +5,19 @@ using UnityEngine.Events;
 
 public class M_ui : MonoBehaviour
 {
+<<<<<<< Updated upstream
     bool Menushow = true; // esc???? ?????? ???? ???????? ???????? ??????????
     bool Shoprng = false; // Shop?? ?? ?????? ?????? ??????
     bool Shopshow = true; // Shop?? ???? ?????? ????????????
     bool PlayerShoprng = false; // ???????? ???? ?????? ??????
    public bool PlayerShopshow = true; // ???????? ?????? ?????? ??????
+=======
+    //bool Menushow = true; // esc키를 눌러서 나온 메뉴창이 나왔는지 안나왔는지
+    bool Shoprng = false; // Shop을 열 범위에 있는지 없는지
+    bool Shopshow = true; // Shop이 열려 있는지 안열려있는지
+    bool PlayerShoprng = false; // 플레이어 상점 범위에 있는지
+   public bool PlayerShopshow = true; // 플레이어 상점이 나타나 있는지
+>>>>>>> Stashed changes
 
     public GameObject Shoprang;
     public GameObject Counter;
@@ -68,7 +76,7 @@ public class M_ui : MonoBehaviour
         }
               
 
-
+        /*
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {       
@@ -76,10 +84,10 @@ public class M_ui : MonoBehaviour
                 {
                     if (Shopshow && PlayerShopshow)
                     {
-                    GameObject obj2 = Instantiate(Resources.Load("UI/M_Menu"), this.transform) as GameObject;
-                    obj2.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
-                    obj2.GetComponent<M_menu>()?.Open();
-                    Menushow = false;
+                        GameObject obj2 = Instantiate(Resources.Load("UI/M_Menu"), this.transform) as GameObject;
+                        obj2.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
+                        obj2.GetComponent<M_menu>()?.Open();
+                        Menushow = false;
                     }
 
                 }
@@ -90,6 +98,7 @@ public class M_ui : MonoBehaviour
                 }
 
         }
+        */
 
 
     }
