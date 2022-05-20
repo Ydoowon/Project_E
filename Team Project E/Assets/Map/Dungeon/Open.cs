@@ -77,6 +77,7 @@ public class Open : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!DoorOpen && other.gameObject.layer == LayerMask.NameToLayer("Player")) // 문이 열리지 않았을때만 작동

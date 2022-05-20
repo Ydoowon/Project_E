@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 [System.Serializable]
 public class PlayerStatus
@@ -194,6 +195,12 @@ public class SPlayer : MonoBehaviour
         get { return myOrb; }
         set { myOrb = value; }
     }
+    Switch mySwitch;
+    public Switch Switch
+    {
+        get { return mySwitch; }
+        set { mySwitch = value;  }
+    }
     #endregion
     #region Animation
     Animator _Anim = null;
@@ -299,6 +306,8 @@ public class SPlayer : MonoBehaviour
                     Unlocking();
                 if (myOrb != null)
                     OrbSetting();
+                if (mySwitch != null)
+                    SwiSetting();
                 CreateItem();
                 break;
             case STATE.DEATH:
@@ -331,6 +340,7 @@ public class SPlayer : MonoBehaviour
 
         }
     }
+
     public void Moving(Vector3 pos)
     {
 
@@ -519,6 +529,11 @@ public class SPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
             myOrb.SetAlpha();
+    }
+    void SwiSetting()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            mySwitch.Open();
     }
     #endregion
 
