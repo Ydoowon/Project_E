@@ -10,6 +10,7 @@ public class M_Price : MonoBehaviour
     public int price = 0;
     List<int> Number = new List<int>();
     public GameObject myStor;
+    public Transform itemParent = null;
 
     void BT()
     {
@@ -65,7 +66,12 @@ public class M_Price : MonoBehaviour
     }
 
     public void cancel()
-    {
+    {   if(myImageset != null)
+        {
+            myImageset.transform.GetChild(3).GetComponent<SMap>()?.ChangeParent(itemParent);
+            myImageset.transform.GetChild(2).gameObject.SetActive(false);
+            myImageset = null;
+        }
         Destroy(this.gameObject);
     }
 
@@ -74,6 +80,7 @@ public class M_Price : MonoBehaviour
                
        if( myImageset == null)
         {
+            myImageset.transform.GetChild(3).GetComponent<SMap>().ableDrag = false;
             this.transform.parent.GetComponentInChildren<M_shopslot>().Write(price);
             Destroy(this.gameObject);
             return;

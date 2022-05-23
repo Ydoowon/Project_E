@@ -62,7 +62,7 @@ public class SItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
             tempItem.ChangeParent(curParent);
             tempItem.transform.SetAsFirstSibling();
         }
-
+  
         curParent = P;
         this.transform.SetParent(curParent);
         this.transform.localPosition = Vector3.zero;

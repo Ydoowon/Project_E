@@ -29,6 +29,7 @@ public class M_bt : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (othertext != null)
         {
             layout.SetActive(true);
+            mybutton.onClick.Invoke();
             mybutton.interactable = false;
             othertext.color = Color.white;
             othertext.GetComponent<RectTransform>().anchoredPosition += new Vector2(0.0f, +5.0f);

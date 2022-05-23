@@ -7,7 +7,7 @@ public class M_shop : MonoBehaviour
 {
 
     public GameObject layout;
-    public event UnityAction shopOpen;
+    public event UnityAction shopHow;
     private void Start()
     {
         
@@ -27,7 +27,7 @@ public class M_shop : MonoBehaviour
     }
     public void Close()
     {
-        shopOpen?.Invoke();
+        shopHow?.Invoke();
         Destroy(this.gameObject);
     }
 }

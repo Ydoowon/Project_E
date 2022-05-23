@@ -19,6 +19,14 @@ public class SNPCsummoner : MonoBehaviour
     }
     STATE myState = STATE.CLOSED;
 
+    public void GetStateClose()
+    {
+        ChangeState(STATE.CLOSED);
+    }
+    public void GetStateOpen()
+    {
+        ChangeState(STATE.OPEN);
+    }
     void Start()
     {
         ChangeState(STATE.CLOSED);
