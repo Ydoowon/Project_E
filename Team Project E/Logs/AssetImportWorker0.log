@@ -1,0 +1,453 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.33f1 (915a7af8b0d5) revision 9525882'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 16333 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/DW/Documents/GitHub/Project_E/Team Project E
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+55776
+Successfully changed project path to: C:/Users/DW/Documents/GitHub/Project_E/Team Project E
+C:/Users/DW/Documents/GitHub/Project_E/Team Project E
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 63.42 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.33f1 (915a7af8b0d5)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/DW/Documents/GitHub/Project_E/Team Project E/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1e89)
+    Vendor:   
+    VRAM:     5967 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56868
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001667 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 63.70 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.531 seconds
+Domain Reload Profiling:
+	ReloadAssembly (531ms)
+		BeginReloadAssembly (54ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (412ms)
+			LoadAssemblies (52ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (119ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (175ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (64ms)
+				BeforeProcessingInitializeOnLoad (15ms)
+				ProcessInitializeOnLoadAttributes (68ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002893 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\DW\Documents\GitHub\Project_E\Team Project E\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.885 seconds
+Domain Reload Profiling:
+	ReloadAssembly (886ms)
+		BeginReloadAssembly (132ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (700ms)
+			LoadAssemblies (79ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (223ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (275ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (82ms)
+				ProcessInitializeOnLoadAttributes (171ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1728 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 105.1 MB.
+System memory in use after: 105.2 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2191.
+Total: 2.755700 ms (FindLiveObjects: 0.172000 ms CreateObjectMapping: 0.039300 ms MarkObjects: 2.515400 ms  DeleteObjects: 0.028100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Map/Dungeon/PassObstacle.mat
+  artifactKey: Guid(52ebf1f93a0cc1340acd6976cd1fa0b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Dungeon/PassObstacle.mat using Guid(52ebf1f93a0cc1340acd6976cd1fa0b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c89d0f9f5bd074a8306244e14d12e12') in 0.107766 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Map/Dungeon/Temple12.prefab
+  artifactKey: Guid(4bec89fe49ac7bf45b6a8a51903a8b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Dungeon/Temple12.prefab using Guid(4bec89fe49ac7bf45b6a8a51903a8b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '541b23080806957e3e893cad01c83da7') in 0.355059 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003726 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\DW\Documents\GitHub\Project_E\Team Project E\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.90 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.841 seconds
+Domain Reload Profiling:
+	ReloadAssembly (841ms)
+		BeginReloadAssembly (100ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (688ms)
+			LoadAssemblies (77ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (216ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (278ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (180ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1700 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 125.6 MB.
+System memory in use after: 125.7 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2236.
+Total: 3.297300 ms (FindLiveObjects: 0.256700 ms CreateObjectMapping: 0.046700 ms MarkObjects: 2.969100 ms  DeleteObjects: 0.024100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 646.226518 seconds.
+  path: Assets/Scenes/MapScene/NavMesh.asset
+  artifactKey: Guid(661bbd925ec3b4a4f878145d985f491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MapScene/NavMesh.asset using Guid(661bbd925ec3b4a4f878145d985f491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c6683f34a064d8c263fcafd0e1e3588') in 0.023637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.068890 seconds.
+  path: Assets/Scenes/SampleScene/NavMesh.asset
+  artifactKey: Guid(6aca36321e9745f41aadc7872bd12457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene/NavMesh.asset using Guid(6aca36321e9745f41aadc7872bd12457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fd8ffc3844f6efb8e93c759e5bbb61e') in 0.002593 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8572.229513 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Round Prefabs
+  artifactKey: Guid(60fc797bdec40c3419b278954d274d06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Round Prefabs using Guid(60fc797bdec40c3419b278954d274d06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cef9cbadf17ca57f653f3dbda2757175') in 0.006909 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.806198 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs
+  artifactKey: Guid(972c26636b625e14cad7b951b7f198da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs using Guid(972c26636b625e14cad7b951b7f198da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffcf2739d0e58e6204f3210e09d2f51e') in 0.008268 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.754828 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence 1 Bright.prefab
+  artifactKey: Guid(6a11d8265d53b7341ac4af50ea1f87f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence 1 Bright.prefab using Guid(6a11d8265d53b7341ac4af50ea1f87f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41d021193a11a7a5d0adc9bd3200ca44') in 0.083888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.533693 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence 1 Dark.prefab
+  artifactKey: Guid(d5f573defbd45f144bfa9d5b7dcb50ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence 1 Dark.prefab using Guid(d5f573defbd45f144bfa9d5b7dcb50ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54b16c8975f6b6fe1b8f71458324633d') in 0.020805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.364136 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence Bright Corner Block.prefab
+  artifactKey: Guid(cd25d9de59998944e9fdff75b31eb727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence Bright Corner Block.prefab using Guid(cd25d9de59998944e9fdff75b31eb727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c96891838e32f01636eff5d0b161454') in 0.021778 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.557717 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence Dark Corner Block.prefab
+  artifactKey: Guid(ad455ddc5a34c08489338893d00df2ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Fences Prefabs/Fence Dark Corner Block.prefab using Guid(ad455ddc5a34c08489338893d00df2ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3a0b713be11b3c5084bba50c83b1600') in 0.020338 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.187002 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x9x13.prefab
+  artifactKey: Guid(0134b9b48b7872c4abb2c5dcb03051b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x9x13.prefab using Guid(0134b9b48b7872c4abb2c5dcb03051b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d61d34e2aee463e9ba34f2876003005') in 0.020702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.640939 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x5x13.prefab
+  artifactKey: Guid(11569b238abeff84ea57b88ce242218a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x5x13.prefab using Guid(11569b238abeff84ea57b88ce242218a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80e269e611c5fcd39d63143ac7ab3cd2') in 0.020396 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.558134 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Stairs Prefabs
+  artifactKey: Guid(d5979b7ba96553945bf9b0eded7cd66a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Stairs Prefabs using Guid(d5979b7ba96553945bf9b0eded7cd66a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfb83cc653f03019fd108d8003e48084') in 0.007143 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.816981 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Stairs Prefabs/Stairs 1.prefab
+  artifactKey: Guid(c78107076ebd98c47a45887e83d188c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Stairs Prefabs/Stairs 1.prefab using Guid(c78107076ebd98c47a45887e83d188c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b94f29506fdfa47b636e68d4e608cce7') in 0.022004 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.192351 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Stairs Prefabs/Stairs 2.prefab
+  artifactKey: Guid(eab0075fe70674445a3927fe54cb1a6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Stairs Prefabs/Stairs 2.prefab using Guid(eab0075fe70674445a3927fe54cb1a6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '728c0e9e18324dc146fa93011dd04b57') in 0.022471 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 42.321874 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x7x13.prefab
+  artifactKey: Guid(d728ad88a432faf44ac66d401d379e6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x7x13.prefab using Guid(d728ad88a432faf44ac66d401d379e6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b785db9ffa4ddbc95c77aee0301e754b') in 0.022133 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.293648 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x13x13.prefab
+  artifactKey: Guid(dc9a88e3f03aaf94f8a4d6934eb239c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x13x13.prefab using Guid(dc9a88e3f03aaf94f8a4d6934eb239c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '482c13ed05ac1e5a892d1e3015169da7') in 0.019810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.100504 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x9x13.prefab
+  artifactKey: Guid(dfd60089aebc9f248980dd7d3da0a3dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x9x13.prefab using Guid(dfd60089aebc9f248980dd7d3da0a3dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dec22c4147371dd06806a316367a15c6') in 0.022067 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.850014 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x7x7.prefab
+  artifactKey: Guid(c6110f31e3558cf45b0f2e2a22ed6299) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 2x7x7.prefab using Guid(c6110f31e3558cf45b0f2e2a22ed6299) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '209353143715be996691816edab043b3') in 0.020566 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.056297 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x7x7.prefab
+  artifactKey: Guid(53132b79196544748a3dff11adbe5a7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x7x7.prefab using Guid(53132b79196544748a3dff11adbe5a7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c85c46749ba7a7354abf6846c13b7ce') in 0.019882 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.300724 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x5x13.prefab
+  artifactKey: Guid(7bd61b5c3d150484fa9a39ddafeebe90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms Prefabs/Platform 1x5x13.prefab using Guid(7bd61b5c3d150484fa9a39ddafeebe90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '529cc322e0cee1810382836284473f86') in 0.020023 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 42.476196 seconds.
+  path: Assets/Scenes/D_Scene.unity
+  artifactKey: Guid(4ee363fa5ca944a4eb626c5cf4f9a58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/D_Scene.unity using Guid(4ee363fa5ca944a4eb626c5cf4f9a58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfbad6eaca83b009b413b9ffac22e246') in 0.007801 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 137.102760 seconds.
+  path: Assets/Scenes/MapScene.unity
+  artifactKey: Guid(b90b8eec8dba92548be85e86bfbd02be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MapScene.unity using Guid(b90b8eec8dba92548be85e86bfbd02be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '403b86db951426e0119ab70834c1b4d5') in 0.007844 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.716242 seconds.
+  path: Assets/Scenes/D_Scene.unity
+  artifactKey: Guid(4ee363fa5ca944a4eb626c5cf4f9a58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/D_Scene.unity using Guid(4ee363fa5ca944a4eb626c5cf4f9a58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bead1cfd0a8fd5fae2d4631debd4bf81') in 0.002726 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 417.128224 seconds.
+  path: Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Platform Fernce 1x5x13.prefab
+  artifactKey: Guid(d039f8c1576e19e45a0d0814bad16fbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map/Cartoon Temple Building Kit/Prefabs/Platforms Stairs Fences Prefabs/Platforms With Fence Prefabs/Platform Fernce 1x5x13.prefab using Guid(d039f8c1576e19e45a0d0814bad16fbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7e7f4b615d17455748b3ad53e4d75d7') in 0.021104 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003863 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\DW\Documents\GitHub\Project_E\Team Project E\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.14 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.942 seconds
+Domain Reload Profiling:
+	ReloadAssembly (943ms)
+		BeginReloadAssembly (117ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (41ms)
+		EndReloadAssembly (767ms)
+			LoadAssemblies (89ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (251ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (47ms)
+			SetupLoadedEditorAssemblies (301ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (94ms)
+				ProcessInitializeOnLoadAttributes (186ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.20 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1700 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 125.7 MB.
+System memory in use after: 125.8 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2240.
+Total: 4.561500 ms (FindLiveObjects: 0.347400 ms CreateObjectMapping: 0.115100 ms MarkObjects: 4.070700 ms  DeleteObjects: 0.027300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003530 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\DW\Documents\GitHub\Project_E\Team Project E\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.950 seconds
+Domain Reload Profiling:
+	ReloadAssembly (951ms)
+		BeginReloadAssembly (117ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (36ms)
+		EndReloadAssembly (772ms)
+			LoadAssemblies (94ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (255ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (48ms)
+			SetupLoadedEditorAssemblies (298ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (89ms)
+				ProcessInitializeOnLoadAttributes (188ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.13 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1700 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 125.7 MB.
+System memory in use after: 125.9 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2243.
+Total: 3.055500 ms (FindLiveObjects: 0.231600 ms CreateObjectMapping: 0.042300 ms MarkObjects: 2.757100 ms  DeleteObjects: 0.023500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
