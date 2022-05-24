@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class M_PlayerShop : MonoBehaviour
 {
-    public GameObject UI;
     public GameObject slae3;
     public GameObject slae4;
     public GameObject slae5;
     public GameObject slae6;
     public int tableMany = 2;
+    public event UnityAction Shophow;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,7 @@ public class M_PlayerShop : MonoBehaviour
     }   
     public void Close()
     {
-        UI.GetComponent<M_ui>().PlayerShopshow = true;
+        Shophow?.Invoke();
         this.gameObject.SetActive(false);
     }
 
