@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class SDungeonTranspos : MonoBehaviour
 {
-    Transform DestPos = null;
-
+    public Transform DestPos = null;
+    [SerializeField] SPopUpButton myCheckButton = null;
     [SerializeField]
     [TextArea]
     string Message;
@@ -18,6 +18,7 @@ public class SDungeonTranspos : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Player = other.gameObject.GetComponent<SPlayer>();
+            Player.UIopen += OpenDungeonUI;
             SGameManager.instance.PressE.SetActive(true);
             SGameManager.instance.Message.text = Message;
         }
@@ -27,15 +28,16 @@ public class SDungeonTranspos : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            IsActive = false;
+            Player.UIopen -= OpenDungeonUI;
             Player = null;
+            IsActive = false;
             SGameManager.instance.PressE.SetActive(false);
             SGameManager.instance.DungeonSelectUI.SetActive(false);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OpenDungeonUI()
     {
         if (Player != null && Input.GetKeyDown(KeyCode.E))
         {
@@ -49,11 +51,11 @@ public class SDungeonTranspos : MonoBehaviour
     {
         if (Player != null && DestPos != null)
         {
+            Player.SetMyLocation(PlayerStatus.LOCATION.DUNGEON);
             SGameManager.instance.PressE.SetActive(false);
             SGameManager.instance.DungeonSelectUI.SetActive(false);
             StartCoroutine(FadeInFadeOut(Player.gameObject));
         }
-
     }
     IEnumerator FadeInFadeOut(GameObject Player)
     {

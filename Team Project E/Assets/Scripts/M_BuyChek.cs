@@ -7,27 +7,32 @@ using UnityEngine.Events;
 public class M_BuyChek : MonoBehaviour
 {
     public event UnityAction Layout = null;
-
-    // Start is called before the first frame update
-    void Start()
+    public event UnityAction BuyingItem = null;
+    //public UnityAction 
+    public TMPro.TMP_Text Message;
+    M_ShopOpen myShop;
+    SPlayer _player = null;
+    public SPlayer Player
     {
+        get
+        {
+            if (_player == null)
+                _player = myShop.Player;
 
+            return _player;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Buy()
     {
-        Layout?.Invoke();
-        Destroy(this.gameObject);
+        BuyingItem?.Invoke();
+        BuyingItem = null;
+        this.gameObject.SetActive(false);
 
     }
     public void Cencel()
     {
-        Layout?.Invoke();
-        Destroy(this.gameObject);
+        BuyingItem = null;
+        this.gameObject.SetActive(false);
     }
 }

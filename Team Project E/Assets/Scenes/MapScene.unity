@@ -123,25 +123,10 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 661bbd925ec3b4a4f878145d985f491c, type: 2}
---- !u!4 &26671151 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2163877698254282710, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-  m_PrefabInstance: {fileID: 2046494111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &225624960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4630662366249145597, guid: 2cf5cecdd0bf87a42b3132945cfb9934, type: 3}
   m_PrefabInstance: {fileID: 4630662366306899837}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &773304500 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2163877699100863348, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-  m_PrefabInstance: {fileID: 2046494111}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1651058825 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2163877697350805337, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-  m_PrefabInstance: {fileID: 2046494111}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2046494111
 PrefabInstance:
@@ -150,22 +135,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2290998596114920713, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-      propertyPath: DestList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2290998596114920713, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-      propertyPath: DestList.Array.data[0]
-      value: 
-      objectReference: {fileID: 26671151}
-    - target: {fileID: 2290998596114920713, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-      propertyPath: DestList.Array.data[1]
-      value: 
-      objectReference: {fileID: 773304500}
-    - target: {fileID: 2290998596114920713, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
-      propertyPath: DestList.Array.data[2]
-      value: 
-      objectReference: {fileID: 1651058825}
     - target: {fileID: 3186443745024712665, guid: 4bec89fe49ac7bf45b6a8a51903a8b46, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068

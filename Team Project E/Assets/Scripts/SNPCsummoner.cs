@@ -8,7 +8,7 @@ public class SNPCsummoner : MonoBehaviour
 
     public GameObject[] ConsumerList;
     public Transform[] MovePosition;
-    public Transform[] myStock;
+    public SStock_Shelves[] myStock;
     public int SummonCnt; // 소환할 NPC 수
     Coroutine Summon;
 
@@ -28,6 +28,10 @@ public class SNPCsummoner : MonoBehaviour
     void Update()
     {
         StateProcess();
+        if(Input.GetKeyDown(KeyCode.F2))
+        {
+            //myStock[0].SetItem()
+        }
     }
 
     public void ChangeState(STATE s)

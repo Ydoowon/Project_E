@@ -35,8 +35,8 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
     {
         if (myButton.interactable && Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Map_Down = !Map_Down;
-            if (Map_Down == true)
+            //Map_Down = !Map_Down;
+            if (Map_Down == false)
             {
                 DrowMap(myImageNum + 1);
                 myPlayer.SetMapData(ButtonNum, myImageNum);
@@ -50,8 +50,8 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
 
         if (myButton.interactable && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Map_Up = !Map_Up;
-            if (Map_Up == true)
+            //Map_Up = !Map_Up;
+            if (Map_Up == false)
             {
                 DrowMap(myImageNum + 2);
                 myPlayer.SetMapData(ButtonNum, myImageNum);
@@ -65,8 +65,8 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
         }
         if (myButton.interactable && Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Map_Left = !Map_Left;
-            if (Map_Left == true)
+            //Map_Left = !Map_Left;
+            if (Map_Left == false)
             {
                 DrowMap(myImageNum + 4);
                 myPlayer.SetMapData(ButtonNum, myImageNum);
@@ -80,8 +80,8 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
         }
         if (myButton.interactable && Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Map_Right = !Map_Right;
-            if (Map_Right == true)
+            //Map_Right = !Map_Right;
+            if (Map_Right == false)
             {
                 DrowMap(myImageNum + 8);
                 myPlayer.SetMapData(ButtonNum, myImageNum);
@@ -97,6 +97,15 @@ public class RoomButton_L : MonoBehaviour ,IPointerEnterHandler ,IPointerExitHan
     public void DrowMap(int ImageNum)
     {
         if (myImageNum == ImageNum) return;
+
+        int checknum = ImageNum;
+        Map_Down = checknum % 2 == 1 ? true : false;
+        checknum = checknum >> 1;
+        Map_Up = checknum % 2 == 1 ? true : false;
+        checknum = checknum >> 1;
+        Map_Left = checknum % 2 == 1 ? true : false;
+        checknum = checknum >> 1;
+        Map_Right = checknum % 2 == 1 ? true : false;
         myImageNum = ImageNum;
         myImage.sprite = ImgList[myImageNum];
     }

@@ -96,15 +96,16 @@ public class SMapData : MonoBehaviour
         {
             if (!_usermap.myRooms[i].Checking) continue; // 들어가보지 않은 방인 경우, 스코어 계산 스킵
 
+            // 모든 문의 위치가 일치할 경우
+            if(OriginMap.myRooms[i].EntUp == _usermap.myRooms[i].EntUp 
+                && OriginMap.myRooms[i].EntRight == _usermap.myRooms[i].EntRight
+                && OriginMap.myRooms[i].EntDown == _usermap.myRooms[i].EntDown
+                && OriginMap.myRooms[i].EntLeft == _usermap.myRooms[i].EntLeft)
+            {
+                score += 4;
+            }
 
-            if(OriginMap.myRooms[i].EntUp == _usermap.myRooms[i].EntUp)
-                score++;
-            if (OriginMap.myRooms[i].EntRight == _usermap.myRooms[i].EntRight)
-                score++;
-            if (OriginMap.myRooms[i].EntDown == _usermap.myRooms[i].EntDown)
-                score++;
-            if (OriginMap.myRooms[i].EntLeft == _usermap.myRooms[i].EntLeft)
-                score++;
+                
             if (OriginMap.myRooms[i].IsItem == _usermap.myRooms[i].IsItem)
                 score++;
             if (OriginMap.myRooms[i].IsMonster == _usermap.myRooms[i].IsMonster)
@@ -113,8 +114,19 @@ public class SMapData : MonoBehaviour
                 score++;
         }
 
-        int TotalScore = (int)((float)score / (float)(OriginMap.GetRoomCol() * OriginMap.GetRoomRow() * 7) * (float)100);
-
+        int TotalScore = (int)((float)score / (float)(OriginMap.GetRoomCol() * OriginMap.GetRoomRow() * 7) * 100);
+        switch(_usermap.Mapnum)
+        {
+            case 0:
+                TotalScore *= Random.Range(40, 50);
+                break;
+            case 1:
+                TotalScore *= Random.Range(50, 60);
+                break;
+            case 2:
+                TotalScore *= Random.Range(60, 70);
+                break;
+        }
         return TotalScore;
     }
 }

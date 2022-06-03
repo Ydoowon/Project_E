@@ -11,6 +11,8 @@ public class M_Price : MonoBehaviour
     List<int> Number = new List<int>();
     public GameObject myStor;
 
+    public GameObject PastitemParent = null;
+
     void BT()
     {
         if(Number[0] == 0)
@@ -66,7 +68,13 @@ public class M_Price : MonoBehaviour
 
     public void cancel()
     {
-        Destroy(this.gameObject);
+        if (myImageset != null)
+        {
+            myImageset.transform.GetChild(2).gameObject.SetActive(false);
+            myImageset.transform.GetChild(3).gameObject.GetComponent<SItem>().ChangeParent(PastitemParent.transform);
+        }
+
+            Destroy(this.gameObject);
     }
 
     public void OK()

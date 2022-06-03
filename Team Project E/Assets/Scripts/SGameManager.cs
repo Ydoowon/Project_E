@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
+using System.Linq;
 
 public class SGameManager : MonoBehaviour
 {
     static public SGameManager instance;
+    static public int LoadNumber = -1;
 
     public GameObject LoadingImage;
     public GameObject ItemToolTip;
@@ -16,7 +19,7 @@ public class SGameManager : MonoBehaviour
     public TMPro.TMP_Text Message;
     public GameObject DungeonSelectUI;
     public UIManager_L MapUI;
-
+    
     [SerializeField]
     TMPro.TMP_Text AlarmMessage;
     Coroutine MessageAnim;
@@ -26,7 +29,8 @@ public class SGameManager : MonoBehaviour
 
     [SerializeField]
     SaveSlot[] Saveslots;
-
+    [SerializeField]
+    SaveSlot[] Loadslots;
 
     // Start is called before the first frame update
     void Start()
@@ -60,21 +64,62 @@ public class SGameManager : MonoBehaviour
                 SaveData saveData = JsonUtility.FromJson<SaveData>(json);
                 if (saveData != null)
                 {
-                    Saveslots[i].isSaved = true;
-                    Saveslots[i].Date.text = "DATE : " + saveData.SavingTime;
-                    Saveslots[i].Status.text = "<color=yellow>SaveData " + (i + 1) + "</color>" + "\n"
-                        + "Level : " + saveData._level + "\n"
-                        + "Gold : " + saveData._gold;
-                    Saveslots[i].noData.SetActive(false);
-                    Saveslots[i].SaveDataImage.SetActive(true);
+                    SlotSetting(Saveslots[i], saveData, i, true);
+                    SlotSetting(Loadslots[i], saveData, i, false);
                 }
             }
+            else
+            {
+                Loadslots[i].GetComponent<Button>().interactable = false;
+            }
+        }
+        if (LoadNumber != -1)
+        {
+            Load(LoadNumber);
         }
     }
+    public void SlotSetting(SaveSlot _slot, SaveData data, int i, bool save)
+    {
+        _slot.isSaved = true;
+        _slot.Date.text = "DATE : " + data.SavingTime;
+        if (save)
+        {
+            _slot.Status.text = "<color=yellow>SaveData " + (i + 1) + "</color>" + "\n"
+                                + "Level : " + data._level + "\n"
+                                + "Gold : " + data._gold;
+
+        }
+        else
+        {
+            _slot.Status.text = "<color=yellow>LoadData " + (i + 1) + "</color>" + "\n"
+                                + "Level : " + data._level + "\n"
+                                + "Gold : " + data._gold;
+        }
+        _slot.noData.SetActive(false);
+        _slot.SaveDataImage.SetActive(true);
+
+    }
+
     public void MapSetting(Map UserMap) // 매개변수로 받은 유저 맵으로 UI맵을 새팅한다
     {
+        if (UserMap == null) return;
+        switch(UserMap.Mapnum)
+        {
+            case 0:
+                MapUI.myMapname.SetMapName("던전 : <color=blue>숲 1</color>");
+                break;
+            case 1:
+                MapUI.myMapname.SetMapName("던전 : <color=blue>숲 2</color>");
+                break;
+            case 2:
+                MapUI.myMapname.SetMapName("던전 : <color=red>고대 유적</color>");
+                break;
+            default:
+                MapUI.myMapname.SetMapName("");
+                break;
+        }
         // 유저 맵 크기만큼 반복(한칸 한칸 그려야 하기 때문에)
-        for (int i = 0; i < UserMap.GetRoomCol() * UserMap.GetRoomRow(); i++)
+        for (int i = 0; i < UserMap.myRooms.Count; i++)
         {
             int ImageNum = 0;
             ImageNum += UserMap.myRooms[i].EntDown ? 1 : 0;
@@ -178,8 +223,8 @@ public class SGameManager : MonoBehaviour
                 SItemSlot Slot = MapUI.myItemSlot[i];
                 int index = Slot.myItem.ItemData.ItemIndex;
                 int Count = Slot.ItemCount;
-
-                InvenData.Add(new InventoryData(i, index, Count));
+                int price = Slot.myItem.Price;
+                InvenData.Add(new InventoryData(i, index, Count, price));
             }
         }
         PlayerData.Inventory = InvenData.ToArray();
@@ -194,6 +239,9 @@ public class SGameManager : MonoBehaviour
         File.WriteAllText(path, json);
 
         Saving(SaveSlotNum);
+
+        SlotSetting(Loadslots[SaveSlotNum], PlayerData, SaveSlotNum, false);
+        Loadslots[SaveSlotNum].GetComponent<Button>().interactable = true;
     }
 
 
@@ -210,7 +258,45 @@ public class SGameManager : MonoBehaviour
             + "Level : " + Player.MyStatus.PlayerLevel + "\n"
             + "Gold : " + Player.MyStatus.Gold;
     }
+    public void Load(int LoadSlotNum)
+    {
+        string filename = "savedata" + (LoadSlotNum + 1);
+        string path = Application.dataPath + "/" + filename + ".Json";
+        string jsdata = File.ReadAllText(path);
 
+        SaveData Loadjson = JsonUtility.FromJson<SaveData>(jsdata);
+
+        Player.GetComponent<NavMeshAgent>().Warp(Loadjson.PlayerPos);
+        Player.myPlayer.rotation = Quaternion.Euler(Loadjson.PlayerRot);
+        Player.MyStatus.PlayerLevel = Loadjson._level;
+        Player.MyStatus.Exp = Loadjson._exp;
+        Player.MyStatus.HP = Loadjson._hp;
+        Player.MyStatus.Hidepoint = Loadjson._hidepoint;
+        Player.MyStatus.Gold = Loadjson._gold;
+        
+
+        if (Loadjson.PlayerMapList.Length > 0) // 저장해둔 맵이 있을 때만 로드
+        {
+            Player.myMapList = Loadjson.PlayerMapList.OfType<Map>().ToList();
+            Player.UsingMapNum = Loadjson._usingMapNum;
+            MapSetting(Player.myMapList[Player.UsingMapNum]);
+        }
+
+        int cnt = Loadjson.Inventory.Length;
+        if (cnt > 0) // 인벤토리에 아이템이 있었던 경우만 로드
+        {
+            for (int i = 0; i < cnt; i++)
+            {
+                int Slotindex = Loadjson.Inventory[i].SlotIndex;
+                int Itemindex = Loadjson.Inventory[i].ItemIndex;
+                int ItemCount = Loadjson.Inventory[i].ItemCount;
+                int ItemPrice = Loadjson.Inventory[i].ItemPrice;
+                bool Countable = Itemlist[Itemindex].ItemData.Countable;
+                MapUI.myItemSlot[Slotindex].UpdateItem(ItemCount, Countable);
+                MapUI.InstItem(Itemlist[Itemindex], Slotindex, ItemPrice);
+            }
+        }
+    }
 
     IEnumerator ScreenWhite(Image FadeImage, Color FadeColor)
     {

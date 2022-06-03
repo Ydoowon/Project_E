@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,8 +7,8 @@ public class PlayerstatManagement_L : MonoBehaviour
 {
     static public PlayerstatManagement_L instance;
     public GameObject myPlayer;
-    public GameObject UnlockGauge;
-
+    public SGauge UnlockGauge;
+    public SGauge StaminaGauge;
     //For HP
     public TMPro.TMP_Text playerHP;
     public Slider HPSlider;
@@ -19,6 +21,8 @@ public class PlayerstatManagement_L : MonoBehaviour
     public TMPro.TMP_Text playerLevel;
     public TMPro.TMP_Text playerExp;
     public Slider EXSlider;
+
+    CanvasGroup stamgauge;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,7 @@ public class PlayerstatManagement_L : MonoBehaviour
         HPtext();
         Hidetext();
         LevelandExpText();
+        stamgauge = StaminaGauge.gameObject.GetComponent<CanvasGroup>();
     }
 
 
@@ -65,7 +70,7 @@ public class PlayerstatManagement_L : MonoBehaviour
 
     public void Unlocking(float point)
     {
-        UnlockGauge.GetComponent<SGauge>().mySlider.value = (100.0f - point) / 100.0f;
+        UnlockGauge.mySlider.value = (100.0f - point) / 100.0f;
         if (point <= 0)
         {
             UnlockSet(false);
@@ -75,5 +80,25 @@ public class PlayerstatManagement_L : MonoBehaviour
     {
         UnlockGauge.gameObject.SetActive(boolean);
     }
+
+    public void Running(float point)
+    {
+        StaminaGauge.mySlider.value = point / 100.0f;
+        if(StaminaGauge.mySlider.value < 0.98f)
+        {
+            StaminaGauge.gameObject.SetActive(true);
+            stamgauge.alpha = 1;
+        }
+        else
+        {
+            stamgauge.alpha -= Time.fixedDeltaTime * 5.0f;
+            if(stamgauge.alpha == 0)
+            {
+                StaminaGauge.gameObject.SetActive(false);
+            }
+        }
+    }
+
+
 
 }

@@ -5,15 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class InventoryData
 {
-    public InventoryData(int _slotindex, int _itemindex, int _itemcount)
+    public InventoryData(int _slotindex, int _itemindex, int _itemcount, int _itemprice )
     {
         SlotIndex = _slotindex;
         ItemIndex = _itemindex;
         ItemCount = _itemcount;
+        ItemPrice = _itemprice;
     }
     public int SlotIndex;
     public int ItemIndex;
     public int ItemCount;
+    public int ItemPrice;
 }
 
 

@@ -29,7 +29,7 @@ public class M_shopslot : MonoBehaviour
         BT[index].SetActive(false);
         Goldtext[index].text = "0";
         MySales[index].myItem.ableDrag = true;
-        PlayerstatManagement_L.instance.GetComponent<UIManager_L>().AddItem(MySales[index].myItem);
+        PlayerstatManagement_L.instance.GetComponent<UIManager_L>().AddItem(MySales[index].myItem,1, MySales[index].myItem.Price);
         Destroy(MySales[index].myItem.gameObject);
     }
 

@@ -6,43 +6,42 @@ using UnityEngine.EventSystems;
 
 public class UIManager_L : MonoBehaviour
 {
+    public Stack<GameObject> PopUpList = new Stack<GameObject>();
+
+
     public GameObject myInven;
     public SItemSlot[] myItemSlot;
     public GameObject myMap;
+    [SerializeField]
     RoomButton_L[] myButtons;
     public Canvas myCanvas;
 
-    public GameObject Menu;
+    public M_menu Menu;
 
     bool ActiveInven = false;
     bool ActiveMap = false;
-    bool ActiveMenu = false;
 
     public Transform myPlayer;
     [SerializeField]
     SPlayer player;
     public Image myCompass;
+    public MapName myMapname;
 
     void Start()
     {
         myInven.SetActive(ActiveInven);
         myMap.SetActive(ActiveMap);
         myItemSlot = myInven.GetComponentsInChildren<SItemSlot>();
-        myButtons = myMap.GetComponentsInChildren<RoomButton_L>();
-        foreach (RoomButton_L button in myButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && PopUpList.Count == 0)
         {
             InvenOnOff();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && PopUpList.Count == 0)
         {
             MapOnOff();
         }
@@ -52,7 +51,19 @@ public class UIManager_L : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            MenuOnOff();
+            if (PopUpList.Count == 0)
+            {
+                PopUpList.Push(Menu.gameObject);
+                MenuOnOff();
+            }
+            else
+            {
+                PopToList();
+                if (PopUpList.Count == 0)
+                {
+                    Menu.Close();
+                }
+            }
         }
     }
     void InvenOnOff()
@@ -68,17 +79,8 @@ public class UIManager_L : MonoBehaviour
     }
     public void MenuOnOff()
     {
-        ActiveMenu = !ActiveMenu;
-        Menu.SetActive(ActiveMenu);
-
-        if (ActiveMenu)
-        {
-            Menu.GetComponent<M_menu>().Open();
-        }
-        else
-        {
-            Menu.GetComponent<M_menu>().Close();
-        }
+        Menu.gameObject.SetActive(true);
+        Menu.Open();
     }
 
 
@@ -104,8 +106,8 @@ public class UIManager_L : MonoBehaviour
     // ui상 맵 넘버, 이미지, 보일지 안보일지 매개변수로 받음
     public void MapLoad(int num, int ImageNum, bool Checking)
     {
-        myButtons[num].DrowMap(ImageNum);
         myButtons[num].gameObject.SetActive(Checking);
+        myButtons[num].DrowMap(ImageNum);
     }
 
     public void SetCompass()
@@ -115,45 +117,64 @@ public class UIManager_L : MonoBehaviour
     }
     public void AddItem(SItem _additem, int count = 1, int price = 0)
     {
-        if (_additem.ItemData.Countable)  // ?? ?? ???? ???????? ?????? ??
+        if (!AddAvailable(_additem, count)) return;
+
+        if (_additem.ItemData.Countable)  // 셀수 있는 아이템을 추가하는 경우
         {
-            for (int i = 0; i < myItemSlot.Length; i++)
+            for (int i = 0; i < myItemSlot.Length; i++) // 이미 아이템을 보유하고 있는지 체크
             {
-                if (myItemSlot[i].myItem == null) continue; // ?????? ???????? ?????? ????
-                //?????????? ???????? ???????? ???????? ???? ???? && ?????? ?????? ?????? ???? ??
-                if (myItemSlot[i].myItem.ItemData.Name == _additem.ItemData.Name && (myItemSlot[i].ItemCount < 11 - count))
+                if (myItemSlot[i].myItem == null) continue; // 아이템이 없는 슬롯은 넘어감
+                // 추가해야 하는 아이템을 찾았을 경우 && count가 가득차지 않았을 때
+                if (myItemSlot[i].myItem.ItemData.Name == _additem.ItemData.Name && (myItemSlot[i].ItemCount < 10))
                 {
-                    myItemSlot[i].UpdateItem(_additem, count, true);
-                    // ?????? ?????? ????????, ???????? ????
+                    if(count > 10 - myItemSlot[i].ItemCount)
+                    {
+                        int itemcnt = myItemSlot[i].ItemCount;
+                        myItemSlot[i].UpdateItem(10 - myItemSlot[i].ItemCount, true);  // 10개 맞춰서 업데이트
+                        AddItem(_additem, count + itemcnt - 10); // 나머지는 다음 슬롯에서 업데이트
+                    }
+                    else 
+                    {
+                        myItemSlot[i].UpdateItem(count, true);
+                    }
                     return;
                 }
-            }
-            // ?? ???? ?????? ???????? ???? ????
+            }   
+            // 셀 수 있는 아이템을 '새로' 추가 하는 경우
             for (int i = 0; i < myItemSlot.Length; i++)
             {
                 if (myItemSlot[i].myItem == null)
                 {
-                    InstItem(_additem, i, count, price);
-                    myItemSlot[i].UpdateItem(_additem, count, true);
+                    if (count > 10)
+                    {
+                        InstItem(_additem, i, price);
+                        myItemSlot[i].UpdateItem(10, true);
+                        AddItem(_additem, count - 10);
+                    }
+                    else
+                    {
+                        InstItem(_additem, i, price);
+                        myItemSlot[i].UpdateItem(count, true);
+                    }
                     return;
                 }
             }
         }
-        else // ?? ?? ???? ???????? ?????? ??
+        else // 셀 수 없는 아이템을 추가하는 경우
         {
             for (int i = 0; i < myItemSlot.Length; i++)
             {
                 if (myItemSlot[i].myItem == null)
                 {
-                    InstItem(_additem, i, count, price);
-                    myItemSlot[i].UpdateItem(_additem, count, false);
+                    InstItem(_additem, i, price);
+                    myItemSlot[i].UpdateItem(count, false);
                     return;
                 }
             }
         }
     }
 
-    public void InstItem(SItem _additem, int index, int count, int price = 0)
+    public void InstItem(SItem _additem, int index, int price = 0)
     {
 
         GameObject obj = Instantiate(_additem.gameObject, myItemSlot[index].gameObject.transform);
@@ -163,7 +184,6 @@ public class UIManager_L : MonoBehaviour
         obj.transform.SetAsFirstSibling();
         obj.GetComponent<SItem>().Price = price;
         obj.GetComponent<SItem>().CanvasSF = myCanvas.scaleFactor;
-
     }
 
     public int FindItem(SItem findItem)
@@ -172,7 +192,7 @@ public class UIManager_L : MonoBehaviour
         {
             if (myItemSlot[i].myItem == null) continue;
 
-            if (myItemSlot[i].myItem.name == findItem.name)
+            if (myItemSlot[i].myItem.ItemData.Name == findItem.ItemData.Name)
             {
                 return i;
             }
@@ -180,6 +200,46 @@ public class UIManager_L : MonoBehaviour
         return -1;
     }
 
+    public bool AddAvailable(SItem item, int additemcnt)
+    {
+        int Count = myItemSlot.Length * 10;
+        
+        if (item.ItemData.Countable)
+        {
+            for (int i = 0; i < myItemSlot.Length; i++)
+            {
+                if (myItemSlot[i].myItem == null) continue;
 
+                if (myItemSlot[i].myItem.ItemData.Name == item.ItemData.Name)
+                {
+                    Count -= myItemSlot[i].ItemCount;
+                    if (Count < additemcnt) return false;
+                }
+                else
+                {
+                    Count -= 10;
+                    if (Count < additemcnt) return false;
+                }
+            }
+            return Count >= additemcnt ? true : false;
+        }
+        else
+        {
+            for (int i = 0; i < myItemSlot.Length; i++)
+            {
+                if (myItemSlot[i].myItem != null)
+                    Count -= 10;
+            }
+            return Count > 0 ? true : false;
+        }
+    }
 
+    public void PushTolist(GameObject popup)
+    {
+        PopUpList.Push(popup);
+    }
+    public void PopToList()
+    {
+        PopUpList.Pop().SetActive(false);
+    }
 }

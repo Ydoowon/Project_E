@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class SStock_Shelves : MonoBehaviour
 {
-    public GameObject myItem;
-    public int price;
+    SItem Item;
+    public int myPrice;
+    public Transform myItemslot;
+    public Animator myItemanim;
+    public int realprice;
     [SerializeField]
     bool InUse = false;
     public bool DisplayItem = false;
     // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public bool GetInUse()
     {
         return InUse;
@@ -35,23 +29,28 @@ public class SStock_Shelves : MonoBehaviour
     public void Displaying(GameObject Item)
     {
         if (Item == null || DisplayItem) return;
-
+        /*
         myItem = Item;
         myItem.transform.localPosition = new Vector3(0,1.0f,1.5f);
         myItem.transform.rotation = Quaternion.identity;
         price = myItem.GetComponent<SMap>().GetPrice();
+        */
 
         DisplayItem = true;
     }
 
     public void OutStockItem()
     {
-        if (myItem == null) return;
-
-        Destroy(myItem.gameObject);
-        myItem = null;
-        price = 0;
         InUse = false;
         DisplayItem = false;
     }
+
+    public void SetItem(SItem _item)
+    {
+        Item = _item;
+        _item.transform.SetParent(myItemslot);
+        realprice = _item.GetComponent<SItem>().Price;
+        myItemanim.SetBool("Activate", true);
+    }
+
 }

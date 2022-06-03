@@ -79,6 +79,18 @@ public class PlayerStatus
             PlayerstatManagement_L.instance.Hidetext();
         }
     }
+    float _Stamina = 100.0f;
+    float _MaxStamina = 100.0f;
+    public float Stamina
+    {
+        get { return _Stamina; }
+        set
+        {
+            _Stamina = value;
+            _Stamina = Mathf.Clamp(_Stamina, 0, _MaxStamina);
+            PlayerstatManagement_L.instance.Running(_Stamina);
+        }
+    }
     [SerializeField]
     float _hidepoint = 100.0f;
     public float Hidepoint
@@ -110,6 +122,7 @@ public class PlayerStatus
         TOWN, DUNGEON
     }
     public LOCATION myLocation = LOCATION.TOWN;
+
     [SerializeField]
     float _MoveSpeed;
     public float MoveSpeed
@@ -146,6 +159,22 @@ public class SPlayer : MonoBehaviour
     float hAxis;
     float vAxis;
     bool Running;
+    bool _runable;
+    bool Runable
+    {
+        get 
+        {
+            if (MyStatus.Stamina < 2.0f)
+            {
+                _runable = false;
+            }
+            else if(MyStatus.Stamina > 10.0f)
+            {
+                _runable = true;
+            }
+            return _runable; 
+        }
+    }
     Coroutine SpeedSet;
 
 
@@ -228,23 +257,52 @@ public class SPlayer : MonoBehaviour
 
     [SerializeField]
     public List<Map> myMapList; // 플레이어 지도 리스트
-    int _usingMapNum;
+    public int _usingMapNum;
     public int UsingMapNum
     {
         get { return _usingMapNum; }
-        set { _usingMapNum = value; }
+        set
+        {
+            if(myMapList.Count > value && value >=0)
+            {
+                _usingMapNum = value;
+            }
+        }
     }
     public Map GetmyMap()
     {
-        if (myMapList.Count != 0)
+        if (myMapList.Count != 0 && myMapList[UsingMapNum] != null)
             return myMapList[UsingMapNum];
 
         return null;
     }
     public SMapData MapDatabase;
     public GameObject[] MyItem;
+    public void SetMyLocation(PlayerStatus.LOCATION _loca)
+    {
+        switch (_loca)
+        {
+            case PlayerStatus.LOCATION.TOWN:
+                MyStatus.myLocation = PlayerStatus.LOCATION.TOWN;
+                myUIManager.ActiveCompass(false);
+                break;
+            case PlayerStatus.LOCATION.DUNGEON:
+                MyStatus.myLocation = PlayerStatus.LOCATION.DUNGEON;
+                myUIManager.ActiveCompass(true);
+                break;
+        }
+    }
 
-
+    public UnityAction<SPlayer> TransPos = null;
+    public UnityAction UIopen = null;
+    public void Interaction()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            TransPos?.Invoke(this);
+            UIopen?.Invoke();
+        }
+    }
 
     public enum STATE
     {
@@ -308,6 +366,9 @@ public class SPlayer : MonoBehaviour
                     OrbSetting();
                 if (mySwitch != null)
                     SwiSetting();
+
+                Interaction();
+
                 CreateItem();
                 break;
             case STATE.DEATH:
@@ -327,8 +388,15 @@ public class SPlayer : MonoBehaviour
                 {
                     hAxis = Input.GetAxis("Horizontal");
                     vAxis = Input.GetAxis("Vertical");
-                    Running = Input.GetButton("Run");
-
+                    Running = Input.GetButton("Run") && Runable;
+                    if(Running == true)
+                    {
+                        MyStatus.Stamina -= Time.fixedDeltaTime * 5.0f;
+                    }
+                    else
+                    {
+                        MyStatus.Stamina += Time.fixedDeltaTime * 5.0f;
+                    }
                     Vector3 pos = new Vector3(hAxis, 0, vAxis).normalized;
                     Vector3 CompVec = Quaternion.AngleAxis(mySpringArm.rotation.eulerAngles.y, Vector3.up) * pos;
 
@@ -461,12 +529,6 @@ public class SPlayer : MonoBehaviour
             int Row = other.gameObject.GetComponent<Dungeon>().Row;
             myUIManager.SetMyButton(Row, Col);
         }
-        /*
-        if(other.gameObject.layer == LayerMask.NameToLayer("Door") && !other.gameObject.GetComponent<Open>().DoorOpen)
-        {
-            myDoor = other.gameObject.GetComponent<Open>();
-        }
-        */
 
     }
     private void OnTriggerExit(Collider other)
@@ -476,13 +538,6 @@ public class SPlayer : MonoBehaviour
             if (myStock != null)
                 myStock = null;
         }
-        /*
-        if (other.gameObject.layer == LayerMask.NameToLayer("Door") && !other.gameObject.GetComponent<Open>().DoorOpen)
-        {
-            if (myDoor != null)
-                myDoor = null;
-        }
-        */
     }
 
     public void SetMapData(int button_num, int data)
@@ -666,5 +721,20 @@ public class SPlayer : MonoBehaviour
     {
         MyStatus.Exp = _map.Price; // 지도의 가격만큼 경험치를 얻도록 한다(임시)
     }
+
+    public void SetMiniMap(bool right)
+    {
+        if(right)
+        {
+            UsingMapNum++;
+            SGameManager.instance.MapSetting(GetmyMap());
+        }
+        else
+        {
+            UsingMapNum--;
+            SGameManager.instance.MapSetting(GetmyMap());
+        }
+    }
+
 
 }

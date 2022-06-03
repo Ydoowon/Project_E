@@ -5,32 +5,62 @@ using UnityEngine.Events;
 
 public class M_ShopOpen : MonoBehaviour
 {
-    public event UnityAction Shoping = null;
-    public TMPro.TMP_Text How;
+    public TMPro.TMP_Text Message;
     public GameObject HOW;
-    // Start is called before the first frame update
-    void Start()
+    public M_shop Shop;
+    public GameObject UI;
+    public event UnityAction Onrange = null; // 범위의 bool값을 전달
+    bool IsOpen = false;
+    SPlayer _player;
+    public SPlayer Player
     {
-
+        get { return _player; }
+        set { _player = value; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-        HOW.SetActive(true);
-        How.text = "상점열기";
-        Shoping?.Invoke();
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            HOW.SetActive(true);
+            Message.text = "E키를 눌러 상점열기";
+            Player = other.GetComponent<SPlayer>();
+            /*
+            Shop.Player= Player;
+            for(int i =0; i<ShopMenu.Length; i++)
+            {
+                ShopMenu[i].Player = Player;
+            }
+            Shop.Gold.text = Player.MyStatus.Gold.ToString();
+            */
+        }
+
 
     }
     private void OnTriggerExit(Collider other)
     {
-        HOW.SetActive(false);
-        Shoping?.Invoke();
-        GameObject.Find("Canvas").GetComponentInChildren<M_shop>()?.Close();
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            HOW.SetActive(false);
+            CloseShop();
+            Player = null;
+        }
+    }
 
+    void Update()
+    {
+        if (Player != null && Input.GetKeyDown(KeyCode.E))
+        {
+            IsOpen = !IsOpen;
+            Shop.Action(IsOpen);
+        }
+    }
 
+    public void CloseShop()
+    {
+        IsOpen = false;
+        Shop.Action(false);
     }
 }

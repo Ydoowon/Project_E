@@ -30,7 +30,7 @@ public class SConsumer : MonoBehaviour
 
     NavMeshAgent myNav;
     public SNPCsummoner mySummoner;
-    List<Transform> BuyingList;
+    List<Transform> BuyingList = new List<Transform>();
     int NextState = 0;
     int EntranceNum = 0;
 
@@ -71,7 +71,6 @@ public class SConsumer : MonoBehaviour
             case STATE.CREATE:
                 myGold = Random.Range(2000, 3000);
                 myNav = this.GetComponent<NavMeshAgent>();
-                BuyingList = new List<Transform>();
                 //Animation 작동한 이후에 보일 움직임들 delegate로 전달
                 myAnimEvent.Move += () =>
                 {
@@ -122,13 +121,13 @@ public class SConsumer : MonoBehaviour
             case STATE.LOOKAROUND:
                 myAnim.SetTrigger("LookAround");
                 myAnim.SetBool("StopMove", true);
-                foreach(Transform t in mySummoner.myStock)
+                foreach(SStock_Shelves stock in mySummoner.myStock)
                 {
-                    if (!t.GetComponent<SStock_Shelves>().GetDisplaying()) continue;
+                    if (!stock.GetDisplaying()) continue;
 
-                    if (myGold > t.GetComponent<SStock_Shelves>().price && !t.GetComponent<SStock_Shelves>().GetInUse())
+                    if (myGold > stock.myPrice && !stock.GetInUse())
                     {
-                        BuyingList.Add(t);
+                        BuyingList.Add(stock.transform);
                     }
                 }
                 break;
@@ -229,7 +228,7 @@ public class SConsumer : MonoBehaviour
                 if (ToItemDist <= myNav.stoppingDistance + 0.1f)
                 {
                     myAnim.SetBool("IsWalk", false);
-                    price = BuyingItem.GetComponent<SStock_Shelves>().price;
+                    price = BuyingItem.GetComponent<SStock_Shelves>().myPrice;
                     if (price < 1000) //1000은 시세를 임의로 정해준 값
                     {
                         // 살만한 가격이라며 고개를 끄덕이는 애니메이션 연출

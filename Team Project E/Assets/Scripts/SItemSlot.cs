@@ -72,10 +72,10 @@ public class SItemSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     }
 
 
-    public void UpdateItem(SItem Item, int count, bool cntSlot)
+    public void UpdateItem(int count, bool cntSlot)
     {
-        if(myItem == null)
-        myItem = Item;
+        if (myItem == null)
+            myItem = GetComponentInChildren<SItem>();  
 
         ItemCount += count;
         Itemcnt.text = ItemCount.ToString();
